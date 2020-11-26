@@ -31,16 +31,8 @@
             </intent-filter>
         </activity>
 
-        <meta-data
-            android:name="com.google.android.wearable.standalone"
-            android:value="true" />
-        <uses-library
-            android:name="com.google.android.wearable"
-            android:required="true" />
-    </application>
+            </application>
 
-    <uses-feature android:name="android.hardware.type.watch" />
 
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
 </manifest>
