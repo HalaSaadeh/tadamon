@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "277456711993",
+    "firebase_url": "https://tadamon-78925.firebaseio.com",
+    "project_id": "tadamon-78925",
+    "storage_bucket": "tadamon-78925.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:277456711993:android:d5f36af8d014a77a9e78e8",
+        "android_client_info": {
+          "package_name": "com.example.tadamon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "277456711993-t0ahqssq5gu6pbcaruig7nkd2cmtdn34.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4v9_K3OdYKCc2IdeBy7AHbH1_Ez6-84I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "277456711993-t0ahqssq5gu6pbcaruig7nkd2cmtdn34.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
