@@ -1,5 +1,6 @@
 package com.example.tadamon;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,10 +25,16 @@ public class SignupActivity extends AppCompatActivity {
         googlesign = findViewById(R.id.googlesign);
         facebooksign = findViewById(R.id.facebooksign);
 
-        emailpasssign.setOnClickListener(e->{});
-        googlesign.setOnClickListener(e->{});
-        facebooksign.setOnClickListener(e->{});
+        emailpasssign.setOnClickListener(e->{
+            Intent startIntent = new Intent(getApplicationContext(), SignupWithEmailAndPassActivity.class);
+            startActivity(startIntent);});
+       /* googlesign.setOnClickListener(e->{Intent startIntent = new Intent(getApplicationContext(), SignupActivity.class);
+            startActivity(startIntent);});
+        facebooksign.setOnClickListener(e->{Intent startIntent = new Intent(getApplicationContext(), SignupActivity.class);
+            startActivity(startIntent);});*/
 
 
     }
+
+
 }
