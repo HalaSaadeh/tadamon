@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tadamon">
-        <activity android:name=".SignupWithEmailAndPassActivity"></activity>
+        <activity android:name=".HomeScreenActivity"></activity>
+        <activity android:name=".SignInActivity" />
+        <activity android:name=".LoginWithEmailAndPassActivity" />
+        <activity android:name=".SignupWithEmailAndPassActivity" />
         <activity
             android:name=".SignupActivity"
             android:label="@string/title_activity_signup">
