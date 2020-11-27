@@ -7,17 +7,20 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    TextView logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button enter = findViewById(R.id.button);
+        logo = findViewById(R.id.logoLabel);
 
-        enter.setOnClickListener(e -> {
+        logo.setOnClickListener(e -> {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
             String userid = preferences.getString("ID", null);
             if (userid != null){ // If there is a signed-in user
