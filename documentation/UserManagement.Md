@@ -17,6 +17,22 @@ After validation, the Firebase Auth instance is used to signup with the given em
 All TextViews are validated to ensure that the user does not attempt to sign in using empty fields.  
 After validation, the Firebase Auth instance is used to signin with the given email and password, as long as the password is correct. 
 
+#### Signin with Google
+The Firebase SDK and Google Auth API were used. Refer to <APIs.Md>  
+We configure GoogleSignInOptions and request an ID token. 
+To sign in with Google, a GoogleSignIn intent is created to take the user to where the Google signin happens.  
+After a user successfully signs in with Google, the ID token from the GoogleSignInAccount object is taken and exchanged it for a Firebase credential, and authenticated with Firebase using the Firebase credential. 
+
+#### Signin with Facebook
+The Facebook SDK was used and added to the Project. Refer to <APIs.Md>  
+We use a LoginButton object to request permissions from Facebook. The permissions we choose to request include viewing the public profile as well as the person's email which is information needed to authenticate a user.  
+After a user successfully signs in, we get an access token for the signed-in user and exchange it for a Firebase credential, and authenticate with Firebase using the Firebase credential. 
+
+### After Authentication
+After a user signs in for the first time, a new user account is created and linked to the credentials—that is, the user name and password, phone number, or auth provider information—the user signed in with.  
+This new account is stored as part of the Firebase project, and can be used to identify the user across the app, no matter which of the providers the user signed in with.  
+We can get the user's basic profile information from the FirebaseUser object created.  
+
 ### Signout
 When the user attempts to sign out, a pop-up message appears to make sure that the user really wants to sign out.   
 If yes, the Firebase Auth instance will be used to sign out and return the app to the Signin page.  
