@@ -79,8 +79,10 @@ public class SignInActivity extends AppCompatActivity {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account.getIdToken());
+                Log.d("in", "Signin google success");
             } catch (ApiException e) {
                 // Google Sign In failed
+                Log.d("in", "Signin google fail", e);
                 }
         }
     }
@@ -96,11 +98,13 @@ public class SignInActivity extends AppCompatActivity {
                                     Toast.LENGTH_LONG).show();
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateSharedPreferences(user.getUid());
+                            Log.d("in", "Signin firebase success");
                             // Go to homepage
                             Intent startIntent = new Intent(getApplicationContext(), HomeScreenActivity.class);
                             startActivity(startIntent);
                         } else {
                             // If sign in fails, display a message to the user.
+                            Log.d("in", "Signin firebase fail", task.getException());
                             Toast.makeText(SignInActivity.this, "Authentication failed. Please try again.",
                                     Toast.LENGTH_LONG).show();
                         }
