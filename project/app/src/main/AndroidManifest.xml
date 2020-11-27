@@ -13,15 +13,9 @@
         <activity android:name=".SignInActivity" />
         <activity android:name=".LoginWithEmailAndPassActivity" />
         <activity android:name=".SignupWithEmailAndPassActivity" />
-        <activity
-            android:name=".SignupActivity"
-            android:label="@string/title_activity_signup">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".SignupActivity" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.

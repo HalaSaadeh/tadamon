@@ -25,9 +25,12 @@ public class SignupActivity extends AppCompatActivity {
         googlesign = findViewById(R.id.googlesign);
         facebooksign = findViewById(R.id.facebooksign);
 
+        // Once "Signin with Email" is selected, go to another activity to signin
         emailpasssign.setOnClickListener(e->{
             Intent startIntent = new Intent(getApplicationContext(), SignupWithEmailAndPassActivity.class);
             startActivity(startIntent);});
+
+        // Cleanup
        /* googlesign.setOnClickListener(e->{Intent startIntent = new Intent(getApplicationContext(), SignupActivity.class);
             startActivity(startIntent);});
         facebooksign.setOnClickListener(e->{Intent startIntent = new Intent(getApplicationContext(), SignupActivity.class);

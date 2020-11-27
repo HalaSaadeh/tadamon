@@ -3,7 +3,9 @@ package com.example.tadamon;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
@@ -43,6 +45,7 @@ public class LoginWithEmailAndPassActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("LoggedIn", "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            updateSharedPreferences(user.getUid());
                             // Store in SharedPreferences
                         } else {
                             // If sign in fails, display a message to the user.
@@ -53,5 +56,11 @@ public class LoginWithEmailAndPassActivity extends AppCompatActivity {
 
                     }
                 });
+    }
+    private void updateSharedPreferences(String uID){
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("ID",uID);
+        editor.apply();
     }
 }
