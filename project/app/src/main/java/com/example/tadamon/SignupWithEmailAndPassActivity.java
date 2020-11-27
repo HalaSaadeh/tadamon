@@ -54,7 +54,7 @@ public class SignupWithEmailAndPassActivity extends AppCompatActivity {
                                 startActivity(startIntent);
                             } else {
                                 // If sign in fails, display a message to the user.
-                                Toast.makeText(SignupWithEmailAndPassActivity.this, "Authentication failed.",
+                                Toast.makeText(SignupWithEmailAndPassActivity.this, "Email already exists.",
                                         Toast.LENGTH_LONG).show();
                             }
 
