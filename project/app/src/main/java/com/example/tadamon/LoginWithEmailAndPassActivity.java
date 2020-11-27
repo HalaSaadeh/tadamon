@@ -3,6 +3,7 @@ package com.example.tadamon;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -37,21 +38,24 @@ public class LoginWithEmailAndPassActivity extends AppCompatActivity {
         String email=emailTextView.getText().toString();
         String password = passwordTextView.getText().toString();
 
+        // Use Firebase Auth to Signin with Email and Password
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d("LoggedIn", "signInWithEmail:success");
+                            // Sign in success, show success message and update SharedPreferences with the signed-in user's information
+                            Toast.makeText(LoginWithEmailAndPassActivity.this, "Successfully logged in.",
+                                    Toast.LENGTH_LONG).show();
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateSharedPreferences(user.getUid());
-                            // Store in SharedPreferences
+                            // Go to homepage
+                            Intent startIntent = new Intent(getApplicationContext(), HomeScreenActivity.class);
+                            startActivity(startIntent);
                         } else {
                             // If sign in fails, display a message to the user.
-                            Log.w("NotLoggedIn", "signInWithEmail:failure", task.getException());
                             Toast.makeText(LoginWithEmailAndPassActivity.this, "Invalid email or password.",
-                                    Toast.LENGTH_SHORT).show();
+                                    Toast.LENGTH_LONG).show();
                         }
 
                     }

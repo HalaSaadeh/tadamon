@@ -3,6 +3,7 @@ package com.example.tadamon;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -46,14 +47,15 @@ public class SignupWithEmailAndPassActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 // Sign in success, update UI with the signed-in user's information
-                                Log.d("LoggedIn", "createUserWithEmail:success");
                                 FirebaseUser user = mAuth.getCurrentUser();
-
+                                Toast.makeText(SignupWithEmailAndPassActivity.this, "Successfully signed up.",
+                                        Toast.LENGTH_LONG).show();
+                                Intent startIntent = new Intent(getApplicationContext(), SignInActivity.class);
+                                startActivity(startIntent);
                             } else {
                                 // If sign in fails, display a message to the user.
-                                Log.w("NotLoggedIn", "createUserWithEmail:failure", task.getException());
                                 Toast.makeText(SignupWithEmailAndPassActivity.this, "Authentication failed.",
-                                        Toast.LENGTH_SHORT).show();
+                                        Toast.LENGTH_LONG).show();
                             }
 
                             // ...

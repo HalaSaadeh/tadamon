@@ -20,12 +20,12 @@ public class MainActivity extends AppCompatActivity {
         enter.setOnClickListener(e -> {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
             String userid = preferences.getString("ID", null);
-            if (userid != null){
-                Intent startIntent = new Intent(getApplicationContext(), HomeScreenActivity.class);
+            if (userid != null){ // If there is a signed-in user
+                Intent startIntent = new Intent(getApplicationContext(), HomeScreenActivity.class); // directly open HomeScreen
                 startActivity(startIntent);
             }
-            else{
-                Intent startIntent = new Intent(getApplicationContext(), SignInActivity.class);
+            else{ // If no one is signed-in
+                Intent startIntent = new Intent(getApplicationContext(), SignInActivity.class); // open the SignIn page
                 startActivity(startIntent);}
     });
     }
