@@ -3,7 +3,7 @@
 ## Auth and User Management
 For more in-depth technical specifics about Auth and User Management, refer to <UserManagement.Md>
 
-###Firebase API
+### Firebase API
 The Firebase API was used to authenticate users and perform management. The Firebase API was used for email & password signin and signup. It was also used together with the Facebook Login API and Google Authentication API to enable users to sign in using third-party providers.   
 A Firebase project was created on console.firebase.google.com.   
 The app was registered with Firebase.  
