@@ -39,7 +39,8 @@ import java.util.Arrays;
 
 public class SignInActivity extends AppCompatActivity {
     private static final int RC_SIGN_IN = 1;
-    private Button emailPassSignin, googleSignin, facebookSignin;
+    private Button emailPassSignin, googleSignin;
+    private LoginButton facebookSignin;
     private TextView newUser;
     private FirebaseAuth mAuth;
     private GoogleSignInClient mGoogleSignInClient;
@@ -138,26 +139,25 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void signInWithFacebook(){
-        // Facebook Login
         mCallbackManager = CallbackManager.Factory.create();
-
-        mFacebookSignInButton.setReadPermissions("email", "public_profile", "user_birthday", "user_friends");
-
-        mFacebookSignInButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+        facebookSignin.setReadPermissions("email", "public_profile");
+        facebookSignin.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Log.d("FB Login", "facebook:onSuccess:" + loginResult);
+                Log.d("Facebook Login", "facebook:onSuccess:" + loginResult);
                 handleFacebookAccessToken(loginResult.getAccessToken());
             }
 
             @Override
             public void onCancel() {
                 Log.d("FB Login", "facebook:onCancel");
+                // ...
             }
 
             @Override
             public void onError(FacebookException error) {
-                Log.d("FB login", "facebook:onError", error);
+                Log.d("FB Login", "facebook:onError", error);
+                // ...
             }
         });
     }
