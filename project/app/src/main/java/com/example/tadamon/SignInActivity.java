@@ -152,13 +152,12 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onCancel() {
                 Log.d("FB Login", "facebook:onCancel");
-                // ...
             }
 
             @Override
             public void onError(FacebookException error) {
                 Log.d("FB Login", "facebook:onError", error);
-                // ...
+
             }
         });
     }
@@ -176,14 +175,18 @@ public class SignInActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("FB Login", "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            updateSharedPreferences(user.getUid());
+                            Log.d("in", "Signin firebase success");
+                            // Go to homepage
+                            Toast.makeText(SignInActivity.this, "Logged in with Facebook.",
+                                    Toast.LENGTH_SHORT).show();
+                            Intent startIntent = new Intent(getApplicationContext(), HomeScreenActivity.class);
+                            startActivity(startIntent);
                         } else {
                             // If sign in fails, display a message to the user.
-                            Log.w("FB Login", "signInWithCredential:failure", task.getException());
                             Toast.makeText(SignInActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }
-
-                        // ...
                     }
                 });
     }
