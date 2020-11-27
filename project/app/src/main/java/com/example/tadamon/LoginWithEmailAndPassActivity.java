@@ -37,7 +37,7 @@ public class LoginWithEmailAndPassActivity extends AppCompatActivity {
     private void signin(){
         String email=emailTextView.getText().toString();
         String password = passwordTextView.getText().toString();
-
+        if (validateEmail() && validatePassword()){
         // Use Firebase Auth to Signin with Email and Password
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -60,11 +60,30 @@ public class LoginWithEmailAndPassActivity extends AppCompatActivity {
 
                     }
                 });
-    }
+    }}
     private void updateSharedPreferences(String uID){
+        // Once signed-in, update SharedPreferences to store the current user
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("ID",uID);
         editor.apply();
+    }
+    private boolean validateEmail(){
+        String email = emailTextView.getText().toString();
+        if (email.length()==0) {
+            emailTextView.setError("Field is empty");
+            return false;
+        }
+        emailTextView.setError(null);
+        return true;
+    }
+    private boolean validatePassword(){
+        String password =passwordTextView.getText().toString();
+        if (password.length()==0) {
+            passwordTextView.setError("Field is empty");
+            return false;
+        }
+        passwordTextView.setError(null);
+        return true;
     }
 }

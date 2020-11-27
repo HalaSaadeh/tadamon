@@ -93,10 +93,10 @@ public class SignupWithEmailAndPassActivity extends AppCompatActivity {
     private boolean validateEmail(){
         String email = emailTextView.getText().toString();
         if (email.length()==0) {
-            confirmPasswordTextView.setError("Field is empty");
+            emailTextView.setError("Field is empty");
             return false;
         }
-        confirmPasswordTextView.setError(null);
+        emailTextView.setError(null);
         return true;
     }
 }
