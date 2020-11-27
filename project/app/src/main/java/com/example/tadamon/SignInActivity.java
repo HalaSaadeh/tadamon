@@ -139,10 +139,8 @@ public class SignInActivity extends AppCompatActivity {
 
     private void signInWithFacebook(){
         // Facebook Login
-        FacebookSdk.sdkInitialize(getApplicationContext());
         mCallbackManager = CallbackManager.Factory.create();
 
-        LoginButton mFacebookSignInButton = (LoginButton) findViewById(R.id.signInButton);
         mFacebookSignInButton.setReadPermissions("email", "public_profile", "user_birthday", "user_friends");
 
         mFacebookSignInButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
