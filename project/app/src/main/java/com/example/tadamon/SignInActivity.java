@@ -2,14 +2,14 @@ package com.example.tadamon;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
-import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -34,12 +34,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-
-import java.util.Arrays;
-
 public class SignInActivity extends AppCompatActivity {
     private static final int RC_SIGN_IN = 1;
-    private Button emailPassSignin, googleSignin;
+    private Button emailPassSignin, googleSignin, facebookButton;
     private LoginButton facebookSignin;
     private TextView newUser;
     private FirebaseAuth mAuth;
@@ -61,13 +58,16 @@ public class SignInActivity extends AppCompatActivity {
 
         // If email and pass signin is selected
         emailPassSignin = findViewById(R.id.signInWithEmailAndPassButton);
-        emailPassSignin.setOnClickListener(e->{
+        emailPassSignin.setOnClickListener(e -> {
             Intent startIntent = new Intent(getApplicationContext(), LoginWithEmailAndPassActivity.class);
-            startActivity(startIntent);});
+            startActivity(startIntent);
+        });
 
         // Google Signin
         googleSignin = findViewById(R.id.signInWithGoogleButton);
-        googleSignin.setOnClickListener(e->{signInWithGoogle();});
+        googleSignin.setOnClickListener(e -> {
+            signInWithGoogle();
+        });
 
         // New user, go to signup page
         newUser = findViewById(R.id.newUserTextView);
@@ -77,9 +77,21 @@ public class SignInActivity extends AppCompatActivity {
         });
 
         // Facebook Signin
-        facebookSignin = findViewById(R.id.signInWithFacebookButton);
-        facebookSignin.setOnClickListener(e->{signInWithFacebook();});
+        facebookSignin = findViewById(R.id.facebookButton);
+        facebookSignin.setEnabled(false);
+        facebookSignin.setVisibility(View.INVISIBLE);
+        facebookSignin.setSoundEffectsEnabled(false);
+        facebookSignin.setOnClickListener(e -> {
+            signInWithFacebook();
+        });
+
+        facebookButton = findViewById(R.id.signInWithFacebookButton);
+        facebookButton.setOnClickListener(e -> {
+            facebookSignin.performClick();
+        });
+
     }
+
     private void signInWithGoogle() {
         // Open Google Signin activity from API
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
@@ -103,9 +115,10 @@ public class SignInActivity extends AppCompatActivity {
             } catch (ApiException e) {
                 // Google Sign In failed
                 Log.d("in", "Signin google fail", e);
-                }
+            }
         }
     }
+
     private void firebaseAuthWithGoogle(String idToken) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
         mAuth.signInWithCredential(credential)
@@ -131,15 +144,16 @@ public class SignInActivity extends AppCompatActivity {
                     }
                 });
     }
-    private void updateSharedPreferences(String uID){
+
+    private void updateSharedPreferences(String uID) {
         // Once signed-in, update SharedPreferences to store the current user
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("ID",uID);
+        editor.putString("ID", uID);
         editor.apply();
     }
 
-    private void signInWithFacebook(){
+    private void signInWithFacebook() {
         mCallbackManager = CallbackManager.Factory.create();
         facebookSignin.setReadPermissions("email", "public_profile");
         facebookSignin.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {

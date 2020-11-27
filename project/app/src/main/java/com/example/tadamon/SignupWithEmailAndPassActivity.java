@@ -23,6 +23,7 @@ public class SignupWithEmailAndPassActivity extends AppCompatActivity {
     private Button signup;
     private TextView emailTextView, passwordTextView, confirmPasswordTextView;
     private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,15 +31,17 @@ public class SignupWithEmailAndPassActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         signup = findViewById(R.id.signUpButton);
-        emailTextView= (TextView) findViewById(R.id.emailField);
+        emailTextView = (TextView) findViewById(R.id.emailField);
         passwordTextView = (TextView) findViewById(R.id.passwordField);
         confirmPasswordTextView = (TextView) findViewById(R.id.confirmPasswordField);
-        signup.setOnClickListener(e->{signUpWithEmailAndPass();});
+        signup.setOnClickListener(e -> {
+            signUpWithEmailAndPass();
+        });
     }
 
-    private void signUpWithEmailAndPass(){
-        if (validateEmail() && validatePassword() && confirmPassword() ){
-            String password =passwordTextView.getText().toString();
+    private void signUpWithEmailAndPass() {
+        if (validateEmail() && validatePassword() && confirmPassword()) {
+            String password = passwordTextView.getText().toString();
             String email = emailTextView.getText().toString();
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -61,10 +64,12 @@ public class SignupWithEmailAndPassActivity extends AppCompatActivity {
                             // ...
                         }
                     });
-    }}
-    private boolean validatePassword(){
-        String password =passwordTextView.getText().toString();
-        if (password.length()==0) {
+        }
+    }
+
+    private boolean validatePassword() {
+        String password = passwordTextView.getText().toString();
+        if (password.length() == 0) {
             passwordTextView.setError("Field is empty");
             return false;
         }
@@ -76,10 +81,10 @@ public class SignupWithEmailAndPassActivity extends AppCompatActivity {
         return true;
     }
 
-    private boolean confirmPassword(){
+    private boolean confirmPassword() {
         String confirmPass = confirmPasswordTextView.getText().toString();
         String password = passwordTextView.getText().toString();
-        if (confirmPass.length()==0) {
+        if (confirmPass.length() == 0) {
             confirmPasswordTextView.setError("Field is empty");
             return false;
         }
@@ -90,9 +95,10 @@ public class SignupWithEmailAndPassActivity extends AppCompatActivity {
         confirmPasswordTextView.setError(null);
         return true;
     }
-    private boolean validateEmail(){
+
+    private boolean validateEmail() {
         String email = emailTextView.getText().toString();
-        if (email.length()==0) {
+        if (email.length() == 0) {
             emailTextView.setError("Field is empty");
             return false;
         }

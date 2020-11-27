@@ -19,4 +19,22 @@
     <dimen name="titleHGap">10dp</dimen>
     <dimen name="leftPadding">25dp</dimen>
     <dimen name="carouselHGap">15dp</dimen>
+
+    <dimen name="smallTextSize">12sp</dimen>
+    <dimen name="mediumTextSize">16sp</dimen>
+    <dimen name="largeTextSize">20sp</dimen>
+
+    <dimen name="largeButtonWidth">325dp</dimen>
+    <dimen name="mediumButtonWidth">200dp</dimen>
+    <dimen name="smallButtonWidth">75dp</dimen>
+
+    <dimen name="buttonHeight">50dp</dimen>
+    <dimen name="buttonHeightAlt">30dp</dimen>
+
+    <dimen name="buttonRadius">8dp</dimen>
+
+    <dimen name="smallInnerPaddingGapHorizontal">20dp</dimen>
+    <dimen name="mediumInnerPaddingGapHorizontal">40dp</dimen>
+    <dimen name="largeInnerPaddingGapHorizontal">80dp</dimen>
+
 </resources>

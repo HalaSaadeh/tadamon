@@ -11,10 +11,10 @@ import android.widget.Button;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class HomeScreenActivity extends AppCompatActivity  { // implements PopUpMessage.LoggingOut
+public class HomeScreenActivity extends AppCompatActivity implements PopUpMessage.LoggingOut {
 
-//    private Button signout;
-//    private FirebaseAuth mAuth;
+    private Button signout;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,28 +39,28 @@ public class HomeScreenActivity extends AppCompatActivity  { // implements PopUp
             }
         });
 
-//        mAuth = FirebaseAuth.getInstance();
-//        signout = findViewById(R.id.signout);
-//        signout.setOnClickListener(e -> {
-//            openDialog();
-//        });
+        mAuth = FirebaseAuth.getInstance();
+        signout = findViewById(R.id.signout);
+        signout.setOnClickListener(e -> {
+           openDialog();
+        });
     }
 
-//    public void openDialog() {
-//        PopUpMessage dialog = new PopUpMessage("Are you sure you want to logout? " +
-//                "unless you are logging in on another device.", "I'm sure", "Cancel");
-//        dialog.show(getSupportFragmentManager(), "Dialog");
-//
-//    }
-//
-//    @Override
-//    public void onConfirm() {
-//        mAuth.signOut();
-//        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-//        SharedPreferences.Editor editor = preferences.edit();
-//        editor.putString("ID", null);
-//        editor.apply();
-//        Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
-//        startActivity(intent);
-//    }
+    public void openDialog() {
+        PopUpMessage dialog = new PopUpMessage("Are you sure you want to logout? " +
+                "unless you are logging in on another device.", "I'm sure", "Cancel");
+        dialog.show(getSupportFragmentManager(), "Dialog");
+
+    }
+
+    @Override
+    public void onConfirm() {
+        mAuth.signOut();
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("ID", null);
+        editor.apply();
+        Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
+        startActivity(intent);
+    }
 }
