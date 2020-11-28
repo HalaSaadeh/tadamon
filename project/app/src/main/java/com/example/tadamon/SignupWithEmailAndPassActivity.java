@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ import org.w3c.dom.Text;
 public class SignupWithEmailAndPassActivity extends AppCompatActivity {
 
     private Button signup;
+    private ImageButton backButton;
     private TextView emailTextView, passwordTextView, confirmPasswordTextView;
     private FirebaseAuth mAuth;
 
@@ -37,6 +39,14 @@ public class SignupWithEmailAndPassActivity extends AppCompatActivity {
         signup.setOnClickListener(e -> {
             signUpWithEmailAndPass();
         });
+
+        backButton = findViewById(R.id.signUpWEAPBackButton);
+        backButton.setOnClickListener(e -> {
+            startActivity(new Intent(
+                    getApplicationContext(), SignInActivity.class
+            ));
+        });
+
     }
 
     private void signUpWithEmailAndPass() {

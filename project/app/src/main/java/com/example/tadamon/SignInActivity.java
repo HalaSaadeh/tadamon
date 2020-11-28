@@ -72,7 +72,7 @@ public class SignInActivity extends AppCompatActivity {
         // New user, go to signup page
         newUser = findViewById(R.id.newUserTextView);
         newUser.setOnClickListener(e -> {
-            Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
+            Intent intent = new Intent(getApplicationContext(), SignupWithEmailAndPassActivity.class);
             startActivity(intent);
         });
 

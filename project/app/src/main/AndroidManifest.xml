@@ -22,7 +22,6 @@
         <activity android:name=".SignInActivity" />
         <activity android:name=".LoginWithEmailAndPassActivity" />
         <activity android:name=".SignupWithEmailAndPassActivity" />
-        <activity android:name=".SignupActivity" />
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.

@@ -20,7 +20,9 @@
     <dimen name="leftPadding">25dp</dimen>
     <dimen name="carouselHGap">15dp</dimen>
 
+    <dimen name="verySmallTextSize">10sp</dimen>
     <dimen name="smallTextSize">12sp</dimen>
+    <dimen name="mediumtextSizeVar">14.5sp</dimen>
     <dimen name="mediumTextSize">16sp</dimen>
     <dimen name="largeTextSize">20sp</dimen>
 
