@@ -7,4 +7,150 @@
     android:layout_height="match_parent"
     tools:context=".AccountCreationStep1Activity">
 
-  </androidx.constraintlayout.widget.ConstraintLayout>
+  <EditText
+      android:id="@+id/nameField"
+      style="@style/Widget.AppCompat.EditText"
+      android:layout_width="@dimen/largeButtonWidth"
+      android:layout_height="@dimen/buttonHeight"
+      android:background="@drawable/app_textfield_bg"
+      android:ems="10"
+      android:fontFamily="@font/poppins_light"
+      android:hint="Enter your full name"
+      android:inputType="textPersonName"
+      android:paddingLeft="@dimen/inner_frame_layout_padding"
+      android:textColor="@color/black"
+      android:textColorHighlight="@color/black"
+      android:textSize="@dimen/mediumTextSize"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.379" />
+
+  <TextView
+      android:id="@+id/textView"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:fontFamily="@font/poppins_light"
+      android:text="By continuing, you agree to accept our\nPrivacy Policy and Terms of Service."
+      android:textAlignment="center"
+      android:textColor="@color/black"
+      android:textColorLink="@color/maroonPrime"
+      android:textSize="@dimen/verySmallTextSize"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.48"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.551" />
+
+  <Button
+      android:id="@+id/question1NextButton"
+      android:layout_width="@dimen/largeButtonWidth"
+      android:layout_height="@dimen/buttonHeight"
+      android:background="@drawable/app_button_bg"
+      android:fontFamily="@font/poppins"
+      android:text="Next"
+      android:textColor="@color/white"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.469" />
+
+  <TextView
+      android:id="@+id/question1Label"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:backgroundTint="@color/black"
+      android:clickable="true"
+      android:focusable="true"
+      android:fontFamily="@font/poppins_bold"
+      android:text="What should we call you?"
+      android:textColor="@color/black"
+      android:textSize="@dimen/largeTextSize"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.301"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.219" />
+
+  <TextView
+      android:id="@+id/step1Label"
+      android:layout_width="wrap_content"
+      android:layout_height="@dimen/buttonHeightAltSmall"
+      android:backgroundTint="@color/black"
+      android:clickable="true"
+      android:focusable="true"
+      android:fontFamily="@font/poppins_medium"
+      android:text="STEP 1 OF 4"
+      android:textColor="@color/black"
+      android:textSize="@dimen/smallTextSize"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.107"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.18" />
+
+  <TextView
+      android:id="@+id/question1Description"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:backgroundTint="@color/black"
+      android:clickable="true"
+      android:focusable="true"
+      android:fontFamily="@font/poppins"
+      android:text="Your name will be displayed to everyone\non the application"
+      android:textColor="@color/black"
+      android:textSize="@dimen/smallTextSize"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.225"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.289" />
+
+  <TextView
+      android:id="@+id/accountCreation1Label"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:backgroundTint="@color/black"
+      android:clickable="true"
+      android:focusable="true"
+      android:fontFamily="@font/poppins"
+      android:text="Account Creation"
+      android:textColor="@color/black"
+      android:textSize="@dimen/largeTextSizeVar"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.058" />
+
+  <ImageButton
+      android:id="@+id/accountCreationBackButton1"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:background="#00FFFFFF"
+      android:tint="@color/redPrime"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.103"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.065"
+      app:srcCompat="@drawable/ic_back" />
+
+  <ImageView
+      android:id="@+id/imageView"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.953"
+      app:srcCompat="@drawable/ic_travel1" />
+</androidx.constraintlayout.widget.ConstraintLayout>
