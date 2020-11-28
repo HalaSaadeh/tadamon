@@ -26,6 +26,7 @@
     <dimen name="mediumTextSize">16sp</dimen>
     <dimen name="largeTextSizeVar">18sp</dimen>
     <dimen name="largeTextSize">20sp</dimen>
+    <dimen name="veryLargeTextSize">28sp</dimen>
 
     <dimen name="largeButtonWidth">325dp</dimen>
     <dimen name="mediumButtonWidth">200dp</dimen>

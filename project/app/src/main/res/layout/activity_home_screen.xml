@@ -6,6 +6,402 @@
     android:layout_height="match_parent"
     tools:context=".HomeScreenActivity">
 
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="70dp">
+
+            <TextView
+                android:id="@+id/logoLabel3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/leftPadding"
+                android:backgroundTint="@color/black"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/app_name"
+                android:layout_marginStart="@dimen/leftPadding"
+                android:textColor="@color/black"
+                android:textSize="@dimen/veryLargeTextSize" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="80dp"
+                android:layout_height="5dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="@dimen/leftPadding"
+                android:background="@color/redPrime" />
+
+            <TextView
+                android:id="@+id/welcomeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/leftPadding"
+                android:layout_marginBottom="15dp"
+                android:backgroundTint="@color/black"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Hi John,"
+                android:textColor="@color/black"
+                android:layout_marginStart="@dimen/leftPadding"
+                android:textSize="@dimen/largeTextSize" />
+
+            <TextView
+                android:id="@+id/stayUpToDateLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/leftPadding"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/black"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/poppins_light"
+                android:text="Stay up to date"
+                android:textColor="@color/black"
+                android:layout_marginStart="@dimen/leftPadding"
+                android:textSize="@dimen/largeTextSize" />
+
+            <HorizontalScrollView
+                android:id="@+id/upToDateScollView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/upToDateList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingStart="15dp">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card5"
+                        android:layout_width="@dimen/largeButtonWidth"
+                        android:layout_height="wrap_content"
+                        android:elevation="8dp"
+                        android:layout_margin="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <!-- Media -->
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="194dp"
+                                app:srcCompat="@drawable/bg_img"
+                                android:scaleType="centerCrop"
+                                />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:orientation="vertical"
+                                android:background="@drawable/bg_img"
+                                android:backgroundTint="#80FFFFFF"
+                                android:padding="16dp">
+
+                                <!-- Title, secondary and supporting text -->
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Event 1"
+                                    android:textSize="@dimen/mediumTextSize"
+                                    android:fontFamily="@font/poppins_light"
+                                    android:textAppearance="?attr/textAppearanceHeadline6"
+                                    />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card6"
+                        android:layout_width="@dimen/largeButtonWidth"
+                        android:layout_height="wrap_content"
+                        android:elevation="8dp"
+                        android:layout_margin="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <!-- Media -->
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="194dp"
+                                app:srcCompat="@drawable/bg_img"
+                                android:scaleType="centerCrop"
+                                />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:orientation="vertical"
+                                android:background="@drawable/bg_img"
+                                android:backgroundTint="#80FFFFFF"
+                                android:padding="16dp">
+
+                                <!-- Title, secondary and supporting text -->
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Event 1"
+                                    android:textSize="@dimen/mediumTextSize"
+                                    android:fontFamily="@font/poppins_light"
+                                    android:textAppearance="?attr/textAppearanceHeadline6"
+                                    />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/volunteersNeededLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/leftPadding"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/black"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/poppins_light"
+                android:text="Volunteers needed!"
+                android:layout_marginStart="@dimen/leftPadding"
+                android:textColor="@color/black"
+                android:textSize="@dimen/largeTextSize" />
+
+            <HorizontalScrollView
+                android:id="@+id/volunteerScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="15dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal" >
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card1"
+                        android:layout_width="@dimen/largeButtonWidth"
+                        android:layout_height="wrap_content"
+                        android:elevation="8dp"
+                        android:layout_margin="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <!-- Media -->
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="194dp"
+                                app:srcCompat="@drawable/bg_img"
+                                android:scaleType="centerCrop"
+                                />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:orientation="vertical"
+                                android:background="@drawable/bg_img"
+                                android:backgroundTint="#80FFFFFF"
+                                android:padding="16dp">
+
+                                <!-- Title, secondary and supporting text -->
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Event 1"
+                                    android:textSize="@dimen/mediumTextSize"
+                                    android:fontFamily="@font/poppins_light"
+                                    android:textAppearance="?attr/textAppearanceHeadline6"
+                                    />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card2"
+                        android:layout_width="@dimen/largeButtonWidth"
+                        android:layout_height="wrap_content"
+                        android:elevation="8dp"
+                        android:layout_margin="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <!-- Media -->
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="194dp"
+                                app:srcCompat="@drawable/bg_img"
+                                android:scaleType="centerCrop"
+                                />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:orientation="vertical"
+                                android:background="@drawable/bg_img"
+                                android:backgroundTint="#80FFFFFF"
+                                android:padding="16dp">
+
+                                <!-- Title, secondary and supporting text -->
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Event 1"
+                                    android:textSize="@dimen/mediumTextSize"
+                                    android:fontFamily="@font/poppins_light"
+                                    android:textAppearance="?attr/textAppearanceHeadline6"
+                                    />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/donateForACauseLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/leftPadding"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/black"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/poppins_light"
+                android:text="Donate for a cause"
+                android:layout_marginStart="@dimen/leftPadding"
+                android:textColor="@color/black"
+                android:textSize="@dimen/largeTextSize" />
+
+            <HorizontalScrollView
+                android:id="@+id/donationScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingStart="15dp">
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card3"
+                        android:layout_width="@dimen/largeButtonWidth"
+                        android:layout_height="wrap_content"
+                        android:elevation="8dp"
+                        android:layout_margin="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <!-- Media -->
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="194dp"
+                                app:srcCompat="@drawable/bg_img"
+                                android:scaleType="centerCrop"
+                                />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:orientation="vertical"
+                                android:background="@drawable/bg_img"
+                                android:backgroundTint="#80FFFFFF"
+                                android:padding="16dp">
+
+                                <!-- Title, secondary and supporting text -->
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Event 1"
+                                    android:textSize="@dimen/mediumTextSize"
+                                    android:fontFamily="@font/poppins_light"
+                                    android:textAppearance="?attr/textAppearanceHeadline6"
+                                    />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card4"
+                        android:layout_width="@dimen/largeButtonWidth"
+                        android:layout_height="wrap_content"
+                        android:elevation="8dp"
+                        android:layout_margin="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <!-- Media -->
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="194dp"
+                                app:srcCompat="@drawable/bg_img"
+                                android:scaleType="centerCrop"
+                                />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:orientation="vertical"
+                                android:background="@drawable/bg_img"
+                                android:backgroundTint="#80FFFFFF"
+                                android:padding="16dp">
+
+                                <!-- Title, secondary and supporting text -->
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Event 1"
+                                    android:textSize="@dimen/mediumTextSize"
+                                    android:fontFamily="@font/poppins_light"
+                                    android:textAppearance="?attr/textAppearanceHeadline6"
+                                    />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <Button
+                android:id="@+id/signout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LOGOUT"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.947"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.907" />
+        </LinearLayout>
+    </ScrollView>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
@@ -13,18 +409,10 @@
         app:itemBackground="@color/white"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
+        app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:labelVisibilityMode="unlabeled"
         app:menu="@menu/menu_navigation" />
-
-    <Button
-        android:id="@+id/signout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="120dp"
-        tools:layout_editor_absoluteY="277dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,12 +9,18 @@ import android.preference.PreferenceManager;
 import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeScreenActivity extends AppCompatActivity implements PopUpMessage.LoggingOut {
 
     private Button signout;
     private FirebaseAuth mAuth;
+
+    public ArrayList<MaterialCardView> list1, list2, list3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +45,20 @@ public class HomeScreenActivity extends AppCompatActivity implements PopUpMessag
             }
         });
 
+        list1 = new ArrayList<>();
+        list2 = new ArrayList<>();
+        list3 = new ArrayList<>();
+
         mAuth = FirebaseAuth.getInstance();
         signout = findViewById(R.id.signout);
         signout.setOnClickListener(e -> {
            openDialog();
         });
+    }
+
+    public MaterialCardView getEventCard(){
+        MaterialCardView card = new MaterialCardView(getApplicationContext());
+        return null;
     }
 
     public void openDialog() {
