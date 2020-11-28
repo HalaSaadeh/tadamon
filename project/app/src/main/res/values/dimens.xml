@@ -34,8 +34,9 @@
     <dimen name="buttonHeight">50dp</dimen>
     <dimen name="buttonHeightAlt">30dp</dimen>
     <dimen name="buttonHeightAltSmall">20dp</dimen>
-
     <dimen name="buttonRadius">8dp</dimen>
+
+    <dimen name="imageRadius">140dp</dimen>
 
     <dimen name="smallInnerPaddingGapHorizontal">20dp</dimen>
     <dimen name="mediumInnerPaddingGapHorizontal">40dp</dimen>
