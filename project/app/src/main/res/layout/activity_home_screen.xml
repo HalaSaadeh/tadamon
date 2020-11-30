@@ -36,8 +36,8 @@
                 android:id="@+id/divider"
                 android:layout_width="80dp"
                 android:layout_height="5dp"
-                android:layout_marginTop="24dp"
                 android:layout_marginStart="@dimen/leftPadding"
+                android:layout_marginTop="24dp"
                 android:background="@color/redPrime" />
 
             <TextView
@@ -81,89 +81,6 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:paddingStart="15dp">
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/card5"
-                        android:layout_width="@dimen/largeButtonWidth"
-                        android:layout_height="wrap_content"
-                        android:elevation="8dp"
-                        android:layout_margin="8dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <!-- Media -->
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="194dp"
-                                app:srcCompat="@drawable/bg_img"
-                                android:scaleType="centerCrop"
-                                />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="60dp"
-                                android:orientation="vertical"
-                                android:background="@drawable/bg_img"
-                                android:backgroundTint="#80FFFFFF"
-                                android:padding="16dp">
-
-                                <!-- Title, secondary and supporting text -->
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Event 1"
-                                    android:textSize="@dimen/mediumTextSize"
-                                    android:fontFamily="@font/poppins_light"
-                                    android:textAppearance="?attr/textAppearanceHeadline6"
-                                    />
-                            </LinearLayout>
-                        </LinearLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/card6"
-                        android:layout_width="@dimen/largeButtonWidth"
-                        android:layout_height="wrap_content"
-                        android:elevation="8dp"
-                        android:layout_margin="8dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <!-- Media -->
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="194dp"
-                                app:srcCompat="@drawable/bg_img"
-                                android:scaleType="centerCrop"
-                                />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="60dp"
-                                android:orientation="vertical"
-                                android:background="@drawable/bg_img"
-                                android:backgroundTint="#80FFFFFF"
-                                android:padding="16dp">
-
-                                <!-- Title, secondary and supporting text -->
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Event 1"
-                                    android:textSize="@dimen/mediumTextSize"
-                                    android:fontFamily="@font/poppins_light"
-                                    android:textAppearance="?attr/textAppearanceHeadline6"
-                                    />
-                            </LinearLayout>
-                        </LinearLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
                 </LinearLayout>
             </HorizontalScrollView>
 
@@ -192,88 +109,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="horizontal" >
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/card1"
-                        android:layout_width="@dimen/largeButtonWidth"
-                        android:layout_height="wrap_content"
-                        android:elevation="8dp"
-                        android:layout_margin="8dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <!-- Media -->
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="194dp"
-                                app:srcCompat="@drawable/bg_img"
-                                android:scaleType="centerCrop"
-                                />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="60dp"
-                                android:orientation="vertical"
-                                android:background="@drawable/bg_img"
-                                android:backgroundTint="#80FFFFFF"
-                                android:padding="16dp">
-
-                                <!-- Title, secondary and supporting text -->
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Event 1"
-                                    android:textSize="@dimen/mediumTextSize"
-                                    android:fontFamily="@font/poppins_light"
-                                    android:textAppearance="?attr/textAppearanceHeadline6"
-                                    />
-                            </LinearLayout>
-                        </LinearLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/card2"
-                        android:layout_width="@dimen/largeButtonWidth"
-                        android:layout_height="wrap_content"
-                        android:elevation="8dp"
-                        android:layout_margin="8dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <!-- Media -->
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="194dp"
-                                app:srcCompat="@drawable/bg_img"
-                                android:scaleType="centerCrop"
-                                />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="60dp"
-                                android:orientation="vertical"
-                                android:background="@drawable/bg_img"
-                                android:backgroundTint="#80FFFFFF"
-                                android:padding="16dp">
-
-                                <!-- Title, secondary and supporting text -->
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Event 1"
-                                    android:textSize="@dimen/mediumTextSize"
-                                    android:fontFamily="@font/poppins_light"
-                                    android:textAppearance="?attr/textAppearanceHeadline6"
-                                    />
-                            </LinearLayout>
-                        </LinearLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
                 </LinearLayout>
 
             </HorizontalScrollView>
@@ -303,88 +138,6 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:paddingStart="15dp">
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/card3"
-                        android:layout_width="@dimen/largeButtonWidth"
-                        android:layout_height="wrap_content"
-                        android:elevation="8dp"
-                        android:layout_margin="8dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <!-- Media -->
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="194dp"
-                                app:srcCompat="@drawable/bg_img"
-                                android:scaleType="centerCrop"
-                                />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="60dp"
-                                android:orientation="vertical"
-                                android:background="@drawable/bg_img"
-                                android:backgroundTint="#80FFFFFF"
-                                android:padding="16dp">
-
-                                <!-- Title, secondary and supporting text -->
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Event 1"
-                                    android:textSize="@dimen/mediumTextSize"
-                                    android:fontFamily="@font/poppins_light"
-                                    android:textAppearance="?attr/textAppearanceHeadline6"
-                                    />
-                            </LinearLayout>
-                        </LinearLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/card4"
-                        android:layout_width="@dimen/largeButtonWidth"
-                        android:layout_height="wrap_content"
-                        android:elevation="8dp"
-                        android:layout_margin="8dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <!-- Media -->
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="194dp"
-                                app:srcCompat="@drawable/bg_img"
-                                android:scaleType="centerCrop"
-                                />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="60dp"
-                                android:orientation="vertical"
-                                android:background="@drawable/bg_img"
-                                android:backgroundTint="#80FFFFFF"
-                                android:padding="16dp">
-
-                                <!-- Title, secondary and supporting text -->
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Event 1"
-                                    android:textSize="@dimen/mediumTextSize"
-                                    android:fontFamily="@font/poppins_light"
-                                    android:textAppearance="?attr/textAppearanceHeadline6"
-                                    />
-                            </LinearLayout>
-                        </LinearLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
                 </LinearLayout>
             </HorizontalScrollView>
 

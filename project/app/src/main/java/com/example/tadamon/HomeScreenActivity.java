@@ -1,17 +1,29 @@
 package com.example.tadamon;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.auth.FirebaseAuth;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +32,8 @@ public class HomeScreenActivity extends AppCompatActivity implements PopUpMessag
 
     private Button signout;
     private FirebaseAuth mAuth;
+
+    private LinearLayout listOfCards;
 
     public ArrayList<MaterialCardView> list1, list2, list3;
 
@@ -31,8 +45,10 @@ public class HomeScreenActivity extends AppCompatActivity implements PopUpMessag
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.discover);
 
+        listOfCards = findViewById(R.id.upToDateList);
+
         bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
-            switch (menuItem.getItemId()){
+            switch (menuItem.getItemId()) {
                 case R.id.discover:
                     return true;
                 case R.id.search:
@@ -47,20 +63,76 @@ public class HomeScreenActivity extends AppCompatActivity implements PopUpMessag
             return false;
         });
 
-        list1 = new ArrayList<>();
-        list2 = new ArrayList<>();
-        list3 = new ArrayList<>();
-
         mAuth = FirebaseAuth.getInstance();
         signout = findViewById(R.id.signout);
         signout.setOnClickListener(e -> {
-           openDialog();
+            openDialog();
         });
+
+        MaterialCardView card1 = createEventCard(1, "Event 1", R.drawable.bg_img);
+        listOfCards.addView(card1);
+        MaterialCardView card2 = createEventCard(2, "Event 2", R.drawable.bg_img);
+        listOfCards.addView(card2);
+        MaterialCardView card3 = createEventCard(3, "Event 2", R.drawable.bg_img);
+        listOfCards.addView(card3);
     }
 
-    public MaterialCardView getEventCard(){
-        MaterialCardView card = new MaterialCardView(getApplicationContext());
-        return null;
+    public MaterialCardView createEventCard(int id, String title, int imgSrc) {
+        int margin = dpToPx(8);
+        int padding = dpToPx(16);
+
+        MaterialCardView card = new MaterialCardView(this);
+        card.setId(id);
+
+        card.setLayoutParams(new LinearLayout.LayoutParams(
+                (int) getResources().getDimension(R.dimen.largeButtonWidth),
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        ));
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) card.getLayoutParams();
+        marginLayoutParams.setMargins(margin, margin, margin, margin);
+        card.setElevation(8);
+
+        LinearLayout linearLayout = new LinearLayout(this);
+        linearLayout.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        ));
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
+
+        ImageView imageView = new ImageView(this);
+        imageView.setLayoutParams(new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                dpToPx(200)
+        ));
+        imageView.setImageDrawable(getResources().getDrawable(imgSrc, getApplicationContext().getTheme()));
+        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+
+        LinearLayout innerLinearLayout = new LinearLayout(this);
+        innerLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                dpToPx(60)
+        ));
+        innerLinearLayout.setOrientation(LinearLayout.VERTICAL);
+        innerLinearLayout.setPadding(padding, padding, padding, padding);
+
+
+        TextView text = new TextView(this);
+        text.setLayoutParams(new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+        ));
+        text.setText(title);
+        text.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.largeTextSize));
+        text.setTextColor(getResources().getColor(R.color.black, getApplicationContext().getTheme()));
+        Typeface typeface = ResourcesCompat.getFont(this, R.font.poppins_light);
+        text.setTypeface(typeface);
+
+        innerLinearLayout.addView(text);
+        linearLayout.addView(imageView);
+        linearLayout.addView(innerLinearLayout);
+        card.addView(linearLayout);
+
+        return card;
     }
 
     public void openDialog() {
@@ -79,5 +151,9 @@ public class HomeScreenActivity extends AppCompatActivity implements PopUpMessag
         editor.apply();
         Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
         startActivity(intent);
+    }
+
+    public static int dpToPx(int dp) {
+        return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
     }
 }
