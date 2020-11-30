@@ -17,19 +17,20 @@ public class ProfileScreenActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.profile);
 
-        bottomNavigationView.setOnNavigationItemReselectedListener(menuItem -> {
+        bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
             switch (menuItem.getItemId()){
                 case R.id.profile:
-                    return;
+                    return true;
                 case R.id.search:
                     startActivity(new Intent(getApplicationContext(), SearchScreenActivity.class));
                     overridePendingTransition(0, 0);
-                    return;
+                    return true;
                 case R.id.discover:
                     startActivity(new Intent(getApplicationContext(), HomeScreenActivity.class));
                     overridePendingTransition(0, 0);
-                    return;
+                    return true;
             }
+            return false;
         });
 
     }

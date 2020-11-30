@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -30,19 +31,21 @@ public class HomeScreenActivity extends AppCompatActivity implements PopUpMessag
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.discover);
 
-        bottomNavigationView.setOnNavigationItemReselectedListener(menuItem -> {
+        bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
+            Log.d("TAG", menuItem.toString());
             switch (menuItem.getItemId()){
                 case R.id.discover:
-                    return;
+                    return true;
                 case R.id.search:
                     startActivity(new Intent(getApplicationContext(), SearchScreenActivity.class));
                     overridePendingTransition(0, 0);
-                    return;
+                    return true;
                 case R.id.profile:
                     startActivity(new Intent(getApplicationContext(), ProfileScreenActivity.class));
                     overridePendingTransition(0, 0);
-                    return;
+                    return true;
             }
+            return false;
         });
 
         list1 = new ArrayList<>();
