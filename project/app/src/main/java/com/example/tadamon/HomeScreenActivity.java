@@ -15,8 +15,10 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -33,6 +35,7 @@ public class HomeScreenActivity extends AppCompatActivity implements PopUpMessag
     private Button signout;
     private FirebaseAuth mAuth;
 
+    private HorizontalScrollView scrollView;
     private LinearLayout listOfCards;
 
     public ArrayList<MaterialCardView> list1, list2, list3;
@@ -73,8 +76,11 @@ public class HomeScreenActivity extends AppCompatActivity implements PopUpMessag
         listOfCards.addView(card1);
         MaterialCardView card2 = createEventCard(2, "Event 2", R.drawable.bg_img);
         listOfCards.addView(card2);
-        MaterialCardView card3 = createEventCard(3, "Event 2", R.drawable.bg_img);
+        MaterialCardView card3 = createEventCard(3, "Event 3", R.drawable.bg_img);
         listOfCards.addView(card3);
+
+        scrollView = findViewById(R.id.upToDateScollView);
+
     }
 
     public MaterialCardView createEventCard(int id, String title, int imgSrc) {
@@ -131,6 +137,11 @@ public class HomeScreenActivity extends AppCompatActivity implements PopUpMessag
         linearLayout.addView(imageView);
         linearLayout.addView(innerLinearLayout);
         card.addView(linearLayout);
+
+        // TODO -> NAVIGATE TO APPROPRIATE SCREEN WITH THE RIGHT INFO PULLED FROM THE DB
+        card.setOnClickListener(e -> {
+            Log.d("TAG", "" + id + ", " + title);
+        });
 
         return card;
     }
