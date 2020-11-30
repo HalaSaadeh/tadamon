@@ -32,17 +32,16 @@ public class HomeScreenActivity extends AppCompatActivity implements PopUpMessag
         bottomNavigationView.setSelectedItemId(R.id.discover);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
-            Log.d("TAG", menuItem.toString());
             switch (menuItem.getItemId()){
                 case R.id.discover:
                     return true;
                 case R.id.search:
                     startActivity(new Intent(getApplicationContext(), SearchScreenActivity.class));
-                    overridePendingTransition(0, 0);
+//                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     return true;
                 case R.id.profile:
                     startActivity(new Intent(getApplicationContext(), ProfileScreenActivity.class));
-                    overridePendingTransition(0, 0);
+//                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     return true;
             }
             return false;

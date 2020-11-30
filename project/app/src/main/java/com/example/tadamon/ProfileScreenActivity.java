@@ -23,15 +23,20 @@ public class ProfileScreenActivity extends AppCompatActivity {
                     return true;
                 case R.id.search:
                     startActivity(new Intent(getApplicationContext(), SearchScreenActivity.class));
-                    overridePendingTransition(0, 0);
+//                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     return true;
                 case R.id.discover:
                     startActivity(new Intent(getApplicationContext(), HomeScreenActivity.class));
-                    overridePendingTransition(0, 0);
+//                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     return true;
             }
             return false;
         });
 
+    }
+
+    public void finish() {
+        super.finish();
+//        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }
