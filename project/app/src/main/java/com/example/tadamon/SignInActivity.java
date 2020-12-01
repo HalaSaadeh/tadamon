@@ -139,7 +139,8 @@ public class SignInActivity extends AppCompatActivity {
 
                             if (!isNew){
                                 // Go to homepage if not their first time
-                                Intent startIntent = new Intent(getApplicationContext(), HomeScreenActivity.class);
+                                ///*** SHOULD BE HOME SCREEN
+                                Intent startIntent = new Intent(getApplicationContext(), AccountCreationStep1Activity.class);
                                 startActivity(startIntent);}
                             else{
                                 // Start creating the profile
@@ -161,6 +162,7 @@ public class SignInActivity extends AppCompatActivity {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("ID", uID);
+        editor.putBoolean("thirdParty", true); // signed in with third party provider
         editor.apply();
     }
 

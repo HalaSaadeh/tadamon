@@ -81,6 +81,7 @@ public class LoginWithEmailAndPassActivity extends AppCompatActivity {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("ID",uID);
+        editor.putBoolean("thirdParty", false); // did not sign in with third party provider
         editor.apply();
     }
     private boolean validateEmail(){

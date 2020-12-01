@@ -3,10 +3,15 @@ package com.example.tadamon;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.w3c.dom.Text;
 
@@ -24,12 +29,21 @@ public class AccountCreationStep1Activity extends AppCompatActivity {
         nextBtn = (Button) findViewById(R.id.question1NextButton);
         namefield = (TextView) findViewById(R.id.nameField);
 
+        // Setting name from Google or Facebook in case signed in with them
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean thirdParty = preferences.getBoolean("thirdParty", false);
+        if (thirdParty){
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            namefield.setText(user.getDisplayName());
+        }
         nextBtn.setOnClickListener(e->{
             if(validateName())
                 startActivity(new Intent(this,AccountCreationStep2Activity.class));
             else
                 namefield.setError("Please enter a name.");
         });
+
+
     }
 
     private boolean validateName() {
