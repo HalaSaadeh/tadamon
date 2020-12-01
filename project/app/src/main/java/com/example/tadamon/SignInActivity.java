@@ -133,13 +133,22 @@ public class SignInActivity extends AppCompatActivity {
                                     Toast.LENGTH_LONG).show();
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateSharedPreferences(user.getUid());
-                            Log.d("in", "Signin firebase success");
-                            // Go to homepage
-                            Intent startIntent = new Intent(getApplicationContext(), HomeScreenActivity.class);
-                            startActivity(startIntent);
+
+                            // Check if this is their first authorization with Firebase and act accordingly
+                            boolean isNew = task.getResult().getAdditionalUserInfo().isNewUser();
+
+                            if (!isNew){
+                                // Go to homepage if not their first time
+                                Intent startIntent = new Intent(getApplicationContext(), HomeScreenActivity.class);
+                                startActivity(startIntent);}
+                            else{
+                                // Start creating the profile
+                                Intent startIntent = new Intent(getApplicationContext(), AccountCreationStep1Activity.class);
+                                startActivity(startIntent);
+                            }
+
                         } else {
                             // If sign in fails, display a message to the user.
-                            Log.d("in", "Signin firebase fail", task.getException());
                             Toast.makeText(SignInActivity.this, "Authentication failed. Please try again.",
                                     Toast.LENGTH_LONG).show();
                         }
@@ -189,15 +198,24 @@ public class SignInActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Log.d("FB Login", "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateSharedPreferences(user.getUid());
-                            Log.d("in", "Signin firebase success");
-                            // Go to homepage
+
                             Toast.makeText(SignInActivity.this, "Logged in with Facebook.",
                                     Toast.LENGTH_SHORT).show();
-                            Intent startIntent = new Intent(getApplicationContext(), HomeScreenActivity.class);
-                            startActivity(startIntent);
+
+                            // Check if this is their first authorization with Firebase and act accordingly
+                            boolean isNew = task.getResult().getAdditionalUserInfo().isNewUser();
+
+                            if (!isNew){
+                                // Go to homepage if not their first time
+                                Intent startIntent = new Intent(getApplicationContext(), HomeScreenActivity.class);
+                                startActivity(startIntent);}
+                            else{
+                                // Start creating the profile
+                                Intent startIntent = new Intent(getApplicationContext(), AccountCreationStep1Activity.class);
+                                startActivity(startIntent);
+                            }
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(SignInActivity.this, "Authentication failed.",

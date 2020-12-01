@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,9 +50,23 @@ public class LoginWithEmailAndPassActivity extends AppCompatActivity {
                                     Toast.LENGTH_LONG).show();
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateSharedPreferences(user.getUid());
-                            // Go to homepage
-                            Intent startIntent = new Intent(getApplicationContext(), HomeScreenActivity.class);
-                            startActivity(startIntent);
+
+                            // Check if this is their first authorization with Firebase and act accordingly
+                            boolean isNew = task.getResult().getAdditionalUserInfo().isNewUser();
+
+                            if (!isNew){
+                                // Go to homepage if not their first time
+                                //*******************
+                              //  Intent startIntent = new Intent(getApplicationContext(), HomeScreenActivity.class);
+                                Intent startIntent = new Intent(getApplicationContext(), AccountCreationStep1Activity.class);
+                                startActivity(startIntent);}
+                            else{
+                                // Start creating the profile
+                                Intent startIntent = new Intent(getApplicationContext(), AccountCreationStep1Activity.class);
+                                startActivity(startIntent);
+                            }
+
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(LoginWithEmailAndPassActivity.this, "Invalid email or password.",

@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         logo.setOnClickListener(e -> {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-            String userid = preferences.getString("ID", null);
+            String userid = preferences.getString("ID", null); // get what is currently stored in SharedPreferences
             if (userid != null){ // If there is a signed-in user
                 Intent startIntent = new Intent(getApplicationContext(), HomeScreenActivity.class); // directly open HomeScreen
                 startActivity(startIntent);
