@@ -17,6 +17,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -96,6 +97,7 @@ public class SignInActivity extends AppCompatActivity {
         // Open Google Signin activity from API
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
+
     }
 
     @Override
@@ -134,8 +136,12 @@ public class SignInActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateSharedPreferences(user.getUid());
                             Log.d("in", "Signin firebase success");
+
+
                             // Go to homepage
-                            Intent startIntent = new Intent(getApplicationContext(), HomeScreenActivity.class);
+                            //UPDATED: to account creation step 1
+
+                            Intent startIntent = new Intent(getApplicationContext(), AccountCreationStep1Activity.class);
                             startActivity(startIntent);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -196,7 +202,9 @@ public class SignInActivity extends AppCompatActivity {
                             // Go to homepage
                             Toast.makeText(SignInActivity.this, "Logged in with Facebook.",
                                     Toast.LENGTH_SHORT).show();
-                            Intent startIntent = new Intent(getApplicationContext(), HomeScreenActivity.class);
+
+                            //Intent sent to HomeScreenActivity, changed to AccountCreationStep1
+                            Intent startIntent = new Intent(getApplicationContext(), AccountCreationStep1Activity.class);
                             startActivity(startIntent);
                         } else {
                             // If sign in fails, display a message to the user.

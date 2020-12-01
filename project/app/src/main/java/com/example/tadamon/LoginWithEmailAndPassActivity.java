@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.Image;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +22,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginWithEmailAndPassActivity extends AppCompatActivity {
 
+    private ImageButton backButton;
     private FirebaseAuth mAuth;
     private TextView emailTextView, passwordTextView;
     private Button signIn;
@@ -32,6 +35,11 @@ public class LoginWithEmailAndPassActivity extends AppCompatActivity {
         passwordTextView = (TextView) findViewById(R.id.passwordSignInField);
         signIn = findViewById(R.id.signInButton);
         signIn.setOnClickListener(e->{signin();});
+
+        backButton = (ImageButton) findViewById(R.id.loginWEAPBackButton);
+        backButton.setOnClickListener(e->{
+            startActivity(new Intent(getApplicationContext(),SignupWithEmailAndPassActivity.class));
+        });
 
     }
     private void signin(){
@@ -50,7 +58,8 @@ public class LoginWithEmailAndPassActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateSharedPreferences(user.getUid());
                             // Go to homepage
-                            Intent startIntent = new Intent(getApplicationContext(), HomeScreenActivity.class);
+                            //UPDATED: go to account creation step 1
+                            Intent startIntent = new Intent(getApplicationContext(), AccountCreationStep1Activity.class);
                             startActivity(startIntent);
                         } else {
                             // If sign in fails, display a message to the user.

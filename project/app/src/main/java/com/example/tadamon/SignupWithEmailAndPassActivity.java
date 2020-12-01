@@ -21,6 +21,7 @@ import org.w3c.dom.Text;
 
 public class SignupWithEmailAndPassActivity extends AppCompatActivity {
 
+
     private Button signup;
     private ImageButton backButton;
     private TextView emailTextView, passwordTextView, confirmPasswordTextView;
@@ -36,6 +37,7 @@ public class SignupWithEmailAndPassActivity extends AppCompatActivity {
         emailTextView = (TextView) findViewById(R.id.emailField);
         passwordTextView = (TextView) findViewById(R.id.passwordField);
         confirmPasswordTextView = (TextView) findViewById(R.id.confirmPasswordField);
+
         signup.setOnClickListener(e -> {
             signUpWithEmailAndPass();
         });
