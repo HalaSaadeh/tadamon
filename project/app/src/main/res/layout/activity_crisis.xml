@@ -111,6 +111,8 @@
                         android:layout_height="wrap_content"
                         app:flexDirection="row"
                         app:justifyContent="space_between"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
                         app:alignItems="center"
                         android:layout_marginBottom="8dp"
                         >
