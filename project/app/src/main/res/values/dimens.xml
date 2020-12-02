@@ -30,6 +30,7 @@
 
     <dimen name="largeButtonWidth">325dp</dimen>
     <dimen name="mediumButtonWidth">200dp</dimen>
+    <dimen name="mediumButtonWidthAlt">85</dimen>
     <dimen name="smallButtonWidth">75dp</dimen>
 
     <dimen name="buttonHeight">50dp</dimen>
@@ -38,6 +39,7 @@
     <dimen name="buttonRadius">8dp</dimen>
 
     <dimen name="imageRadius">140dp</dimen>
+    <dimen name="iconRadius">35dp</dimen>
 
     <dimen name="smallInnerPaddingGapHorizontal">20dp</dimen>
     <dimen name="mediumInnerPaddingGapHorizontal">40dp</dimen>

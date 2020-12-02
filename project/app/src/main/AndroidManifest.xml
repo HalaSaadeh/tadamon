@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tadamon">
-        <activity android:name=".VolunteerScreenActivity"></activity>
+        <activity android:name=".CrisisActivity"></activity>
+        <activity android:name=".VolunteerScreenActivity" />
         <activity android:name=".DonationScreenActivity" />
-        <activity android:name=".EventActivity" />
         <activity android:name=".AccountCreationStep4Activity" />
         <activity android:name=".AccountCreationStep3Activity" />
         <activity android:name=".AccountCreationStep2Activity" />

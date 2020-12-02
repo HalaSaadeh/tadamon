@@ -140,7 +140,7 @@ public class HomeScreenActivity extends AppCompatActivity implements PopUpMessag
 
         // TODO -> NAVIGATE TO APPROPRIATE SCREEN WITH THE RIGHT INFO PULLED FROM THE DB
         card.setOnClickListener(e -> {
-            Log.d("TAG", "" + id + ", " + title);
+            startActivity(new Intent(this, CrisisActivity.class));
         });
 
         return card;

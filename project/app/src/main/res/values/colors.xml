@@ -11,7 +11,9 @@
     <color name="facebookBlue">#1976D2</color>
     <color name="beigePrime">#F6F2E9</color>
     <color name="transparent">#00FFFFFF</color>
+    <color name="greyPrime">#E3E3E3</color>
 
+    <!--    NOT USED-->
     <color name="purple_200">#FFFFFFFF</color>
     <color name="purple_700">#FFFFFFFF</color>
     <color name="teal_200">#FFFFFFFF</color>
