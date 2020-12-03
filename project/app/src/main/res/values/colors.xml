@@ -12,6 +12,7 @@
     <color name="beigePrime">#F6F2E9</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="greyPrime">#E3E3E3</color>
+    <color name="lightGreyPrime">#F5F6FA</color>
 
     <!--    NOT USED-->
     <color name="purple_200">#FFFFFFFF</color>
