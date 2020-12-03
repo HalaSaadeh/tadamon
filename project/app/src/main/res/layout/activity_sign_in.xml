@@ -120,7 +120,7 @@
         android:text="Donate, become a volunteer and\nhelp others."
         android:textColor="@color/black"
         android:textColorLink="@color/maroonPrime"
-        android:textSize="@dimen/mediumtextSizeVar"
+        android:textSize="@dimen/mediumTextSizeVar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.211"

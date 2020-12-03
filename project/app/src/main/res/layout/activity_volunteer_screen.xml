@@ -6,4 +6,260 @@
     android:layout_height="match_parent"
     tools:context=".VolunteerScreenActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/bgImageDonation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp"
+                    android:foreground="@drawable/linear_gradient_dark"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/bg_img" />
+
+                <ImageView
+                    android:id="@+id/backButtonDonation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left|top"
+                    android:layout_margin="20dp"
+                    android:src="@drawable/ic_back"
+                    android:tint="@color/white" />
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="-20dp"
+                android:background="@drawable/rounded_box"
+                android:paddingStart="5dp"
+                android:paddingEnd="10dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="@dimen/largeButtonWidth"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="30dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="15dp"
+                            android:orientation="vertical">
+
+                            <!-- Title, secondary and supporting text -->
+
+                            <com.google.android.flexbox.FlexboxLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:alignItems="center"
+                                app:flexDirection="row"
+                                app:justifyContent="space_between">
+
+                                <TextView
+                                    android:id="@+id/crisisTitleVolunteeringActivity"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:text="Event 1"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/largeTextSize" />
+
+                                <TextView
+                                    android:id="@+id/daysLeftVolunteeringActivity"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:text="15 days left"
+                                    android:textColor="@color/redPrime"
+                                    android:textSize="@dimen/smallTextSize" />
+                            </com.google.android.flexbox.FlexboxLayout>
+
+                            <TextView
+                                android:id="@+id/crisisDescriptionVolunteeringActivity"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:fontFamily="@font/poppins_light"
+                                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/verySmallTextSize" />
+
+                            <View
+                                android:id="@+id/divider4"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_margin="15dp"
+                                android:layout_weight="1"
+                                android:background="@color/greyPrime" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_medium"
+                                android:text="How to volunteer?"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/mediumTextSize" />
+
+                            <TextView
+                                android:id="@+id/howToHelpVolunteeringActivity"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:fontFamily="@font/poppins_light"
+                                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/verySmallTextSize" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Who to contact?"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/mediumTextSize" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="1dp">
+
+                            <com.google.android.flexbox.FlexboxLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingHorizontal="10dp"
+                                android:paddingVertical="20dp"
+                                app:alignItems="center"
+                                app:flexDirection="row"
+                                app:justifyContent="flex_start">
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/repPicture"
+                                    android:layout_width="75dp"
+                                    android:layout_height="75dp"
+                                    android:src="@drawable/user"
+                                    app:civ_border_color="@color/greyPrime"
+                                    app:civ_border_width="1dp"
+                                    app:layout_flexBasisPercent="50%" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    app:layout_flexBasisPercent="50%">
+
+                                    <TextView
+                                        android:id="@+id/repName"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/poppins_medium"
+                                        android:text="John Smith"
+                                        android:textColor="@color/black"
+                                        android:textSize="@dimen/mediumTextSize" />
+
+                                    <TextView
+                                        android:id="@+id/repDescription"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/poppins_light"
+                                        android:text="Computer Engineer"
+                                        android:textColor="@color/black"
+                                        android:textSize="@dimen/smallTextSize" />
+
+                                </LinearLayout>
+
+                            </com.google.android.flexbox.FlexboxLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginHorizontal="15dp"
+                            android:layout_marginTop="25dp"
+                            android:layout_marginBottom="15dp"
+                            android:layout_weight="1"
+                            android:background="@color/greyPrime" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:text="Where to go?"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/mediumTextSize" />
+
+                            <!--CHANGE THIS LATER TO A REAL MAP-->
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="150dp"
+                                android:scaleType="centerCrop"
+                                android:src="@mipmap/map_placeholder_foreground" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_margin="15dp"
+                            android:layout_weight="1"
+                            android:background="@color/greyPrime" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="So, what are you waiting for? Volunteer now!"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/smallTextSize" />
+
+                        <Button
+                            android:id="@+id/volunteerButtonVolunteeringActivity"
+                            android:layout_width="@dimen/mediumButtonWidth"
+                            android:layout_height="@dimen/buttonHeightAlt"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/app_button_bg"
+                            android:fontFamily="@font/poppins"
+                            android:text="Volunteer"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/mediumTextSizeVar" />
+
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

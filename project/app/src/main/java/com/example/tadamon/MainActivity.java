@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         logo.setOnClickListener(e -> {
             if (userid != null) { // If there is a signed-in user
-                Intent startIntent = new Intent(getApplicationContext(), HomeScreenActivity.class); // directly open HomeScreen
+                Intent startIntent = new Intent(getApplicationContext(), VolunteerScreenActivity.class); // directly open HomeScreen
                 startActivity(startIntent);
             } else { // If no one is signed-in
                 Intent startIntent = new Intent(getApplicationContext(), SignInActivity.class); // open the SignIn page
