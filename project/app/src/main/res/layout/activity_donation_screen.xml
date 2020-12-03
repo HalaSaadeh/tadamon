@@ -22,7 +22,7 @@
             <ImageView
                 android:id="@+id/bgImageDonation"
                 android:layout_width="wrap_content"
-                android:layout_height="225dp"
+                android:layout_height="200dp"
                 android:foreground="@drawable/linear_gradient_dark"
                 android:scaleType="centerCrop"
                 android:src="@drawable/bg_img" />
@@ -37,7 +37,7 @@
                 android:tint="@color/white" />
 
             <ImageView
-                android:id="@+id/dismissBarDonation"
+                android:id="@+id/enterButtonDonation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
@@ -52,7 +52,7 @@
             android:orientation="vertical"
             android:background="@drawable/rounded_box"
             android:padding="10dp"
-            android:layout_marginTop="-10dp"
+            android:layout_marginTop="-20dp"
             >
 
             <TextView
@@ -86,7 +86,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
-                    android:text="10"
+                    android:id="@+id/amountLabel"
+                    android:text="0"
                     android:textSize="40dp"
                     android:fontFamily="@font/poppins_medium"
                     android:textColor="@color/black"/>
@@ -324,7 +325,7 @@
                     <Button
                         android:layout_width="100dp"
                         android:layout_height="60dp"
-                        android:id="@+id/numpad."
+                        android:id="@+id/numpaddot"
                         android:background="@drawable/number_button"
                         android:text="."
                         android:textSize="@dimen/largeTextSize"

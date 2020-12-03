@@ -30,7 +30,7 @@
 
     <dimen name="largeButtonWidth">325dp</dimen>
     <dimen name="mediumButtonWidth">200dp</dimen>
-    <dimen name="mediumButtonWidthAlt">85</dimen>
+    <dimen name="mediumButtonWidthAlt">85dp</dimen>
     <dimen name="smallButtonWidth">75dp</dimen>
 
     <dimen name="buttonHeight">50dp</dimen>

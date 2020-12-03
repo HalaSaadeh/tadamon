@@ -7,473 +7,480 @@
     android:backgroundTint="@color/white"
     tools:context=".CrisisActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/bgImageCrisis"
-                android:layout_width="wrap_content"
-                android:layout_height="225dp"
-                android:foreground="@drawable/linear_gradient"
-                android:scaleType="centerCrop"
-                android:src="@drawable/bg_img" />
-
-            <ImageView
-                android:id="@+id/backButtonCrisis"
+            <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:src="@drawable/ic_back"
-                android:tint="@color/white" />
-        </FrameLayout>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card"
-            android:layout_width="@dimen/largeButtonWidth"
-            android:layout_height="wrap_content"
-            android:layout_margin="30dp">
+                <ImageView
+                    android:id="@+id/bgImageCrisis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="250dp"
+                    android:foreground="@drawable/linear_gradient"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/bg_img" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
+                <ImageView
+                    android:id="@+id/backButtonCrisis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:src="@drawable/ic_back"
+                    android:tint="@color/white" />
+            </FrameLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card"
+                android:layout_width="@dimen/largeButtonWidth"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:layout_margin="30dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                    <!-- Title, secondary and supporting text -->
-
-                    <com.google.android.flexbox.FlexboxLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:flexDirection="row"
-                        app:justifyContent="space_between"
-                        app:alignItems="center">
+                        android:orientation="vertical">
+
+                        <!-- Title, secondary and supporting text -->
+
+                        <com.google.android.flexbox.FlexboxLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:flexDirection="row"
+                            app:justifyContent="space_between"
+                            app:alignItems="center">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_medium"
+                                android:id="@+id/crisisTitleCrisisActivity"
+                                android:text="Event 1"
+                                android:textAppearance="?attr/textAppearanceHeadline6"
+                                android:textSize="@dimen/largeTextSize" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_medium"
+                                android:id="@+id/daysLeftCrisisActivity"
+                                android:text="15 days left"
+                                android:textAppearance="?attr/textAppearanceHeadline6"
+                                android:textColor="@color/redPrime"
+                                android:textSize="@dimen/smallTextSize" />
+
+
+
+                        </com.google.android.flexbox.FlexboxLayout>
+
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:id="@+id/crisisTitleCrisisActivity"
-                            android:text="Event 1"
-                            android:textAppearance="?attr/textAppearanceHeadline6"
-                            android:textSize="@dimen/largeTextSize" />
+                            android:layout_marginTop="8dp"
+                            android:id="@+id/crisisDescriptionCrisisActivity"
+                            android:fontFamily="@font/poppins_light"
+                            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+                            android:textAppearance="?attr/textAppearanceBody2"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/verySmallTextSize" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <View
+                            android:id="@+id/divider4"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:layout_margin="15dp"
+                            android:background="@color/greyPrime" />
+
+                        <com.google.android.flexbox.FlexboxLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:id="@+id/daysLeftCrisisActivity"
-                            android:text="15 days left"
-                            android:textAppearance="?attr/textAppearanceHeadline6"
-                            android:textColor="@color/redPrime"
-                            android:textSize="@dimen/smallTextSize" />
+                            app:flexDirection="row"
+                            app:justifyContent="space_between"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            app:alignItems="center"
+                            android:layout_marginBottom="8dp"
+                            >
 
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
 
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/donorNumberLabelCrisisActivity"
+                                    android:text="12345"
+                                    android:layout_gravity="center_vertical|center_horizontal"
+                                    android:textSize="@dimen/mediumtextSizeVar"
+                                    android:textColor="@color/black"
+                                    android:fontFamily="@font/poppins"
+                                    />
 
-                    </com.google.android.flexbox.FlexboxLayout>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/donorLabelCrisisActivity"
+                                    android:text="donors"
+                                    android:layout_gravity="center_vertical|center_horizontal"
+                                    android:textSize="@dimen/smallTextSize"
+                                    android:textColor="@color/black"
+                                    android:alpha="0.5"
+                                    android:fontFamily="@font/poppins"
+                                    />
 
+                            </LinearLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/donationsCurrentLabelCrisisActivity"
+                                    android:text="7.4M LBP"
+                                    android:layout_gravity="center_vertical|center_horizontal"
+                                    android:textSize="@dimen/mediumtextSizeVar"
+                                    android:textColor="@color/black"
+                                    android:fontFamily="@font/poppins"
+                                    />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/donationsLabelCrisisActivity"
+                                    android:text="raised"
+                                    android:layout_gravity="center_vertical|center_horizontal"
+                                    android:textSize="@dimen/smallTextSize"
+                                    android:textColor="@color/black"
+                                    android:alpha="0.5"
+                                    android:fontFamily="@font/poppins"
+                                    />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/donationsTotalLabelCrisisActivity"
+                                    android:text="10M LBP"
+                                    android:layout_gravity="center_vertical|center_horizontal"
+                                    android:textSize="@dimen/mediumtextSizeVar"
+                                    android:textColor="@color/black"
+                                    android:fontFamily="@font/poppins"
+                                    />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/donationsTotalCrisisActivity"
+                                    android:text="needed"
+                                    android:layout_gravity="center_vertical|center_horizontal"
+                                    android:textSize="@dimen/smallTextSize"
+                                    android:textColor="@color/black"
+                                    android:alpha="0.5"
+                                    android:fontFamily="@font/poppins"
+                                    />
+                            </LinearLayout>
+
+                        </com.google.android.flexbox.FlexboxLayout>
+
+                        <ProgressBar
+                            android:id="@+id/donationsProgressBar"
+                            style="@android:style/Widget.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_margin="15dp"
+                            android:indeterminateTintMode="src_atop"
+                            android:progress="74"
+                            android:progressBackgroundTint="@color/greyPrime"
+                            android:progressTint="@color/orangePrime" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:id="@+id/crisisDescriptionCrisisActivity"
-                        android:fontFamily="@font/poppins_light"
-                        android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/verySmallTextSize" />
+                        android:orientation="vertical"
+                        android:layout_marginBottom="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/donorsLabel"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Recent Donors"
+                            android:textAppearance="?attr/textAppearanceBody2"
+                            android:textColor="@color/redPrime"
+                            android:textSize="@dimen/mediumtextSizeVar" />
+
+                        <com.google.android.flexbox.FlexboxLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:justifyContent="space_between"
+                            app:alignItems="center"
+                            app:flexDirection="row"
+                            android:padding="10dp">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/donor1"
+                                android:layout_width="@dimen/iconRadius"
+                                android:layout_height="@dimen/iconRadius"
+                                android:src="@drawable/user"
+                                app:civ_border_width="1dp"
+                                app:civ_border_color="@color/greyPrime">
+                            </de.hdodenhof.circleimageview.CircleImageView>
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/donor2"
+                                android:layout_width="@dimen/iconRadius"
+                                android:layout_height="@dimen/iconRadius"
+                                android:src="@drawable/user"
+                                app:civ_border_width="1dp"
+                                app:civ_border_color="@color/greyPrime">
+                            </de.hdodenhof.circleimageview.CircleImageView>
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/donor3"
+                                android:layout_width="@dimen/iconRadius"
+                                android:layout_height="@dimen/iconRadius"
+                                android:src="@drawable/user"
+                                app:civ_border_width="1dp"
+                                app:civ_border_color="@color/greyPrime">
+                            </de.hdodenhof.circleimageview.CircleImageView>
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/donor4"
+                                android:layout_width="@dimen/iconRadius"
+                                android:layout_height="@dimen/iconRadius"
+                                android:src="@drawable/user"
+                                app:civ_border_width="1dp"
+                                app:civ_border_color="@color/greyPrime">
+                            </de.hdodenhof.circleimageview.CircleImageView>
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/donor5"
+                                android:layout_width="@dimen/iconRadius"
+                                android:layout_height="@dimen/iconRadius"
+                                android:src="@drawable/user"
+                                app:civ_border_width="1dp"
+                                app:civ_border_color="@color/greyPrime">
+                            </de.hdodenhof.circleimageview.CircleImageView>
+
+                            <FrameLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:layout_width="@dimen/iconRadius"
+                                    android:layout_height="@dimen/iconRadius"
+                                    android:src="@color/brownPrime"
+                                    app:civ_border_width="1dp"
+                                    app:civ_border_color="@color/greyPrime">
+                                </de.hdodenhof.circleimageview.CircleImageView>
+
+                                <TextView
+                                    android:id="@+id/totalDonorsNumber"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="30k+"
+                                    android:fontFamily="@font/poppins_light"
+                                    android:layout_gravity="center_horizontal|center_vertical"
+                                    android:textSize="@dimen/verySmallTextSize"
+                                    android:textColor="@color/white"
+                                    />
+
+                            </FrameLayout>
+
+                        </com.google.android.flexbox.FlexboxLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/volunteersLabel"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Amazing volunteers"
+                            android:textAppearance="?attr/textAppearanceBody2"
+                            android:textColor="@color/redPrime"
+                            android:textSize="@dimen/mediumtextSizeVar" />
+
+                        <com.google.android.flexbox.FlexboxLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:justifyContent="space_between"
+                            app:alignItems="center"
+                            app:flexDirection="row"
+                            android:padding="10dp">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/volunteer1"
+                                android:layout_width="@dimen/iconRadius"
+                                android:layout_height="@dimen/iconRadius"
+                                android:src="@drawable/user"
+                                app:civ_border_width="1dp"
+                                app:civ_border_color="@color/greyPrime">
+                            </de.hdodenhof.circleimageview.CircleImageView>
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/volunteer2"
+                                android:layout_width="@dimen/iconRadius"
+                                android:layout_height="@dimen/iconRadius"
+                                android:src="@drawable/user"
+                                app:civ_border_width="1dp"
+                                app:civ_border_color="@color/greyPrime">
+                            </de.hdodenhof.circleimageview.CircleImageView>
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/volunteer3"
+                                android:layout_width="@dimen/iconRadius"
+                                android:layout_height="@dimen/iconRadius"
+                                android:src="@drawable/user"
+                                app:civ_border_width="1dp"
+                                app:civ_border_color="@color/greyPrime">
+                            </de.hdodenhof.circleimageview.CircleImageView>
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/volunteer4"
+                                android:layout_width="@dimen/iconRadius"
+                                android:layout_height="@dimen/iconRadius"
+                                android:src="@drawable/user"
+                                app:civ_border_width="1dp"
+                                app:civ_border_color="@color/greyPrime">
+                            </de.hdodenhof.circleimageview.CircleImageView>
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/volunteer5"
+                                android:layout_width="@dimen/iconRadius"
+                                android:layout_height="@dimen/iconRadius"
+                                android:src="@drawable/user"
+                                app:civ_border_width="1dp"
+                                app:civ_border_color="@color/greyPrime">
+                            </de.hdodenhof.circleimageview.CircleImageView>
+
+                            <FrameLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:layout_width="@dimen/iconRadius"
+                                    android:layout_height="@dimen/iconRadius"
+                                    android:src="@color/brownPrime"
+                                    app:civ_border_width="1dp"
+                                    app:civ_border_color="@color/greyPrime">
+                                </de.hdodenhof.circleimageview.CircleImageView>
+
+                                <TextView
+                                    android:id="@+id/totalVolunteersNumber"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="30k+"
+                                    android:fontFamily="@font/poppins_light"
+                                    android:layout_gravity="center_horizontal|center_vertical"
+                                    android:textSize="@dimen/verySmallTextSize"
+                                    android:textColor="@color/white"
+                                    />
+
+                            </FrameLayout>
+
+                        </com.google.android.flexbox.FlexboxLayout>
+
+                    </LinearLayout>
 
                     <View
-                        android:id="@+id/divider4"
+                        android:id="@+id/divider5"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_weight="1"
                         android:layout_margin="15dp"
                         android:background="@color/greyPrime" />
 
+                    <!-- Buttons -->
+
                     <com.google.android.flexbox.FlexboxLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:flexDirection="row"
                         app:justifyContent="space_between"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp"
                         app:alignItems="center"
-                        android:layout_marginBottom="8dp"
-                        >
+                        android:layout_marginTop="10dp">
 
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/donorNumberLabelCrisisActivity"
-                                android:text="12345"
-                                android:layout_gravity="center_vertical|center_horizontal"
-                                android:textSize="@dimen/mediumtextSizeVar"
-                                android:textColor="@color/black"
-                                android:fontFamily="@font/poppins"
-                                />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/donorLabelCrisisActivity"
-                                android:text="donors"
-                                android:layout_gravity="center_vertical|center_horizontal"
-                                android:textSize="@dimen/smallTextSize"
-                                android:textColor="@color/black"
-                                android:alpha="0.5"
-                                android:fontFamily="@font/poppins"
-                                />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/donationsCurrentLabelCrisisActivity"
-                                android:text="7.4M LBP"
-                                android:layout_gravity="center_vertical|center_horizontal"
-                                android:textSize="@dimen/mediumtextSizeVar"
-                                android:textColor="@color/black"
-                                android:fontFamily="@font/poppins"
-                                />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/donationsLabelCrisisActivity"
-                                android:text="raised"
-                                android:layout_gravity="center_vertical|center_horizontal"
-                                android:textSize="@dimen/smallTextSize"
-                                android:textColor="@color/black"
-                                android:alpha="0.5"
-                                android:fontFamily="@font/poppins"
-                                />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/donationsTotalLabelCrisisActivity"
-                            android:text="10M LBP"
-                            android:layout_gravity="center_vertical|center_horizontal"
-                            android:textSize="@dimen/mediumtextSizeVar"
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/poppins"
-                            />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/donationsTotalCrisisActivity"
-                            android:text="needed"
-                            android:layout_gravity="center_vertical|center_horizontal"
-                            android:textSize="@dimen/smallTextSize"
-                            android:textColor="@color/black"
-                            android:alpha="0.5"
-                            android:fontFamily="@font/poppins"
-                            />
-                        </LinearLayout>
-
-                    </com.google.android.flexbox.FlexboxLayout>
-
-                    <ProgressBar
-                        android:id="@+id/donationsProgressBar"
-                        style="@android:style/Widget.ProgressBar.Horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:layout_margin="15dp"
-                        android:indeterminateTintMode="src_atop"
-                        android:progress="74"
-                        android:progressBackgroundTint="@color/greyPrime"
-                        android:progressTint="@color/orangePrime" />
-
-                </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/donorsLabel"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="Recent Donors"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="@color/redPrime"
-                    android:textSize="@dimen/mediumtextSizeVar" />
-
-                <com.google.android.flexbox.FlexboxLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:justifyContent="space_between"
-                    app:alignItems="center"
-                    app:flexDirection="row"
-                    android:padding="10dp">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/donor1"
-                        android:layout_width="@dimen/iconRadius"
-                        android:layout_height="@dimen/iconRadius"
-                        android:src="@drawable/user"
-                        app:civ_border_width="1dp"
-                        app:civ_border_color="@color/greyPrime">
-                    </de.hdodenhof.circleimageview.CircleImageView>
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/donor2"
-                        android:layout_width="@dimen/iconRadius"
-                        android:layout_height="@dimen/iconRadius"
-                        android:src="@drawable/user"
-                        app:civ_border_width="1dp"
-                        app:civ_border_color="@color/greyPrime">
-                    </de.hdodenhof.circleimageview.CircleImageView>
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/donor3"
-                        android:layout_width="@dimen/iconRadius"
-                        android:layout_height="@dimen/iconRadius"
-                        android:src="@drawable/user"
-                        app:civ_border_width="1dp"
-                        app:civ_border_color="@color/greyPrime">
-                    </de.hdodenhof.circleimageview.CircleImageView>
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/donor4"
-                        android:layout_width="@dimen/iconRadius"
-                        android:layout_height="@dimen/iconRadius"
-                        android:src="@drawable/user"
-                        app:civ_border_width="1dp"
-                        app:civ_border_color="@color/greyPrime">
-                    </de.hdodenhof.circleimageview.CircleImageView>
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/donor5"
-                        android:layout_width="@dimen/iconRadius"
-                        android:layout_height="@dimen/iconRadius"
-                        android:src="@drawable/user"
-                        app:civ_border_width="1dp"
-                        app:civ_border_color="@color/greyPrime">
-                    </de.hdodenhof.circleimageview.CircleImageView>
-
-                    <FrameLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:layout_width="@dimen/iconRadius"
-                            android:layout_height="@dimen/iconRadius"
-                            android:src="@color/brownPrime"
-                            app:civ_border_width="1dp"
-                            app:civ_border_color="@color/greyPrime">
-                        </de.hdodenhof.circleimageview.CircleImageView>
-
-                        <TextView
-                            android:id="@+id/totalDonorsNumber"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="30k+"
+                        <Button
+                            android:layout_width="@dimen/mediumButtonWidthAlt"
+                            android:layout_height="@dimen/buttonHeightAlt"
+                            android:background="@drawable/app_button_bg"
+                            android:text="Donate"
+                            android:id="@+id/donateButtonCrisisActivity"
+                            android:textAllCaps="false"
                             android:fontFamily="@font/poppins_light"
-                            android:layout_gravity="center_horizontal|center_vertical"
-                            android:textSize="@dimen/verySmallTextSize"
                             android:textColor="@color/white"
-                            />
+                            android:textSize="@dimen/smallTextSize"/>
 
-                    </FrameLayout>
+                        <Button
+                            android:layout_width="@dimen/mediumButtonWidthAlt"
+                            android:layout_height="@dimen/buttonHeightAlt"
+                            android:background="@drawable/app_button_bg"
+                            android:text="Stats"
+                            android:id="@+id/statsButtonCrisisActivity"
+                            android:textAllCaps="false"
+                            android:fontFamily="@font/poppins_light"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/smallTextSize"/>
 
-                </com.google.android.flexbox.FlexboxLayout>
-
-            </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
->
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/volunteersLabel"
-                        android:fontFamily="@font/poppins_medium"
-                        android:text="Amazing volunteers"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="@color/redPrime"
-                        android:textSize="@dimen/mediumtextSizeVar" />
-
-                    <com.google.android.flexbox.FlexboxLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:justifyContent="space_between"
-                        app:alignItems="center"
-                        app:flexDirection="row"
-                        android:padding="10dp">
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/volunteer1"
-                            android:layout_width="@dimen/iconRadius"
-                            android:layout_height="@dimen/iconRadius"
-                            android:src="@drawable/user"
-                            app:civ_border_width="1dp"
-                            app:civ_border_color="@color/greyPrime">
-                        </de.hdodenhof.circleimageview.CircleImageView>
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/volunteer2"
-                            android:layout_width="@dimen/iconRadius"
-                            android:layout_height="@dimen/iconRadius"
-                            android:src="@drawable/user"
-                            app:civ_border_width="1dp"
-                            app:civ_border_color="@color/greyPrime">
-                        </de.hdodenhof.circleimageview.CircleImageView>
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/volunteer3"
-                            android:layout_width="@dimen/iconRadius"
-                            android:layout_height="@dimen/iconRadius"
-                            android:src="@drawable/user"
-                            app:civ_border_width="1dp"
-                            app:civ_border_color="@color/greyPrime">
-                        </de.hdodenhof.circleimageview.CircleImageView>
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/volunteer4"
-                            android:layout_width="@dimen/iconRadius"
-                            android:layout_height="@dimen/iconRadius"
-                            android:src="@drawable/user"
-                            app:civ_border_width="1dp"
-                            app:civ_border_color="@color/greyPrime">
-                        </de.hdodenhof.circleimageview.CircleImageView>
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/volunteer5"
-                            android:layout_width="@dimen/iconRadius"
-                            android:layout_height="@dimen/iconRadius"
-                            android:src="@drawable/user"
-                            app:civ_border_width="1dp"
-                            app:civ_border_color="@color/greyPrime">
-                        </de.hdodenhof.circleimageview.CircleImageView>
-
-                        <FrameLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                android:layout_width="@dimen/iconRadius"
-                                android:layout_height="@dimen/iconRadius"
-                                android:src="@color/brownPrime"
-                                app:civ_border_width="1dp"
-                                app:civ_border_color="@color/greyPrime">
-                            </de.hdodenhof.circleimageview.CircleImageView>
-
-                            <TextView
-                                android:id="@+id/totalVolunteersNumber"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="30k+"
-                                android:fontFamily="@font/poppins_light"
-                                android:layout_gravity="center_horizontal|center_vertical"
-                                android:textSize="@dimen/verySmallTextSize"
-                                android:textColor="@color/white"
-                                />
-
-                        </FrameLayout>
+                        <Button
+                            android:layout_width="@dimen/mediumButtonWidthAlt"
+                            android:layout_height="@dimen/buttonHeightAlt"
+                            android:background="@drawable/app_button_bg"
+                            android:text="Volunteer"
+                            android:id="@+id/volunteerButtonCrisisActivity"
+                            android:textAllCaps="false"
+                            android:fontFamily="@font/poppins_light"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/smallTextSize"/>
 
                     </com.google.android.flexbox.FlexboxLayout>
 
                 </LinearLayout>
 
-                <View
-                    android:id="@+id/divider5"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_weight="1"
-                    android:layout_margin="15dp"
-                    android:background="@color/greyPrime" />
+            </com.google.android.material.card.MaterialCardView>
 
-                <!-- Buttons -->
+        </LinearLayout>
 
-                <com.google.android.flexbox.FlexboxLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:flexDirection="row"
-                    app:justifyContent="space_between"
-                    app:alignItems="center"
-                    android:layout_marginTop="10dp">
 
-                    <Button
-                        android:layout_width="@dimen/mediumButtonWidthAlt"
-                        android:layout_height="@dimen/buttonHeightAlt"
-                        android:background="@drawable/app_button_bg"
-                        android:text="Donate"
-                        android:id="@+id/donateButtonCrisisActivity"
-                        android:textAllCaps="false"
-                        android:fontFamily="@font/poppins_light"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/smallTextSize"/>
-
-                    <Button
-                        android:layout_width="@dimen/mediumButtonWidthAlt"
-                        android:layout_height="@dimen/buttonHeightAlt"
-                        android:background="@drawable/app_button_bg"
-                        android:text="Stats"
-                        android:id="@+id/statsButtonCrisisActivity"
-                        android:textAllCaps="false"
-                        android:fontFamily="@font/poppins_light"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/smallTextSize"/>
-
-                    <Button
-                        android:layout_width="@dimen/mediumButtonWidthAlt"
-                        android:layout_height="@dimen/buttonHeightAlt"
-                        android:background="@drawable/app_button_bg"
-                        android:text="Volunteer"
-                        android:id="@+id/volunteerButtonCrisisActivity"
-                        android:textAllCaps="false"
-                        android:fontFamily="@font/poppins_light"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/smallTextSize"/>
-
-                </com.google.android.flexbox.FlexboxLayout>
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-    </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

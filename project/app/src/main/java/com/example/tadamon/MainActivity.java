@@ -20,16 +20,27 @@ public class MainActivity extends AppCompatActivity {
 
         logo = findViewById(R.id.logoLabel);
 
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String userid = preferences.getString("ID", null); // get what is currently stored in SharedPreferences
+
+
         logo.setOnClickListener(e -> {
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-            String userid = preferences.getString("ID", null); // get what is currently stored in SharedPreferences
-            if (userid != null){ // If there is a signed-in user
+            if (userid != null) { // If there is a signed-in user
                 Intent startIntent = new Intent(getApplicationContext(), HomeScreenActivity.class); // directly open HomeScreen
                 startActivity(startIntent);
-            }
-            else{ // If no one is signed-in
+            } else { // If no one is signed-in
                 Intent startIntent = new Intent(getApplicationContext(), SignInActivity.class); // open the SignIn page
-                startActivity(startIntent);}
-    });
+                startActivity(startIntent);
+            }
+        });
+
+        // delete later on im just so mej to click each time
+        try {
+            Thread.sleep(200);
+            logo.performClick();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
     }
 }
