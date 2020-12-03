@@ -21,6 +21,8 @@ public class DonationScreenActivity extends AppCompatActivity {
 
     private TextView amount;
 
+    private double donated= 0;
+
     boolean selectorMode = true;
 
     @Override
@@ -71,7 +73,7 @@ public class DonationScreenActivity extends AppCompatActivity {
         selectorFour.setOnClickListener(this::handleSelectorClick);
 
         enterButton.setOnClickListener(e -> {
-            Log.d("TAG", "" + Double.parseDouble(amount.getText().toString()));
+            donated = Double.parseDouble(amount.getText().toString());
         });
 
     }
