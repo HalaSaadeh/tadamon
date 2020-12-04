@@ -1,24 +1,44 @@
 package com.example.tadamon;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.Image;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.TypedValue;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.w3c.dom.Text;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Map;
 
 public class ProfileScreenActivity extends AppCompatActivity {
 
@@ -27,6 +47,8 @@ public class ProfileScreenActivity extends AppCompatActivity {
 
     LinearLayout listOfVolunteerings;
     ImageView settingsButton;
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance(); // get Instance of the Cloud Firestore database
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +66,7 @@ public class ProfileScreenActivity extends AppCompatActivity {
         listOfVolunteerings = findViewById(R.id.userVolunteeredInLinearLayout);
         settingsButton = findViewById(R.id.settingsButton);
 
+        populateProfile(); // When the profile screen is opened, get the current user's data from the database.
 
         bottomNavigationView.setSelectedItemId(R.id.profile);
 
@@ -62,6 +85,41 @@ public class ProfileScreenActivity extends AppCompatActivity {
             }
             return false;
         });
+
+    }
+
+    private void populateProfile(){
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String userid = preferences.getString("ID", null); // get UID currently stored in SharedPreferences
+        // this UID is the key of the document that references this user in the database
+        DocumentReference docRef = db.collection("volunteers").document(userid);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Map<String, Object> data = document.getData();
+                        // map of key value pairs where
+                        // the string is the key and object can be any Firestore type
+                        String name = (String) data.get("name");
+                        userName.setText(name);
+                        String bio = (String) data.get("bio");
+                        userBio.setText(bio);
+                        String donations = data.get("donated_count") +" Donations";
+                        userDonations.setText(donations);
+                        String volunteers = data.get("volunteered_count") +" Volunteering Work";
+                        userVolunteerings.setText(volunteers);
+                        String photoUrl = (String) data.get("profile_photo_url");
+                        setProfilePic(photoUrl, userProfilePicture);
+                    }
+                } else {
+                    Toast.makeText(ProfileScreenActivity.this, "An error occurred. Please try again.",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
 
     }
 
@@ -135,5 +193,27 @@ public class ProfileScreenActivity extends AppCompatActivity {
     public void finish() {
         super.finish();
 //        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+    private static void setProfilePic(String urlImage, ImageView imageView){
+        new AsyncTask<String, Integer, Drawable>(){
+            @Override
+            protected Drawable doInBackground(String... strings) {
+                Bitmap profilePic = null;
+                try {
+                    HttpURLConnection connection = (HttpURLConnection) new URL(urlImage).openConnection();
+                    connection.connect();
+                    InputStream input = connection.getInputStream();
+                    profilePic = BitmapFactory.decodeStream(input);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return new BitmapDrawable(Resources.getSystem(), profilePic);
+            }
+            protected void onPostExecute(Drawable result) {
+
+                //Add image to ImageView
+                imageView.setImageDrawable(result);
+            }
+        }.execute();
     }
 }
