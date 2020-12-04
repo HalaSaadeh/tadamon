@@ -9,6 +9,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 public class SearchScreenActivity extends AppCompatActivity {
 
     private LinearLayout listOfCards;
+    private ImageButton catHealth, catFinancial, catWildfires, catNatural, catTech, catSocial, catWinter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,16 @@ public class SearchScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search_screen);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        listOfCards = findViewById(R.id.recentlySearchedList);
+        catHealth = findViewById(R.id.cat_health);
+        catFinancial = findViewById(R.id.cat_financial);
+        catWildfires = findViewById(R.id.cat_wildfires);
+        catNatural = findViewById(R.id.cat_natural);
+        catTech = findViewById(R.id.cat_technological);
+        catSocial = findViewById(R.id.cat_social);
+        catWinter = findViewById(R.id.cat_winter);
+
+
         bottomNavigationView.setSelectedItemId(R.id.search);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
@@ -46,7 +58,6 @@ public class SearchScreenActivity extends AppCompatActivity {
             return false;
         });
 
-        listOfCards = findViewById(R.id.recentlySearchedList);
 
         MaterialCardView card1 = createEventCard(1, "Event 1", R.drawable.bg_img);
         listOfCards.addView(card1);
