@@ -17,7 +17,7 @@
 <!--    <dimen name="activity_vertical_margin">16dp</dimen>-->
 
     <dimen name="titleHGap">10dp</dimen>
-    <dimen name="leftPadding">25dp</dimen>
+    <dimen name="leftPadding">15dp</dimen>
     <dimen name="carouselHGap">15dp</dimen>
 
     <dimen name="verySmallTextSize">10sp</dimen>
@@ -26,6 +26,7 @@
     <dimen name="mediumTextSize">16sp</dimen>
     <dimen name="largeTextSizeVar">18sp</dimen>
     <dimen name="largeTextSize">20sp</dimen>
+    <dimen name="veryLargeTextSizeVar">24sp</dimen>
     <dimen name="veryLargeTextSize">28sp</dimen>
 
     <dimen name="largeButtonWidth">325dp</dimen>

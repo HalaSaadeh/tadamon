@@ -6,31 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/logoLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/black"
-        android:clickable="true"
-        android:focusable="true"
-        android:fontFamily="@font/poppins_bold"
-        android:text="@string/app_name"
-        android:textColor="@color/black"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.463" />
+    <com.google.android.flexbox.FlexboxLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:flexDirection="column"
+        app:justifyContent="center"
+        app:alignItems="flex_start">
 
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="80dp"
-        android:layout_height="5dp"
-        android:layout_marginTop="12dp"
-        android:background="@color/redPrime"
-        app:layout_constraintStart_toStartOf="@+id/logoLabel"
-        app:layout_constraintTop_toBottomOf="@+id/logoLabel" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_alignSelf="center"
+            android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/logoLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/app_name"
+                android:textColor="@color/black"
+                android:textSize="36sp" />
+
+            <View
+                android:layout_width="80dp"
+                android:layout_height="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/redPrime" />
+
+        </LinearLayout>
+
+    </com.google.android.flexbox.FlexboxLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,18 +37,16 @@
                 android:layout_width="80dp"
                 android:layout_height="5dp"
                 android:layout_marginStart="@dimen/leftPadding"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="25dp"
                 android:background="@color/redPrime" />
 
             <TextView
                 android:id="@+id/welcomeLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/leftPadding"
                 android:layout_marginBottom="15dp"
                 android:backgroundTint="@color/black"
-                android:clickable="true"
-                android:focusable="true"
                 android:fontFamily="@font/poppins_medium"
                 android:text="Hi John,"
                 android:textColor="@color/black"
@@ -59,11 +57,8 @@
                 android:id="@+id/stayUpToDateLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/leftPadding"
                 android:layout_marginBottom="20dp"
                 android:backgroundTint="@color/black"
-                android:clickable="true"
-                android:focusable="true"
                 android:fontFamily="@font/poppins_light"
                 android:text="Stay up to date"
                 android:textColor="@color/black"
@@ -106,6 +101,7 @@
                 android:paddingStart="15dp">
 
                 <LinearLayout
+                    android:id="@+id/volunteerList"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="horizontal" >
@@ -134,6 +130,7 @@
                 android:layout_height="wrap_content">
 
                 <LinearLayout
+                    android:id="@+id/donationList"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"

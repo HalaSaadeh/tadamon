@@ -36,7 +36,7 @@ public class HomeScreenActivity extends AppCompatActivity implements PopUpMessag
     private FirebaseAuth mAuth;
 
     private HorizontalScrollView scrollView;
-    private LinearLayout listOfCards;
+    private LinearLayout listOfUserCards, listOfDonationCards, listOfVolunteeringCards;
 
     public ArrayList<MaterialCardView> list1, list2, list3;
 
@@ -48,7 +48,9 @@ public class HomeScreenActivity extends AppCompatActivity implements PopUpMessag
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.discover);
 
-        listOfCards = findViewById(R.id.upToDateList);
+        listOfUserCards = findViewById(R.id.upToDateList);
+        listOfVolunteeringCards = findViewById(R.id.volunteerList);
+        listOfDonationCards = findViewById(R.id.donationList);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
             switch (menuItem.getItemId()) {
@@ -73,14 +75,28 @@ public class HomeScreenActivity extends AppCompatActivity implements PopUpMessag
         });
 
         MaterialCardView card1 = createEventCard(1, "Event 1", R.drawable.bg_img);
-        listOfCards.addView(card1);
         MaterialCardView card2 = createEventCard(2, "Event 2", R.drawable.bg_img);
-        listOfCards.addView(card2);
         MaterialCardView card3 = createEventCard(3, "Event 3", R.drawable.bg_img);
-        listOfCards.addView(card3);
 
-        scrollView = findViewById(R.id.upToDateScollView);
+        MaterialCardView card4 = createEventCard(4, "Event 1", R.drawable.bg_img);
+        MaterialCardView card5 = createEventCard(5, "Event 2", R.drawable.bg_img);
+        MaterialCardView card6 = createEventCard(6, "Event 3", R.drawable.bg_img);
 
+        MaterialCardView card7 = createEventCard(7, "Event 1", R.drawable.bg_img);
+        MaterialCardView card8 = createEventCard(8, "Event 2", R.drawable.bg_img);
+        MaterialCardView card9 = createEventCard(9, "Event 3", R.drawable.bg_img);
+
+        listOfUserCards.addView(card1);
+        listOfUserCards.addView(card2);
+        listOfUserCards.addView(card3);
+
+        listOfVolunteeringCards.addView(card4);
+        listOfVolunteeringCards.addView(card5);
+        listOfVolunteeringCards.addView(card6);
+
+        listOfDonationCards.addView(card7);
+        listOfDonationCards.addView(card8);
+        listOfDonationCards.addView(card9);
     }
 
     public MaterialCardView createEventCard(int id, String title, int imgSrc) {
