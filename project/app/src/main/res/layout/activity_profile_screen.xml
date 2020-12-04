@@ -6,6 +6,151 @@
     android:layout_height="match_parent"
     tools:context=".ProfileScreenActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_half_arc"
+                android:scaleType="centerCrop"/>
+
+            <ImageView
+                android:id="@+id/settingsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_settings"
+                android:tint="@color/white"
+                android:alpha="0.6"
+                android:layout_gravity="top|end"
+                android:layout_margin="@dimen/leftPadding"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="@dimen/leftPadding">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/app_name"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="@dimen/veryLargeTextSize" />
+
+                <View
+                    android:layout_width="80dp"
+                    android:layout_height="5dp"
+                    android:background="@color/yellowPrime" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/userProfilePicture"
+            android:layout_width="@dimen/imageRadius"
+            android:layout_height="@dimen/imageRadius"
+            android:src="@drawable/user"
+            app:civ_border_width="1dp"
+            app:civ_border_color="@color/greyPrime"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="-40dp"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="John Smith"
+            android:textSize="@dimen/veryLargeTextSizeVar"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/userBio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:text="Red cross member, volunteer and life-saver!"
+            android:textSize="@dimen/smallTextSize"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/darkGreyPrime"/>
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:flexDirection="row"
+            app:justifyContent="space_evenly"
+            app:alignItems="center"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:id="@+id/userDonations"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="143 Donations"
+                android:textSize="@dimen/mediumTextSizeVar"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/redPrime"/>
+
+            <TextView
+                android:id="@+id/userVolunteering"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="7 Volunteering Work"
+                android:textSize="@dimen/mediumTextSizeVar"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/redPrime"/>
+
+        </com.google.android.flexbox.FlexboxLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/leftPadding"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/black"
+            android:fontFamily="@font/poppins_light"
+            android:text="Volunteered In"
+            android:textColor="@color/black"
+            android:textSize="@dimen/largeTextSizeVar" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/userVolunteeredInLinearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/leftPadding">
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+
+
+
+    </LinearLayout>
+
+
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
