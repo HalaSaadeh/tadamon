@@ -6,16 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".AccountCreationStep3Activity">
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/question3NextButton"
+        android:layout_width="@dimen/largeButtonWidth"
+        android:layout_height="@dimen/buttonHeight"
+        android:background="@drawable/app_button_bg"
+        android:fontFamily="@font/poppins"
+        android:text="Next"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.953"
-        app:srcCompat="@drawable/ic_travel3" />
+        app:layout_constraintVertical_bias="0.588" />
 
     <EditText
         android:id="@+id/locationField"
@@ -36,6 +39,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.38" />
+
+    <ImageButton
+        android:id="@+id/accountCreationBackButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        android:tint="@color/redPrime"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.065"
+        app:srcCompat="@drawable/ic_back" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.953"
+        app:srcCompat="@drawable/ic_travel3" />
 
     <TextView
         android:id="@+id/question3Description"
@@ -105,35 +133,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.552" />
-
-    <Button
-        android:id="@+id/question3NextButton"
-        android:layout_width="@dimen/largeButtonWidth"
-        android:layout_height="@dimen/buttonHeight"
-        android:background="@drawable/app_button_bg"
-        android:fontFamily="@font/poppins"
-        android:text="Next"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.47" />
-
-    <ImageButton
-        android:id="@+id/accountCreationBackButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#00FFFFFF"
-        android:tint="@color/redPrime"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.103"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.065"
-        app:srcCompat="@drawable/ic_back" />
+        app:layout_constraintVertical_bias="0.668" />
 
     <TextView
         android:id="@+id/accountCreation3Label"
@@ -151,4 +151,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.058" />
+
+    <com.example.tadamon.CustomAutoCompleteView
+        android:id="@+id/autoCompleteCities"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="321dp"
+        android:layout_marginBottom="365dp"
+        android:completionThreshold="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></com.example.tadamon.CustomAutoCompleteView>
 </androidx.constraintlayout.widget.ConstraintLayout>
