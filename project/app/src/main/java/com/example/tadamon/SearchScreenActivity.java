@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -17,12 +18,16 @@ import android.widget.TextView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class SearchScreenActivity extends AppCompatActivity {
 
     private LinearLayout listOfCards;
+    private TextView searchTextView;
     private ImageButton catHealth, catFinancial, catWildfires, catNatural, catTech, catSocial, catWinter;
+    private ImageView searchButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +44,8 @@ public class SearchScreenActivity extends AppCompatActivity {
         catSocial = findViewById(R.id.cat_social);
         catWinter = findViewById(R.id.cat_winter);
 
+        searchTextView = findViewById(R.id.searchTextView);
+        searchButton = findViewById(R.id.searchButton);
 
         bottomNavigationView.setSelectedItemId(R.id.search);
 
