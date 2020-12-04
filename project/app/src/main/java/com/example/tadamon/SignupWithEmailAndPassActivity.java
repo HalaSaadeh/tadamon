@@ -63,7 +63,7 @@ public class SignupWithEmailAndPassActivity extends AppCompatActivity {
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 Toast.makeText(SignupWithEmailAndPassActivity.this, "Successfully signed up.",
                                         Toast.LENGTH_LONG).show();
-                                Intent startIntent = new Intent(getApplicationContext(), LoginWithEmailAndPassActivity.class);
+                                Intent startIntent = new Intent(getApplicationContext(), AccountCreationStep1Activity.class);
                                 startActivity(startIntent);
                             } else {
                                 // If sign in fails, display a message to the user.
