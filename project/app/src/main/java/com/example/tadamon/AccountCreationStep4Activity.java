@@ -3,8 +3,12 @@ package com.example.tadamon;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -18,13 +22,16 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -51,6 +58,13 @@ public class AccountCreationStep4Activity extends AppCompatActivity {
     private EditText bio;
     private ImageButton backButton;
     private ImageView imageView;
+    // For camera and gallery
+    private ImageButton getPicture;
+    private boolean fromCam, fromGal;
+    private static final int PERMISSION_CODE = 1000;
+    private static final int IMAGE_CAPTURE_CODE = 1001;
+    private static final int PICK_IMAGE = 1;
+    Uri image_uri;
 
     public Map<String, Object> account = new HashMap<>();
     FirebaseFirestore db = FirebaseFirestore.getInstance(); // get instance of the Cloud Firestore database
@@ -69,8 +83,6 @@ public class AccountCreationStep4Activity extends AppCompatActivity {
             addDoc();
             startActivity(new Intent(getApplicationContext(),HomeScreenActivity.class));});
 
-       // backButton.setOnClickListener(e->
-         //       startActivity(new Intent(getApplicationContext(), AccountCreationStep3Activity.class)));
         bio = (EditText) findViewById(R.id.bioField);
 
         imageView = findViewById(R.id.profilePicture);
@@ -94,7 +106,9 @@ public class AccountCreationStep4Activity extends AppCompatActivity {
         account.put("age", age);
         account.put("area", loc);
 
-
+        // For camera or gallery
+        getPicture = (ImageButton) findViewById(R.id.changePictureButton);
+        getPicture.setOnClickListener(e->openChoosePicture());
 
     }
     private static void setDefaultProfilePic(String urlImage, ImageView imageView){
@@ -180,9 +194,94 @@ public class AccountCreationStep4Activity extends AppCompatActivity {
 
                     }
             });}});
+    }
 
+    private void openChoosePicture() {
+        PictureDialog pictureDialog = new PictureDialog();
+        pictureDialog.show(getSupportFragmentManager(), "Dialog");
+    }
 
+    private void takePicture() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED ||
+                    checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
+                            PackageManager.PERMISSION_DENIED) {
+                //Request permission that was previously denied
+                String[] permission = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                //Show popup to req permission
+                requestPermissions(permission, PERMISSION_CODE);
+            } else {
+                //permission was granted
+                openCamera();
+            }
+        } else {
+            //system os < marshmallow
+            openCamera();
+        }
+    }
 
+    private void openCamera() {
+        ContentValues values = new ContentValues();
+        values.put(MediaStore.Images.Media.TITLE, "Picture");
+        values.put(MediaStore.Images.Media.DESCRIPTION, "From Cam");
+        image_uri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+
+        // Camera intent
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, image_uri);
+        startActivityForResult(cameraIntent, IMAGE_CAPTURE_CODE);
 
     }
-}
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_CODE: {
+                if (grantResults.length > 0 && grantResults[0] ==
+                        PackageManager.PERMISSION_GRANTED) {
+                    //granted
+                    openCamera();
+                } else {
+                    //denied
+                    Toast.makeText(getApplicationContext(), "Permission Denied", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        }
+    }
+
+    @SuppressLint("MissingSuperCall")
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // super.onActivityResult(requestCode, resultCode, data);
+        Toast.makeText(AccountCreationStep4Activity.this, "In on activity result", Toast.LENGTH_LONG).show();
+        if (resultCode == RESULT_OK) {
+            //PUT PICTURECODEHERE
+            //picture.setImageURI(image_uri);
+        }
+        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK)
+            image_uri = data.getData();
+        try {
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), image_uri);
+            imageView.setImageBitmap(bitmap);
+        }catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+    }
+    public void applyBools ( boolean cam, boolean gal){
+        fromCam = cam;
+        fromGal = gal;
+
+        if (fromCam) {
+            takePicture();
+        }
+        if (fromGal) {
+            Intent gallery = new Intent();
+            gallery.setType("image/*");
+            gallery.setAction(Intent.ACTION_GET_CONTENT);
+
+            startActivityForResult(Intent.createChooser(gallery,"Select Picture"), PICK_IMAGE);
+        }
+}}
