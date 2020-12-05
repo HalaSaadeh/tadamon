@@ -52,7 +52,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AccountCreationStep4Activity extends AppCompatActivity {
+public class AccountCreationStep4Activity extends AppCompatActivity implements PictureDialog.ExampleDialogListener {
 
     private Button skip, finish;
     private EditText bio;
