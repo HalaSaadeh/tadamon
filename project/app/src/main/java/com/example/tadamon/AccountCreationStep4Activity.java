@@ -12,17 +12,10 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
@@ -43,11 +36,9 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
@@ -74,23 +65,26 @@ public class AccountCreationStep4Activity extends AppCompatActivity implements P
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_creation_step4);
+
         skip = (Button) findViewById(R.id.skipButton);
-        skip.setOnClickListener(e->{
-                addDoc();
-            startActivity(new Intent(getApplicationContext(),HomeScreenActivity.class));});
-        finish = (Button) findViewById(R.id.finishButton);
-        finish.setOnClickListener(e->{
+        skip.setOnClickListener(e -> {
             addDoc();
-            startActivity(new Intent(getApplicationContext(),HomeScreenActivity.class));});
+            startActivity(new Intent(getApplicationContext(), HomeScreenActivity.class));
+        });
+
+        finish = (Button) findViewById(R.id.finishButton);
+        finish.setOnClickListener(e -> {
+            addDoc();
+            startActivity(new Intent(getApplicationContext(), HomeScreenActivity.class));
+        });
 
         bio = (EditText) findViewById(R.id.bioField);
-
         imageView = findViewById(R.id.profilePicture);
 
         // Displaying image from Google or Facebook in case signed in with them
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         boolean thirdParty = preferences.getBoolean("thirdParty", false);
-        if (thirdParty){
+        if (thirdParty) {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             Uri photoUrl = user.getPhotoUrl();
             Log.d("PhotoURl", photoUrl.toString());
@@ -108,12 +102,12 @@ public class AccountCreationStep4Activity extends AppCompatActivity implements P
 
         // For camera or gallery
         getPicture = findViewById(R.id.changePictureButton);
-        getPicture.setOnClickListener(e->openChoosePicture());
+        getPicture.setOnClickListener(e -> openChoosePicture());
 
     }
 
-    private static void setDefaultProfilePic(String urlImage, ImageView imageView){
-        new AsyncTask<String, Integer, Drawable>(){
+    private static void setDefaultProfilePic(String urlImage, ImageView imageView) {
+        new AsyncTask<String, Integer, Drawable>() {
 
             @Override
             protected Drawable doInBackground(String... strings) {
@@ -147,7 +141,7 @@ public class AccountCreationStep4Activity extends AppCompatActivity implements P
         String userid = preferences.getString("ID", null);
 
         // Upload the profile photo to cloud storage
-        StorageReference storageRef = storage.getReference().child("profile_photos/"+userid+".jpg");
+        StorageReference storageRef = storage.getReference().child("profile_photos/" + userid + ".jpg");
         imageView.setDrawingCacheEnabled(true);
         imageView.buildDrawingCache();
         Bitmap bitmap = imageView.getDrawingCache();
@@ -190,7 +184,9 @@ public class AccountCreationStep4Activity extends AppCompatActivity implements P
                                 });
 
                     }
-            });}});
+                });
+            }
+        });
     }
 
     private void openChoosePicture() {
@@ -227,17 +223,13 @@ public class AccountCreationStep4Activity extends AppCompatActivity implements P
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case PERMISSION_CODE: {
-                if (grantResults.length > 0 && grantResults[0] ==
-                        PackageManager.PERMISSION_GRANTED) {
-                    //granted
-                    openCamera();
-                } else {
-                    //denied
-                    Toast.makeText(getApplicationContext(), "Permission Denied", Toast.LENGTH_SHORT).show();
-
-                }
+        if (requestCode == PERMISSION_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                //granted
+                openCamera();
+            } else {
+                //denied
+                Toast.makeText(getApplicationContext(), "Permission Denied", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -255,13 +247,13 @@ public class AccountCreationStep4Activity extends AppCompatActivity implements P
         try {
             Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), image_uri);
             imageView.setImageBitmap(bitmap);
-        }catch (IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
-    public void applyBools ( boolean cam, boolean gal){
+
+    public void applyBools(boolean cam, boolean gal) {
         fromCam = cam;
         fromGal = gal;
 
@@ -273,6 +265,7 @@ public class AccountCreationStep4Activity extends AppCompatActivity implements P
             gallery.setType("image/*");
             gallery.setAction(Intent.ACTION_GET_CONTENT);
 
-            startActivityForResult(Intent.createChooser(gallery,"Select Picture"), PICK_IMAGE);
+            startActivityForResult(Intent.createChooser(gallery, "Select Picture"), PICK_IMAGE);
         }
-}}
+    }
+}

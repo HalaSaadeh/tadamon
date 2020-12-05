@@ -73,7 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="John Smith"
+            android:text=""
             android:textSize="@dimen/veryLargeTextSizeVar"
             android:fontFamily="@font/poppins"
             android:textColor="@color/black"/>
@@ -84,7 +84,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="20dp"
-            android:text="Red cross member, volunteer and life-saver!"
+            android:text=""
             android:textSize="@dimen/smallTextSize"
             android:fontFamily="@font/poppins"
             android:textColor="@color/darkGreyPrime"/>
@@ -102,7 +102,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="143 Donations"
+                android:text="Donations"
                 android:textSize="@dimen/mediumTextSizeVar"
                 android:fontFamily="@font/poppins"
                 android:textColor="@color/redPrime"/>
@@ -112,7 +112,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="7 Volunteering Work"
+                android:text="Volunteering Work"
                 android:textSize="@dimen/mediumTextSizeVar"
                 android:fontFamily="@font/poppins"
                 android:textColor="@color/redPrime"/>
