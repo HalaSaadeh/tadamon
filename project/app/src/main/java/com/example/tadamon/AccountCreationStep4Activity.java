@@ -107,10 +107,11 @@ public class AccountCreationStep4Activity extends AppCompatActivity implements P
         account.put("area", loc);
 
         // For camera or gallery
-        getPicture = (ImageButton) findViewById(R.id.changePictureButton);
+        getPicture = findViewById(R.id.changePictureButton);
         getPicture.setOnClickListener(e->openChoosePicture());
 
     }
+
     private static void setDefaultProfilePic(String urlImage, ImageView imageView){
         new AsyncTask<String, Integer, Drawable>(){
 
@@ -129,13 +130,9 @@ public class AccountCreationStep4Activity extends AppCompatActivity implements P
             }
 
             protected void onPostExecute(Drawable result) {
-
                 //Add image to ImageView
                 imageView.setImageDrawable(result);
-
             }
-
-
         }.execute();
     }
 
@@ -202,20 +199,15 @@ public class AccountCreationStep4Activity extends AppCompatActivity implements P
     }
 
     private void takePicture() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED ||
-                    checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
-                            PackageManager.PERMISSION_DENIED) {
-                //Request permission that was previously denied
-                String[] permission = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
-                //Show popup to req permission
-                requestPermissions(permission, PERMISSION_CODE);
-            } else {
-                //permission was granted
-                openCamera();
-            }
+        if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED ||
+                checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
+                        PackageManager.PERMISSION_DENIED) {
+            //Request permission that was previously denied
+            String[] permission = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+            //Show popup to req permission
+            requestPermissions(permission, PERMISSION_CODE);
         } else {
-            //system os < marshmallow
+            //permission was granted
             openCamera();
         }
     }
@@ -230,7 +222,6 @@ public class AccountCreationStep4Activity extends AppCompatActivity implements P
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, image_uri);
         startActivityForResult(cameraIntent, IMAGE_CAPTURE_CODE);
-
     }
 
 

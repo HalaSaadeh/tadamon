@@ -20,26 +20,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.588" />
 
-    <EditText
-        android:id="@+id/locationField"
-        style="@style/Widget.AppCompat.EditText"
-        android:layout_width="@dimen/largeButtonWidth"
-        android:layout_height="@dimen/buttonHeight"
-        android:background="@drawable/app_textfield_bg"
-        android:ems="10"
-        android:fontFamily="@font/poppins_light"
-        android:hint="Location"
-        android:inputType="textPersonName"
-        android:paddingLeft="@dimen/inner_frame_layout_padding"
-        android:textColor="@color/black"
-        android:textColorHighlight="@color/black"
-        android:textSize="@dimen/mediumTextSize"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.38" />
-
     <ImageButton
         android:id="@+id/accountCreationBackButton3"
         android:layout_width="wrap_content"
@@ -64,6 +44,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.953"
         app:srcCompat="@drawable/ic_travel3" />
+
 
     <TextView
         android:id="@+id/question3Description"
@@ -154,14 +135,22 @@
 
     <com.example.tadamon.CustomAutoCompleteView
         android:id="@+id/autoCompleteCities"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="321dp"
-        android:layout_marginBottom="365dp"
-        android:completionThreshold="1"
+        style="@style/Widget.AppCompat.EditText"
+        android:layout_width="@dimen/largeButtonWidth"
+        android:layout_height="@dimen/buttonHeight"
+        android:background="@drawable/app_textfield_bg"
+        android:ems="10"
+        android:fontFamily="@font/poppins_light"
+        android:hint="Location"
+        android:inputType="textPersonName"
+        android:paddingLeft="@dimen/inner_frame_layout_padding"
+        android:textColor="@color/black"
+        android:textColorHighlight="@color/black"
+        android:textSize="@dimen/mediumTextSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.38"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

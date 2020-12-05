@@ -31,42 +31,43 @@ public class AccountCreationStep3Activity extends AppCompatActivity {
 
 
         backButton = (ImageButton) findViewById(R.id.accountCreationBackButton3);
-        backButton.setOnClickListener(e->
+        backButton.setOnClickListener(e ->
                 startActivity(new Intent(getApplicationContext(), AccountCreationStep2Activity.class)));
         nextButton = (Button) findViewById(R.id.question3NextButton);
-        location = (EditText) findViewById(R.id.locationField);
+        location = (EditText) findViewById(R.id.autoCompleteCities);
 
         // For the auto-complete and SQLite DB
         databaseH = new DatabaseHandler(AccountCreationStep3Activity.this);
         autoCompleteCities = (CustomAutoCompleteView) findViewById(R.id.autoCompleteCities);
         autoCompleteCities.addTextChangedListener(new CustomAutoCompleteTextChangedListener(this)); //
-        cities = new String[] {"Enter the name of a city or region"}; // the cities shown in the dropdown. Adding an initial prompt
+        cities = new String[]{"Enter the name of a city or region"}; // the cities shown in the dropdown. Adding an initial prompt
         myAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, cities); // setting the adapter
         autoCompleteCities.setAdapter(myAdapter);
-        nextButton.setOnClickListener(e->{
-            Intent intent = new Intent(this,AccountCreationStep4Activity.class);
-            intent.putExtra("name", name);
-            intent.putExtra("age", age);
-            intent.putExtra("loc", autoCompleteCities.getText().toString());
-            startActivity(intent);
+        nextButton.setOnClickListener(e -> {
+            if (checkLocation()) {
+                Intent intent = new Intent(this, AccountCreationStep4Activity.class);
+                intent.putExtra("name", name);
+                intent.putExtra("age", age);
+                intent.putExtra("loc", autoCompleteCities.getText().toString());
+                startActivity(intent);
+            }
         });
     }
 
-    private void checkLocation (){
-        if (location.getText().toString().length() == 0)
+    private boolean checkLocation() {
+        if (location.getText().toString().length() == 0) {
             location.setError("Please enter a location");
-        if (location.getText().toString().length()>40)
-            location.setError("Please stick to 40 characters for the location");
-
+            return false;
+        }
+        return true;
     }
 
-    public String[] getCitiesFromDB(String searchTerm){
+    public String[] getCitiesFromDB(String searchTerm) {
         databaseH = new DatabaseHandler(this);
         try {
             databaseH.createDataBase();
             databaseH.openDataBase();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         // add items on the array dynamically
