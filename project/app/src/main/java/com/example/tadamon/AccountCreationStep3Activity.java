@@ -26,6 +26,10 @@ public class AccountCreationStep3Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_creation_step3);
 
+        String name = getIntent().getStringExtra("name");
+        int age = getIntent().getIntExtra("age", 0);
+
+
         backButton = (ImageButton) findViewById(R.id.accountCreationBackButton3);
         backButton.setOnClickListener(e->
                 startActivity(new Intent(getApplicationContext(), AccountCreationStep2Activity.class)));
@@ -40,7 +44,11 @@ public class AccountCreationStep3Activity extends AppCompatActivity {
         myAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, cities); // setting the adapter
         autoCompleteCities.setAdapter(myAdapter);
         nextButton.setOnClickListener(e->{
-            checkLocation();
+            Intent intent = new Intent(this,AccountCreationStep4Activity.class);
+            intent.putExtra("name", name);
+            intent.putExtra("age", age);
+            intent.putExtra("loc", autoCompleteCities.getText().toString());
+            startActivity(intent);
         });
     }
 
@@ -49,8 +57,7 @@ public class AccountCreationStep3Activity extends AppCompatActivity {
             location.setError("Please enter a location");
         if (location.getText().toString().length()>40)
             location.setError("Please stick to 40 characters for the location");
-        else
-            startActivity(new Intent(this,AccountCreationStep4Activity.class));
+
     }
 
     public String[] getCitiesFromDB(String searchTerm){

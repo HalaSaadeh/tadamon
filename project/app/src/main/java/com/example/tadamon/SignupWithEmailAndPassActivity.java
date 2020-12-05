@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -63,6 +65,7 @@ public class SignupWithEmailAndPassActivity extends AppCompatActivity {
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 Toast.makeText(SignupWithEmailAndPassActivity.this, "Successfully signed up.",
                                         Toast.LENGTH_LONG).show();
+                                updateSharedPreferences(user.getUid());
                                 Intent startIntent = new Intent(getApplicationContext(), AccountCreationStep1Activity.class);
                                 startActivity(startIntent);
                             } else {
@@ -114,5 +117,13 @@ public class SignupWithEmailAndPassActivity extends AppCompatActivity {
         }
         emailTextView.setError(null);
         return true;
+    }
+    private void updateSharedPreferences(String uID){
+        // Once signed-in, update SharedPreferences to store the current user
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("ID",uID);
+        editor.putBoolean("thirdParty", false); // did not sign in with third party provider
+        editor.apply();
     }
 }

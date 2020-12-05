@@ -56,9 +56,7 @@ public class LoginWithEmailAndPassActivity extends AppCompatActivity {
 
                             if (!isNew){
                                 // Go to homepage if not their first time
-                                //*******************
-                              //  Intent startIntent = new Intent(getApplicationContext(), HomeScreenActivity.class);
-                                Intent startIntent = new Intent(getApplicationContext(), AccountCreationStep1Activity.class);
+                                Intent startIntent = new Intent(getApplicationContext(), HomeScreenActivity.class);
                                 startActivity(startIntent);}
                             else{
                                 // Start creating the profile

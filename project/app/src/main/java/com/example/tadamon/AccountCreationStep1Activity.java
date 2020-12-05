@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -15,11 +16,15 @@ import com.google.firebase.auth.FirebaseUser;
 
 import org.w3c.dom.Text;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class AccountCreationStep1Activity extends AppCompatActivity {
 
     private ImageButton backBtn;
     private TextView namefield;
     private Button nextBtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +42,12 @@ public class AccountCreationStep1Activity extends AppCompatActivity {
             namefield.setText(user.getDisplayName());
         }
         nextBtn.setOnClickListener(e->{
-            if(validateName())
-                startActivity(new Intent(this,AccountCreationStep2Activity.class));
+            if(validateName()){
+                Intent intent = new Intent(this,AccountCreationStep2Activity.class);
+                intent.putExtra("name", namefield.getText().toString());
+                startActivity(intent);
+
+            }
             else
                 namefield.setError("Please enter a name.");
         });

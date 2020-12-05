@@ -139,8 +139,7 @@ public class SignInActivity extends AppCompatActivity {
 
                             if (!isNew){
                                 // Go to homepage if not their first time
-                                ///*** SHOULD BE HOME SCREEN
-                                Intent startIntent = new Intent(getApplicationContext(), AccountCreationStep1Activity.class);
+                                Intent startIntent = new Intent(getApplicationContext(), HomeScreenActivity.class);
                                 startActivity(startIntent);}
                             else{
                                 // Start creating the profile

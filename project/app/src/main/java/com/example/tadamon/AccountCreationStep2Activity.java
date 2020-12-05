@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -19,7 +20,8 @@ public class AccountCreationStep2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_creation_step2);
-
+        String name = getIntent().getStringExtra("name");
+        Log.d("name", name);
         backButton = (ImageButton) findViewById(R.id.accountCreationBackButton2);
 
         backButton.setOnClickListener(e -> {
@@ -29,7 +31,11 @@ public class AccountCreationStep2Activity extends AppCompatActivity {
         ageField = (EditText) findViewById(R.id.ageField);
         nextButton = (Button) findViewById(R.id.question2NextButton);
         nextButton.setOnClickListener(e -> {
-            if(validateAge()){startActivity(new Intent(getApplicationContext(), AccountCreationStep3Activity.class));
+            if(validateAge()){
+                Intent intent = new Intent(getApplicationContext(), AccountCreationStep3Activity.class);
+                intent.putExtra("name", name);
+                intent.putExtra("age", Integer.parseInt(ageField.getText().toString().trim()));
+                startActivity(intent);
             }
             else
                 ageField.setError("Age is too young.");
