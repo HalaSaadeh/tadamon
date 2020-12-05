@@ -61,7 +61,7 @@
             android:id="@+id/userProfilePicture"
             android:layout_width="@dimen/imageRadius"
             android:layout_height="@dimen/imageRadius"
-            android:src="@drawable/user"
+            android:src="@drawable/ic_placeholder"
             app:civ_border_width="1dp"
             app:civ_border_color="@color/greyPrime"
             android:layout_gravity="center_horizontal"

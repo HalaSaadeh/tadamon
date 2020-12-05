@@ -253,7 +253,7 @@
                                 android:id="@+id/donor1"
                                 android:layout_width="@dimen/iconRadius"
                                 android:layout_height="@dimen/iconRadius"
-                                android:src="@drawable/user"
+                                android:src="@drawable/ic_placeholder"
                                 app:civ_border_width="1dp"
                                 app:civ_border_color="@color/greyPrime"/>
 
@@ -261,7 +261,7 @@
                                 android:id="@+id/donor2"
                                 android:layout_width="@dimen/iconRadius"
                                 android:layout_height="@dimen/iconRadius"
-                                android:src="@drawable/user"
+                                android:src="@drawable/ic_placeholder"
                                 app:civ_border_width="1dp"
                                 app:civ_border_color="@color/greyPrime"/>
 
@@ -269,7 +269,7 @@
                                 android:id="@+id/donor3"
                                 android:layout_width="@dimen/iconRadius"
                                 android:layout_height="@dimen/iconRadius"
-                                android:src="@drawable/user"
+                                android:src="@drawable/ic_placeholder"
                                 app:civ_border_width="1dp"
                                 app:civ_border_color="@color/greyPrime"/>
 
@@ -277,7 +277,7 @@
                                 android:id="@+id/donor4"
                                 android:layout_width="@dimen/iconRadius"
                                 android:layout_height="@dimen/iconRadius"
-                                android:src="@drawable/user"
+                                android:src="@drawable/ic_placeholder"
                                 app:civ_border_width="1dp"
                                 app:civ_border_color="@color/greyPrime"/>
 
@@ -285,7 +285,7 @@
                                 android:id="@+id/donor5"
                                 android:layout_width="@dimen/iconRadius"
                                 android:layout_height="@dimen/iconRadius"
-                                android:src="@drawable/user"
+                                android:src="@drawable/ic_placeholder"
                                 app:civ_border_width="1dp"
                                 app:civ_border_color="@color/greyPrime"/>
 
@@ -345,7 +345,7 @@
                                 android:id="@+id/volunteer1"
                                 android:layout_width="@dimen/iconRadius"
                                 android:layout_height="@dimen/iconRadius"
-                                android:src="@drawable/user"
+                                android:src="@drawable/ic_placeholder"
                                 app:civ_border_width="1dp"
                                 app:civ_border_color="@color/greyPrime"/>
 
@@ -353,7 +353,7 @@
                                 android:id="@+id/volunteer2"
                                 android:layout_width="@dimen/iconRadius"
                                 android:layout_height="@dimen/iconRadius"
-                                android:src="@drawable/user"
+                                android:src="@drawable/ic_placeholder"
                                 app:civ_border_width="1dp"
                                 app:civ_border_color="@color/greyPrime"/>
 
@@ -361,7 +361,7 @@
                                 android:id="@+id/volunteer3"
                                 android:layout_width="@dimen/iconRadius"
                                 android:layout_height="@dimen/iconRadius"
-                                android:src="@drawable/user"
+                                android:src="@drawable/ic_placeholder"
                                 app:civ_border_width="1dp"
                                 app:civ_border_color="@color/greyPrime"/>
 
@@ -369,7 +369,7 @@
                                 android:id="@+id/volunteer4"
                                 android:layout_width="@dimen/iconRadius"
                                 android:layout_height="@dimen/iconRadius"
-                                android:src="@drawable/user"
+                                android:src="@drawable/ic_placeholder"
                                 app:civ_border_width="1dp"
                                 app:civ_border_color="@color/greyPrime"/>
 
@@ -377,7 +377,7 @@
                                 android:id="@+id/volunteer5"
                                 android:layout_width="@dimen/iconRadius"
                                 android:layout_height="@dimen/iconRadius"
-                                android:src="@drawable/user"
+                                android:src="@drawable/ic_placeholder"
                                 app:civ_border_width="1dp"
                                 app:civ_border_color="@color/greyPrime"/>
 
