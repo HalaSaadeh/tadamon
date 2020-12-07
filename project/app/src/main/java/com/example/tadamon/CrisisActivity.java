@@ -50,8 +50,16 @@ public class CrisisActivity extends AppCompatActivity {
         goToDonateScreenButton = findViewById(R.id.donateButtonCrisisActivity);
         goToVolunteerScreenButton = findViewById(R.id.volunteerButtonCrisisActivity);
 
-        goToDonateScreenButton.setOnClickListener(e -> startActivity(new Intent(this, DonationScreenActivity.class)));
-        goToVolunteerScreenButton.setOnClickListener(e -> startActivity(new Intent(this, VolunteerScreenActivity.class)));
+        goToDonateScreenButton.setOnClickListener(e -> {
+            Intent intent = new Intent(this, DonationScreenActivity.class);
+            intent.putExtra("id", getIntent().getStringExtra("id"));
+            startActivity(intent);
+        });
+        goToVolunteerScreenButton.setOnClickListener(e -> {
+            Intent intent = new Intent(this, VolunteerScreenActivity.class);
+            intent.putExtra("id", getIntent().getStringExtra("id"));
+            startActivity(intent);
+        });
 
         crisisTitle = findViewById(R.id.crisisTitleCrisisActivity);
         crisisDaysLeft = findViewById(R.id.daysLeftCrisisActivity);
