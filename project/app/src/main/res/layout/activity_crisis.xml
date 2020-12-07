@@ -216,7 +216,6 @@
                             android:layout_height="2dp"
                             android:layout_margin="15dp"
                             android:indeterminateTintMode="src_atop"
-                            android:progress="74"
                             android:progressBackgroundTint="@color/greyPrime"
                             android:progressTint="@color/orangePrime" />
 
