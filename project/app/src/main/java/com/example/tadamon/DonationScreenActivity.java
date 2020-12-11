@@ -10,18 +10,20 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+
 public class DonationScreenActivity extends AppCompatActivity {
 
     private Button selectorOne, selectorTwo, selectorThree, selectorFour;
     private Button numpad1, numpad2, numpad3, numpad4, numpad5,
-                    numpad6, numpad7, numpad8, numpad9, numpaddot, numpad0;
+                    numpad6, numpad7, numpad8, numpad9, numpadtriplezeroes, numpad0;
 
     private ImageButton numpadBackspace;
     private ImageView backButton, enterButton;
 
     private TextView amount;
 
-    private double donated= 0;
+    private long donated = 0l;
 
     boolean selectorMode = true;
 
@@ -45,7 +47,7 @@ public class DonationScreenActivity extends AppCompatActivity {
         numpad7 = findViewById(R.id.numpad7);
         numpad8 = findViewById(R.id.numpad8);
         numpad9 = findViewById(R.id.numpad9);
-        numpaddot = findViewById(R.id.numpaddot);
+        numpadtriplezeroes = findViewById(R.id.numpadtriplezeroes);
         numpadBackspace = findViewById(R.id.numpadBackspace);
 
         backButton = findViewById(R.id.backButtonDonation);
@@ -64,7 +66,7 @@ public class DonationScreenActivity extends AppCompatActivity {
         numpad7.setOnClickListener(this::handleNumpadClick);
         numpad8.setOnClickListener(this::handleNumpadClick);
         numpad9.setOnClickListener(this::handleNumpadClick);
-        numpaddot.setOnClickListener(this::handleNumpadClick);
+        numpadtriplezeroes.setOnClickListener(this::handleNumpadClick);
         numpadBackspace.setOnClickListener(this::handleNumpadClick);
 
         selectorOne.setOnClickListener(this::handleSelectorClick);
@@ -73,7 +75,10 @@ public class DonationScreenActivity extends AppCompatActivity {
         selectorFour.setOnClickListener(this::handleSelectorClick);
 
         enterButton.setOnClickListener(e -> {
-            donated = Double.parseDouble(amount.getText().toString());
+            String amountStr = amount.getText().toString();
+            amountStr = amountStr.replaceAll(",", "");
+            donated = Long.parseLong(amountStr);
+            Log.d("TAG", "" + donated);
         });
 
     }
@@ -81,18 +86,21 @@ public class DonationScreenActivity extends AppCompatActivity {
     public void handleNumpadClick(View src){
         if(selectorMode) {
             selectorMode = false;
-            amount.setText("");
+            if(src.getId() != R.id.numpadBackspace)
+                amount.setText("");
         }
 
         String prevAmount = amount.getText().toString();
+
+        prevAmount = prevAmount.replaceAll(",", "");
         switch(src.getId()){
             case R.id.numpad0:
                 if(!prevAmount.equals("0"))
                     prevAmount += '0';
                 break;
-            case R.id.numpaddot:
-                if(prevAmount.indexOf('.') == -1)
-                    prevAmount += '.';
+            case R.id.numpadtriplezeroes:
+                if(!prevAmount.equals("0"))
+                    prevAmount += "000";
                 break;
             case R.id.numpadBackspace:
                 prevAmount = prevAmount.substring(0, prevAmount.length()-1);
@@ -101,7 +109,13 @@ public class DonationScreenActivity extends AppCompatActivity {
                 prevAmount += ((Button) src).getText().toString();
                 break;
         }
-        amount.setText(prevAmount);
+
+        DecimalFormat formatter = new DecimalFormat("#,###");
+        if(prevAmount.length() > 0)
+            prevAmount = formatter.format(Long.parseLong(prevAmount));
+        else
+            prevAmount = "0";
+        amount.setText("" + prevAmount);
     }
 
     public void handleSelectorClick(View src){
