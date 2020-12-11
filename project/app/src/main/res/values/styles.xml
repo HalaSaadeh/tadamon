@@ -4,4 +4,12 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">12%</item>
     </style>
+
+    <style name="ChipAppearance">ChipAppearance
+        <item name="android:textSize">@dimen/mediumTextSizeVar</item>
+        <item name="fontFamily">@font/poppins</item>
+        <item name="color">@color/black</item>
+
+    </style>
+
 </resources>
