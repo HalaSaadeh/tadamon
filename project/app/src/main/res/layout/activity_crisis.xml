@@ -419,12 +419,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:flexDirection="row"
-                        app:justifyContent="space_between"
+                        app:justifyContent="space_evenly"
                         app:alignItems="center"
                         android:layout_marginTop="10dp">
 
                         <Button
-                            android:layout_width="@dimen/mediumButtonWidthAlt"
+                            android:layout_width="120dp"
                             android:layout_height="@dimen/buttonHeightAlt"
                             android:background="@drawable/app_button_bg"
                             android:text="Donate"
@@ -435,18 +435,7 @@
                             android:textSize="@dimen/smallTextSize"/>
 
                         <Button
-                            android:layout_width="@dimen/mediumButtonWidthAlt"
-                            android:layout_height="@dimen/buttonHeightAlt"
-                            android:background="@drawable/app_button_bg"
-                            android:text="Stats"
-                            android:id="@+id/statsButtonCrisisActivity"
-                            android:textAllCaps="false"
-                            android:fontFamily="@font/poppins_light"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/smallTextSize"/>
-
-                        <Button
-                            android:layout_width="@dimen/mediumButtonWidthAlt"
+                            android:layout_width="120dp"
                             android:layout_height="@dimen/buttonHeightAlt"
                             android:background="@drawable/app_button_bg"
                             android:text="Volunteer"
