@@ -13,11 +13,15 @@ import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.flexbox.AlignItems;
+import com.google.android.flexbox.FlexboxLayout;
+import com.google.android.flexbox.JustifyContent;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
 
@@ -73,9 +77,18 @@ public class SearchResultsActivity extends AppCompatActivity {
 
     }
 
-    public MaterialCardView createEventCard(String id, String title, String imgSrc) {
+    public FlexboxLayout createEventCard(String id, String title, String imgSrc) {
         int margin = dpToPx(8);
         int padding = dpToPx(16);
+
+        FlexboxLayout flexboxLayout = new FlexboxLayout(this);
+        flexboxLayout.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        ));
+
+        flexboxLayout.setJustifyContent(JustifyContent.CENTER);
+        flexboxLayout.setAlignItems(AlignItems.CENTER);
 
         MaterialCardView card = new MaterialCardView(this);
         //card.setId(id);
@@ -87,6 +100,7 @@ public class SearchResultsActivity extends AppCompatActivity {
         ));
         ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) card.getLayoutParams();
         marginLayoutParams.setMargins(margin, margin, margin, margin);
+
         card.setElevation(8);
 
         LinearLayout linearLayout = new LinearLayout(this);
@@ -132,6 +146,8 @@ public class SearchResultsActivity extends AppCompatActivity {
         linearLayout.addView(innerLinearLayout);
         card.addView(linearLayout);
 
+        flexboxLayout.addView(card);
+
         // TODO -> NAVIGATE TO APPROPRIATE SCREEN WITH THE RIGHT INFO PULLED FROM THE DB
         card.setOnClickListener(e -> {
             Intent intent = new Intent(this, CrisisActivity.class);
@@ -139,7 +155,7 @@ public class SearchResultsActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        return card;
+        return flexboxLayout;
     }
 
     public static int dpToPx(int dp) {
