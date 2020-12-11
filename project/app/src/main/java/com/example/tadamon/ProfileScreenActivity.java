@@ -38,6 +38,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 import java.util.Map;
 
 public class ProfileScreenActivity extends AppCompatActivity {
@@ -110,9 +111,16 @@ public class ProfileScreenActivity extends AppCompatActivity {
                         userName.setText(name);
                         String bio = (String) data.get("bio");
                         userBio.setText(bio);
-                        String donations = data.get("donated_count") +" Donations";
+                        String donations, volunteers;
+                        if (data.get("donated_in") == null){
+                            donations = "0" +" Donations";}
+                        else{
+                            donations = ((List<String>) data.get("donated_in")).size() +" Donations";}
                         userDonations.setText(donations);
-                        String volunteers = data.get("volunteered_count") +" Volunteering Work";
+                        if (data.get("volunteered_in") == null){
+                            volunteers = "0" +" Volunteering Work";}
+                        else{
+                            volunteers =  ((List<String>) data.get("volunteered_in")).size()+" Volunteering Work";}
                         userVolunteerings.setText(volunteers);
                         String photoUrl = (String) data.get("profile_photo_url");
                         setProfilePic(photoUrl, userProfilePicture);

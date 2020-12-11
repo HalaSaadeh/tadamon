@@ -36,6 +36,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import org.w3c.dom.Text;
 
@@ -203,10 +205,22 @@ public class HomeScreenActivity extends AppCompatActivity implements PopUpMessag
                         String name = (String) data.get("name");
                         welcomeLabel.setText("Hi, " + name);
                         List<String> volunteered_in = (List<String>) data.get("volunteered_in");
+                        if (!(volunteered_in ==null)){
                         for(String vol_key : volunteered_in){
-                            loadEventData(vol_key);
-                        }
-
+                            loadEventData(vol_key, listOfUserCards);
+                        }}
+                        db.collection("crisis_events").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                        if(volunteered_in ==null)
+                                            loadEventData(document.getId(), listOfVolunteeringCards);
+                                        else if(!volunteered_in.contains(document.getId()))
+                                            loadEventData(document.getId(), listOfVolunteeringCards);
+                                    }
+                                } }
+                        });
                     }
                 } else {
                     Toast.makeText(HomeScreenActivity.this, "An error occurred. Please try again.",
@@ -215,7 +229,7 @@ public class HomeScreenActivity extends AppCompatActivity implements PopUpMessag
             }
         });
     }
-    private void loadEventData(String vol_key){
+    private void loadEventData(String vol_key, LinearLayout listOfCards) {
         DocumentReference eventRef = db.collection("crisis_events").document(vol_key);
         eventRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -226,7 +240,7 @@ public class HomeScreenActivity extends AppCompatActivity implements PopUpMessag
                         Map<String, Object> data = document.getData();
                         String eventname = (String) data.get("eventname");
                         String cover_photo_url = (String) data.get("photo_url");
-                        listOfUserCards.addView(createEventCard(vol_key, eventname, cover_photo_url));
+                        listOfCards.addView(createEventCard(vol_key, eventname, cover_photo_url));
                     }
                 }}});
     }

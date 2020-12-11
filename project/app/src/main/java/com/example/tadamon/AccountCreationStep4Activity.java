@@ -132,8 +132,6 @@ public class AccountCreationStep4Activity extends AppCompatActivity implements P
 
     private void addDoc() {
 
-        account.put("donated_count", 0);
-        account.put("volunteered_count", 0);
         account.put("bio", bio.getText().toString());
 
         // Get the current signed in user ID
