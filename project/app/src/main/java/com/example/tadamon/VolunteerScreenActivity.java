@@ -3,6 +3,7 @@ package com.example.tadamon;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -10,6 +11,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,6 +21,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.IOException;
@@ -38,10 +42,17 @@ public class VolunteerScreenActivity extends AppCompatActivity {
     private Button volunteerButton;
     FirebaseFirestore db = FirebaseFirestore.getInstance(); // get Instance of the Cloud Firestore database
 
+    String userid, id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_volunteer_screen);
+
+        // Get the current signed in user ID
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        userid = preferences.getString("ID", null);
+
 
         crisisImage = findViewById(R.id.bgImageDonation);
         backButton = findViewById(R.id.backButtonDonation);
@@ -56,7 +67,12 @@ public class VolunteerScreenActivity extends AppCompatActivity {
         repBio = findViewById(R.id.repDescription);
 
         volunteerButton = findViewById(R.id.volunteerButtonVolunteeringActivity);
-        populateCrisis(getIntent().getStringExtra("id"));
+        volunteerButton.setOnClickListener(e -> {volunteerForEvent();});
+        id = getIntent().getStringExtra("id");
+        populateCrisis(id);
+
+        // Check if volunteered
+        checkIfVolunteered();
     }
     private void populateCrisis(String id){
         DocumentReference eventRef = db.collection("crisis_events").document(id);
@@ -104,4 +120,46 @@ public class VolunteerScreenActivity extends AppCompatActivity {
             }
         }.execute();
     }
-}
+
+    private void volunteerForEvent(){
+        DocumentReference userRef = db.collection("volunteers").document(userid);
+        userRef.update("volunteered_in", FieldValue.arrayUnion(id));
+        DocumentReference crisisRef = db.collection("crisis_events").document(id);
+        crisisRef.update("volunteers", FieldValue.arrayUnion(userid));
+        userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Map<String, Object> data = document.getData();
+                        String profile_url = (String) data.get("profile_photo_url");
+                        crisisRef.update("volunteerphotos", FieldValue.arrayUnion(profile_url));
+                        // ADD VOL ANIMATION HERE
+                    }
+                }
+            }});
+
+
+    }
+    private void checkIfVolunteered(){
+        DocumentReference crisisRef = db.collection("crisis_events").document(id);
+        crisisRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Map<String, Object> data = document.getData();
+                        List<String> volunteers = (List<String>) data.get("volunteers");
+                        Log.d("hi", "hi");
+                        if (volunteers.contains(userid)){
+                            Log.d("already", "already voled");
+                            // ADD GRAYING HERE
+                        }
+
+                    }}}});
+    }
+
+    }
+
