@@ -51,19 +51,9 @@ public class DonationScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donation_screen);
 
-        bgImage = (ImageView) findViewById(R.id.bgImageCrisis);
+        bgImage = (ImageView) findViewById(R.id.bgImageDonation);
         String id = getIntent().getStringExtra("id");
         Log.d("id", id);
-        /*DocumentReference eventRef = db.collection("crisis_events").document(id);
-        eventRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        Map<String, Object> data = document.getData();
-                        String cover_photo_url = (String) data.get("photo_url");
-                        setPic(cover_photo_url, bgImage);}}}});*/
 
         selectorOne = findViewById(R.id.selectedOneButton);
         selectorTwo = findViewById(R.id.selectedTwoButton);
@@ -113,6 +103,18 @@ public class DonationScreenActivity extends AppCompatActivity {
             donated = Long.parseLong(amountStr);
             Log.d("TAG", "" + donated);
         });
+
+        DocumentReference eventRef = db.collection("crisis_events").document(id);
+        eventRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Map<String, Object> data = document.getData();
+                        String cover_photo_url = (String) data.get("photo_url");
+                        setPic(cover_photo_url, bgImage);}}}});
+
 
     }
 
