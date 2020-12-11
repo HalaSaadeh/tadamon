@@ -31,6 +31,7 @@ import com.google.android.material.chip.ChipDrawable;
 import com.google.android.material.chip.ChipGroup;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.w3c.dom.Text;
@@ -48,7 +49,7 @@ public class SearchScreenActivity extends AppCompatActivity {
     private ChipGroup tagsGroup;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance(); // get Instance of the Cloud Firestore database
-
+    String userid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,7 +92,10 @@ public class SearchScreenActivity extends AppCompatActivity {
         catHealth.setOnClickListener(e->{searchByCat("Health Crisis");});
         catFinancial.setOnClickListener(e->{searchByCat("Financial Crisis");});
         catNatural.setOnClickListener(e->{searchByCat("Natural Crisis");});
-        catHealth.setOnClickListener(e->{searchByCat("Health Crisis");});
+        catSocial.setOnClickListener(e->{searchByCat("Social Crisis");});
+        catTech.setOnClickListener(e->{searchByCat("Tech Crisis");});
+        catWildfires.setOnClickListener(e->{searchByCat("Wildfires");});
+        catWinter.setOnClickListener(e->{searchByCat("Winter Crisis");});
 
 
     }
@@ -130,7 +134,8 @@ public class SearchScreenActivity extends AppCompatActivity {
 
         chip.setOnCloseIconClickListener(e -> {
             ((ViewManager) chip.getParent()).removeView(chip);
-            Log.d("TAG", "This search has been deleted");
+            DocumentReference userRef = db.collection("volunteers").document(userid);
+            userRef.update("searched", FieldValue.arrayRemove(msg));
         });
 
         chip.setOnClickListener(e -> {
@@ -148,7 +153,7 @@ public class SearchScreenActivity extends AppCompatActivity {
     }
     private void populateTagGroup(){
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String userid = preferences.getString("ID", null); // get UID currently stored in SharedPreferences
+        userid = preferences.getString("ID", null); // get UID currently stored in SharedPreferences
         // this UID is the key of the document that references this user in the database
         DocumentReference docRef = db.collection("volunteers").document(userid);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -167,6 +172,11 @@ public class SearchScreenActivity extends AppCompatActivity {
                     }}}});
     }
     private void searchByCat(String cat){
-
+        DocumentReference userRef = db.collection("volunteers").document(userid);
+        userRef.update("searched", FieldValue.arrayUnion(cat));
+        Intent intent = new Intent(this, SearchResultsActivity.class);
+        intent.putExtra("criteria", cat);
+        intent.putExtra("keywords", false);
+        startActivity(intent);
     }
 }
