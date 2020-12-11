@@ -105,11 +105,11 @@ public class CrisisActivity extends AppCompatActivity {
                         String cover_photo_url = (String) data.get("photo_url");
                         setPic(cover_photo_url, coverPhoto);
                         crisisDesc.setText((String) data.get("description"));
-                        long amountneeded = (long) data.get("amountneeded");
+                        Double amountneeded = Double.valueOf(""+data.get("amountneeded"));
                         neededDonations.setText( amountneeded + "M LBP");
-                        long amountraised = (long) data.get("amountraised");
+                        Double amountraised = Double.valueOf(""+data.get("amountraised"));
                         totalDonated.setText( amountraised + "M LBP");
-                        progressBar.setProgress((int) (amountraised/amountneeded * 100));
+                        progressBar.setProgress((int) Math.floor(amountraised/amountneeded * 100));
                         List<String> donors = (List<String>) data.get("donorphotos");
                         donationCount.setText(""+donors.size());
                         if (donors.size()>5)

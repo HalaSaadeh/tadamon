@@ -1,7 +1,14 @@
 package com.example.tadamon;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,7 +17,18 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.DecimalFormat;
+import java.util.Map;
 
 public class DonationScreenActivity extends AppCompatActivity {
 
@@ -19,18 +37,33 @@ public class DonationScreenActivity extends AppCompatActivity {
                     numpad6, numpad7, numpad8, numpad9, numpadtriplezeroes, numpad0;
 
     private ImageButton numpadBackspace;
-    private ImageView backButton, enterButton;
+    private ImageView backButton, enterButton, bgImage;
 
     private TextView amount;
 
     private long donated = 0l;
 
     boolean selectorMode = true;
+    FirebaseFirestore db = FirebaseFirestore.getInstance(); // get Instance of the Cloud Firestore database
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donation_screen);
+
+        bgImage = (ImageView) findViewById(R.id.bgImageCrisis);
+        String id = getIntent().getStringExtra("id");
+        Log.d("id", id);
+        /*DocumentReference eventRef = db.collection("crisis_events").document(id);
+        eventRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Map<String, Object> data = document.getData();
+                        String cover_photo_url = (String) data.get("photo_url");
+                        setPic(cover_photo_url, bgImage);}}}});*/
 
         selectorOne = findViewById(R.id.selectedOneButton);
         selectorTwo = findViewById(R.id.selectedTwoButton);
@@ -121,5 +154,27 @@ public class DonationScreenActivity extends AppCompatActivity {
     public void handleSelectorClick(View src){
         selectorMode = true;
         amount.setText(((Button) src).getText());
+    }
+    private static void setPic(String urlImage, ImageView imageView){
+        new AsyncTask<String, Integer, Drawable>(){
+            @Override
+            protected Drawable doInBackground(String... strings) {
+                Bitmap pic = null;
+                try {
+                    HttpURLConnection connection = (HttpURLConnection) new URL(urlImage).openConnection();
+                    connection.connect();
+                    InputStream input = connection.getInputStream();
+                    pic = BitmapFactory.decodeStream(input);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return new BitmapDrawable(Resources.getSystem(), pic);
+            }
+            protected void onPostExecute(Drawable result) {
+
+                //Add image to ImageView
+                imageView.setImageDrawable(result);
+            }
+        }.execute();
     }
 }
