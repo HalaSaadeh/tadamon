@@ -88,9 +88,6 @@ public class ProfileScreenActivity extends AppCompatActivity {
             return false;
         });
 
-        listOfDonations.addView(createEventCard(1, "Event", R.drawable.bg_img));
-        listOfVolunteerings.addView(createEventCard(1, "Event", R.drawable.bg_img));
-
     }
 
     private void populateProfile(){
@@ -115,12 +112,18 @@ public class ProfileScreenActivity extends AppCompatActivity {
                         if (data.get("donated_in") == null){
                             donations = "0" +" Donations";}
                         else{
-                            donations = ((List<String>) data.get("donated_in")).size() +" Donations";}
+                            donations = ((List<String>) data.get("donated_in")).size() +" Donations";
+                            for (String donation : (List<String>) data.get("donated_in"))
+                                loadEventData(donation, listOfDonations);
+                            }
                         userDonations.setText(donations);
                         if (data.get("volunteered_in") == null){
                             volunteers = "0" +" Volunteering Work";}
                         else{
-                            volunteers =  ((List<String>) data.get("volunteered_in")).size()+" Volunteering Work";}
+                            volunteers =  ((List<String>) data.get("volunteered_in")).size()+" Volunteering Work";
+                            for (String donation : (List<String>) data.get("volunteered_in"))
+                                loadEventData(donation, listOfVolunteerings);
+                        }
                         userVolunteerings.setText(volunteers);
                         String photoUrl = (String) data.get("profile_photo_url");
                         setProfilePic(photoUrl, userProfilePicture);
@@ -133,69 +136,6 @@ public class ProfileScreenActivity extends AppCompatActivity {
         });
 
 
-    }
-
-    public MaterialCardView createEventCard(int id, String title, int imgSrc) {
-        int margin = dpToPx(8);
-        int padding = dpToPx(16);
-
-        MaterialCardView card = new MaterialCardView(this);
-        card.setId(id);
-
-        card.setLayoutParams(new LinearLayout.LayoutParams(
-                (int) getResources().getDimension(R.dimen.largeButtonWidth),
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        ));
-        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) card.getLayoutParams();
-        marginLayoutParams.setMargins(margin, margin, margin, margin);
-        card.setElevation(8);
-
-        LinearLayout linearLayout = new LinearLayout(this);
-        linearLayout.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        ));
-        linearLayout.setOrientation(LinearLayout.VERTICAL);
-
-        ImageView imageView = new ImageView(this);
-        imageView.setLayoutParams(new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                dpToPx(200)
-        ));
-        imageView.setImageDrawable(getResources().getDrawable(imgSrc, getApplicationContext().getTheme()));
-        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-
-        LinearLayout innerLinearLayout = new LinearLayout(this);
-        innerLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                dpToPx(60)
-        ));
-        innerLinearLayout.setOrientation(LinearLayout.VERTICAL);
-        innerLinearLayout.setPadding(padding, padding, padding, padding);
-
-
-        TextView text = new TextView(this);
-        text.setLayoutParams(new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-        ));
-        text.setText(title);
-        text.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.largeTextSize));
-        text.setTextColor(getResources().getColor(R.color.black, getApplicationContext().getTheme()));
-        Typeface typeface = ResourcesCompat.getFont(this, R.font.poppins_light);
-        text.setTypeface(typeface);
-
-        innerLinearLayout.addView(text);
-        linearLayout.addView(imageView);
-        linearLayout.addView(innerLinearLayout);
-        card.addView(linearLayout);
-
-        // TODO -> NAVIGATE TO APPROPRIATE SCREEN WITH THE RIGHT INFO PULLED FROM THE DB
-        card.setOnClickListener(e -> {
-            startActivity(new Intent(this, CrisisActivity.class));
-        });
-
-        return card;
     }
 
     public static int dpToPx(int dp) {
@@ -227,5 +167,110 @@ public class ProfileScreenActivity extends AppCompatActivity {
                 imageView.setImageDrawable(result);
             }
         }.execute();
+    }
+    private void loadEventData(String vol_key, LinearLayout listOfCards) {
+        DocumentReference eventRef = db.collection("crisis_events").document(vol_key);
+        eventRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Map<String, Object> data = document.getData();
+                        String eventname = (String) data.get("eventname");
+                        String cover_photo_url = (String) data.get("photo_url");
+                        listOfCards.addView(createEventCard(vol_key, eventname, cover_photo_url));
+                    }
+                }}});
+    }
+    private static void setPic(String urlImage, ImageView imageView){
+        new AsyncTask<String, Integer, Drawable>(){
+            @Override
+            protected Drawable doInBackground(String... strings) {
+                Bitmap pic = null;
+                try {
+                    HttpURLConnection connection = (HttpURLConnection) new URL(urlImage).openConnection();
+                    connection.connect();
+                    InputStream input = connection.getInputStream();
+                    pic = BitmapFactory.decodeStream(input);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return new BitmapDrawable(Resources.getSystem(), pic);
+            }
+            protected void onPostExecute(Drawable result) {
+
+                //Add image to ImageView
+                imageView.setImageDrawable(result);
+            }
+        }.execute();
+    }
+    public MaterialCardView createEventCard(String id, String title, String imgSrc) {
+        int margin = dpToPx(8);
+        int padding = dpToPx(16);
+
+        MaterialCardView card = new MaterialCardView(this);
+        //card.setId(id);
+        card.setTag(id);
+
+        card.setLayoutParams(new LinearLayout.LayoutParams(
+                (int) getResources().getDimension(R.dimen.largeButtonWidth),
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        ));
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) card.getLayoutParams();
+        marginLayoutParams.setMargins(margin, margin, margin, margin);
+        card.setElevation(8);
+
+        LinearLayout linearLayout = new LinearLayout(this);
+        linearLayout.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        ));
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
+
+        ImageView imageView = new ImageView(this);
+        imageView.setLayoutParams(new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                dpToPx(200)
+        ));
+
+        //imageView.setImageDrawable(getResources().getDrawable(imgSrc, getApplicationContext().getTheme()));
+        setPic(imgSrc, imageView);
+        setPic(imgSrc, imageView);
+        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+
+        LinearLayout innerLinearLayout = new LinearLayout(this);
+        innerLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                dpToPx(60)
+        ));
+        innerLinearLayout.setOrientation(LinearLayout.VERTICAL);
+        innerLinearLayout.setPadding(padding, padding, padding, padding);
+
+
+        TextView text = new TextView(this);
+        text.setLayoutParams(new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+        ));
+        text.setText(title);
+        text.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.largeTextSize));
+        text.setTextColor(getResources().getColor(R.color.black, getApplicationContext().getTheme()));
+        Typeface typeface = ResourcesCompat.getFont(this, R.font.poppins_light);
+        text.setTypeface(typeface);
+
+        innerLinearLayout.addView(text);
+        linearLayout.addView(imageView);
+        linearLayout.addView(innerLinearLayout);
+        card.addView(linearLayout);
+
+        // TODO -> NAVIGATE TO APPROPRIATE SCREEN WITH THE RIGHT INFO PULLED FROM THE DB
+        card.setOnClickListener(e -> {
+            Intent intent = new Intent(this, CrisisActivity.class);
+            intent.putExtra("id", card.getTag().toString());
+            startActivity(intent);
+        });
+
+        return card;
     }
 }
