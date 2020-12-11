@@ -7,181 +7,159 @@
     android:background="@color/white"
     tools:context=".AccountCreationStep4Activity">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.953"
-        app:srcCompat="@drawable/ic_travel4" />
-
-    <EditText
-        android:id="@+id/bioField"
-        style="@style/Widget.AppCompat.EditText"
-        android:layout_width="@dimen/largeButtonWidth"
-        android:layout_height="100dp"
-        android:background="@drawable/app_textfield_bg"
-        android:ems="10"
-        android:fontFamily="@font/poppins_light"
-        android:hint="Tell us more about you"
-        android:inputType="textPersonName"
-        android:paddingLeft="@dimen/inner_frame_layout_padding"
-        android:textAlignment="viewStart"
-        android:textColor="@color/black"
-        android:textColorHighlight="@color/black"
-        android:textSize="@dimen/mediumTextSize"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.648" />
-
-    <Button
-        android:id="@+id/finishButton"
-        android:layout_width="@dimen/largeButtonWidth"
-        android:layout_height="@dimen/buttonHeight"
-        android:background="@drawable/app_button_bg"
-        android:fontFamily="@font/poppins"
-        android:text="Finish"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.759" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        android:fontFamily="@font/poppins"
+        android:text="Account Creation"
+        android:textColor="@color/black"
+        android:textSize="@dimen/largeTextSizeVar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="40dp">
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:justifyContent="space_between"
+            app:flexDirection="row"
+            app:alignItems="center"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/buttonHeightAltSmall"
+                android:fontFamily="@font/poppins_medium"
+                android:text="STEP 4 OF 4"
+                android:textColor="@color/black"
+                android:textSize="@dimen/smallTextSize" />
+
+            <Button
+                android:id="@+id/skipButton"
+                android:layout_width="65dp"
+                android:layout_height="25dp"
+                android:background="@drawable/app_button_bg"
+                android:fontFamily="@font/poppins"
+                android:includeFontPadding="false"
+                android:text="SKIP"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/smallTextSize"
+                android:layout_marginEnd="40dp"/>
+
+        </com.google.android.flexbox.FlexboxLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Customize your profile!"
+            android:textColor="@color/black"
+            android:textSize="@dimen/largeTextSize"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:fontFamily="@font/poppins"
+            android:text="Help us know more about you by adding\na biography, and a profile picture"
+            android:textColor="@color/black"
+            android:textSize="@dimen/smallTextSize"
+            android:layout_marginBottom="20dp" />
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:flexDirection="row"
+            app:justifyContent="center"
+            app:alignItems="flex_start"
+            android:layout_marginBottom="20dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profilePicture"
+                android:layout_width="@dimen/imageRadius"
+                android:layout_height="@dimen/imageRadius"
+                android:src="@drawable/ic_placeholder"
+                app:civ_border_width="1dp"
+                app:civ_border_color="@color/greyPrime" />
+
+            <ImageButton
+                android:id="@+id/changePictureButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                app:srcCompat="@drawable/ic_select_picture" />
+
+        </com.google.android.flexbox.FlexboxLayout>
+
+        <EditText
+            android:id="@+id/bioField"
+            android:layout_width="@dimen/largeButtonWidth"
+            android:layout_height="100dp"
+            android:background="@drawable/app_textfield_bg"
+            android:fontFamily="@font/poppins_light"
+            android:hint="Tell us more about you"
+            android:inputType="textPersonName"
+            android:paddingLeft="@dimen/inner_frame_layout_padding"
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/black"
+            android:textSize="@dimen/mediumTextSize"
+            android:layout_marginBottom="20dp" />
+
+
+        <Button
+            android:id="@+id/finishButton"
+            android:layout_width="@dimen/largeButtonWidth"
+            android:layout_height="@dimen/buttonHeight"
+            android:background="@drawable/app_button_bg"
+            android:fontFamily="@font/poppins"
+            android:text="Finish"
+            android:textColor="@color/white"
+            android:layout_marginBottom="20dp"/>
+
+    </LinearLayout>
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_light"
         android:text="By continuing, you agree to accept our\nPrivacy Policy and Terms of Service."
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textColorLink="@color/maroonPrime"
         android:textSize="@dimen/verySmallTextSize"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.835" />
+        android:layout_gravity="center_horizontal"/>
 
-    <TextView
-        android:id="@+id/question4Description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/black"
-        android:clickable="true"
-        android:focusable="true"
-        android:fontFamily="@font/poppins"
-        android:text="Help us know more about you by adding\na biography, and a profile picture"
-        android:textColor="@color/black"
-        android:textSize="@dimen/smallTextSize"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.226"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.292" />
+    <com.google.android.flexbox.FlexboxLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:justifyContent="center"
+        app:alignItems="flex_end">
 
-    <TextView
-        android:id="@+id/question4Label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/black"
-        android:clickable="true"
-        android:focusable="true"
-        android:fontFamily="@font/poppins_bold"
-        android:text="Customize your profile!"
-        android:textColor="@color/black"
-        android:textSize="@dimen/largeTextSize"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.237"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.22" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_travel4"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            />
 
-    <TextView
-        android:id="@+id/step4Label"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/buttonHeightAltSmall"
-        android:backgroundTint="@color/black"
-        android:clickable="true"
-        android:focusable="true"
-        android:fontFamily="@font/poppins_medium"
-        android:text="STEP 4 OF 4"
-        android:textColor="@color/black"
-        android:textSize="@dimen/smallTextSize"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.104"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.181" />
+    </com.google.android.flexbox.FlexboxLayout>
 
-    <Button
-        android:id="@+id/skipButton"
-        android:layout_width="@dimen/smallButtonWidth"
-        android:layout_height="@dimen/buttonHeightAltSmall"
-        android:background="@drawable/app_button_bg"
-        android:fontFamily="@font/poppins"
-        android:includeFontPadding="false"
-        android:text="SKIP"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.893"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.181" />
-
-    <TextView
-        android:id="@+id/accountCreation4Label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/black"
-        android:clickable="true"
-        android:focusable="true"
-        android:fontFamily="@font/poppins"
-        android:text="Account Creation"
-        android:textColor="@color/black"
-        android:textSize="@dimen/largeTextSizeVar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.058" />
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profilePicture"
-        android:layout_width="@dimen/imageRadius"
-        android:layout_height="@dimen/imageRadius"
-        android:src="@drawable/ic_placeholder"
-        app:civ_border_width="1dp"
-        app:civ_border_color="@color/greyPrime"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.434" />
-
-    <ImageButton
-        android:id="@+id/changePictureButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/transparent"
-        app:layout_constraintBottom_toBottomOf="@+id/profilePicture"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/profilePicture"
-        app:layout_constraintTop_toTopOf="@+id/profilePicture"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_select_picture" />
+</LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
