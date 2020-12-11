@@ -16,6 +16,7 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -128,6 +129,7 @@ public class SearchScreenActivity extends AppCompatActivity {
         chip.setCloseIconVisible(true);
 
         chip.setOnCloseIconClickListener(e -> {
+            ((ViewManager) chip.getParent()).removeView(chip);
             Log.d("TAG", "This search has been deleted");
         });
 
