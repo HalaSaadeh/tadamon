@@ -97,7 +97,7 @@ public class SearchScreenActivity extends AppCompatActivity {
         catWildfires.setOnClickListener(e->{searchByCat("Wildfires");});
         catWinter.setOnClickListener(e->{searchByCat("Winter Crisis");});
 
-
+        searchButton.setOnClickListener(e-> {if (searchTextView.getText().toString().length()!=0){searchByWords(searchTextView.getText().toString());}});
     }
 
     @Override
@@ -177,6 +177,14 @@ public class SearchScreenActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SearchResultsActivity.class);
         intent.putExtra("criteria", cat);
         intent.putExtra("keywords", false);
+        startActivity(intent);
+    }
+    private void searchByWords(String words){
+        DocumentReference userRef = db.collection("volunteers").document(userid);
+        userRef.update("searched", FieldValue.arrayUnion(words));
+        Intent intent = new Intent(this, SearchResultsActivity.class);
+        intent.putExtra("criteria", words);
+        intent.putExtra("keywords", true);
         startActivity(intent);
     }
 }
