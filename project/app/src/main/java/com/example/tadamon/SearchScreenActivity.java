@@ -1,14 +1,17 @@
 package com.example.tadamon;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
@@ -18,15 +21,22 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipDrawable;
 import com.google.android.material.chip.ChipGroup;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class SearchScreenActivity extends AppCompatActivity {
 
@@ -35,6 +45,8 @@ public class SearchScreenActivity extends AppCompatActivity {
     private ImageView searchButton;
 
     private ChipGroup tagsGroup;
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance(); // get Instance of the Cloud Firestore database
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,9 +85,8 @@ public class SearchScreenActivity extends AppCompatActivity {
             return false;
         });
 
-        tagsGroup.addView(createChip("tag1", "Search Criteria 1"));
-        tagsGroup.addView(createChip("tag2", "Search Criteria 2"));
-        tagsGroup.addView(createChip("tag3", "Search Criteria 3"));
+        populateTagGroup();
+
     }
 
     @Override
@@ -125,5 +136,25 @@ public class SearchScreenActivity extends AppCompatActivity {
 
     public static int dpToPx(int dp) {
         return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
+    }
+    private void populateTagGroup(){
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String userid = preferences.getString("ID", null); // get UID currently stored in SharedPreferences
+        // this UID is the key of the document that references this user in the database
+        DocumentReference docRef = db.collection("volunteers").document(userid);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Map<String, Object> data = document.getData();
+                        List<String> searches = (List<String>) data.get("searched");
+                        if (searches!=null){
+                            for (String search : searches){
+                                tagsGroup.addView(createChip(search, search));
+                            }
+                        }
+                    }}}});
     }
 }
