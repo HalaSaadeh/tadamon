@@ -3,6 +3,7 @@ package com.example.tadamon;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -10,6 +11,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +23,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.IOException;
@@ -45,15 +48,19 @@ public class DonationScreenActivity extends AppCompatActivity {
 
     boolean selectorMode = true;
     FirebaseFirestore db = FirebaseFirestore.getInstance(); // get Instance of the Cloud Firestore database
-
+    String id;
+    String userid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donation_screen);
 
+        // Get the current signed in user ID
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        userid = preferences.getString("ID", null);
+
         bgImage = (ImageView) findViewById(R.id.bgImageDonation);
-        String id = getIntent().getStringExtra("id");
-        Log.d("id", id);
+        id = getIntent().getStringExtra("id");
 
         selectorOne = findViewById(R.id.selectedOneButton);
         selectorTwo = findViewById(R.id.selectedTwoButton);
@@ -100,7 +107,8 @@ public class DonationScreenActivity extends AppCompatActivity {
             String amountStr = amount.getText().toString();
             amountStr = amountStr.replaceAll(",", "");
             donated = Long.parseLong(amountStr);
-            Log.d("TAG", "" + donated);
+            if (amount.getText().toString()!="")
+                donate(donated);
         });
 
         DocumentReference eventRef = db.collection("crisis_events").document(id);
@@ -177,5 +185,40 @@ public class DonationScreenActivity extends AppCompatActivity {
                 imageView.setImageDrawable(result);
             }
         }.execute();
+    }
+    private void donate(long donation){
+        DocumentReference userRef = db.collection("volunteers").document(userid);
+        DocumentReference crisisRef = db.collection("crisis_events").document(id);
+        crisisRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Map<String, Object> data = document.getData();
+                        Double amountraised = Double.valueOf(""+data.get("amountraised"));
+                        amountraised*=1000000;
+                        amountraised+=donated;
+                        amountraised/=1000000;
+                        crisisRef.update("amountraised", (double)Math.round(amountraised * 1000d) / 1000d);
+                        crisisRef.update("donors", FieldValue.arrayUnion(userid));
+                        userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    DocumentSnapshot document = task.getResult();
+                                    if (document.exists()) {
+                                        Map<String, Object> data = document.getData();
+                                        String profile_url = (String) data.get("profile_photo_url");
+                                        crisisRef.update("donorphotos", FieldValue.arrayUnion(profile_url));
+                                        // ADD VOL ANIMATION HERE
+                                    }
+                                }
+                            }});
+
+                    }}}});
+        userRef.update("donated_to", FieldValue.arrayUnion(id));
+
+
     }
 }
