@@ -73,8 +73,6 @@ public class SearchResultsActivity extends AppCompatActivity {
         searchResultList.addView(createEventCard("nocnwie", "Event", "R.drawable.bg_img"));
         searchResultList.addView(createEventCard("nocnwie", "Event", "R.drawable.bg_img"));
 
-
-
     }
 
     public FlexboxLayout createEventCard(String id, String title, String imgSrc) {

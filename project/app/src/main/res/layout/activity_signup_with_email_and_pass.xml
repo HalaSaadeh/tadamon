@@ -82,7 +82,7 @@
             android:layout_marginBottom="15dp"
             android:textSize="@dimen/mediumTextSize" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/signUpButton"
             android:layout_width="@dimen/largeButtonWidth"
             android:layout_height="@dimen/buttonHeight"

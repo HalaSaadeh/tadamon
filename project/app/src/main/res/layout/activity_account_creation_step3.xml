@@ -70,7 +70,7 @@
                 android:textColorHighlight="@color/black"
                 android:textSize="@dimen/mediumTextSize" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/question3NextButton"
                 android:layout_width="@dimen/largeButtonWidth"
                 android:layout_height="@dimen/buttonHeight"
