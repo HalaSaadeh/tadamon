@@ -54,7 +54,6 @@ public class HomeScreenActivity extends AppCompatActivity implements PopUpMessag
     private Button signout;
     private FirebaseAuth mAuth;
     private TextView welcomeLabel;
-    private HorizontalScrollView scrollView;
     private LinearLayout listOfUserCards, listOfVolunteeringCards;
     FirebaseFirestore db = FirebaseFirestore.getInstance(); // get Instance of the Cloud Firestore database
     public ArrayList<MaterialCardView> list1, list2, list3;
@@ -92,10 +91,7 @@ public class HomeScreenActivity extends AppCompatActivity implements PopUpMessag
             openDialog();
         });
 
-
         loadCrisisEvents();
-
-
     }
 
     public MaterialCardView createEventCard(String id, String title, String imgSrc) {
@@ -123,7 +119,7 @@ public class HomeScreenActivity extends AppCompatActivity implements PopUpMessag
 
         ImageView imageView = new ImageView(this);
         imageView.setLayoutParams(new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.MATCH_PARENT,
                 dpToPx(200)
         ));
 
