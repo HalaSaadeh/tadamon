@@ -81,6 +81,9 @@ public class SearchResultsActivity extends AppCompatActivity {
         if (!keywords)
             getResultsByCategory(getIntent().getStringExtra("criteria"));
 
+        searchResultList.addView(createEventCard("nocnwie", "Event", "R.drawable.bg_img"));
+        searchResultList.addView(createEventCard("nocnwie", "Event", "R.drawable.bg_img"));
+        searchResultList.addView(createEventCard("nocnwie", "Event", "R.drawable.bg_img"));
 
     }
 

@@ -237,7 +237,7 @@
                             android:textColor="@color/black"
                             android:textSize="@dimen/smallTextSize" />
 
-                        <Button
+                        <androidx.appcompat.widget.AppCompatButton
                             android:id="@+id/volunteerButtonVolunteeringActivity"
                             android:layout_width="@dimen/mediumButtonWidth"
                             android:layout_height="@dimen/buttonHeightAlt"

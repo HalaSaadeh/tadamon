@@ -45,7 +45,7 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/smallTextSize" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/skipButton"
                     android:layout_width="65dp"
                     android:layout_height="25dp"
@@ -122,7 +122,7 @@
                 android:textSize="@dimen/mediumTextSize" />
 
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/finishButton"
                 android:layout_width="@dimen/largeButtonWidth"
                 android:layout_height="@dimen/buttonHeight"
