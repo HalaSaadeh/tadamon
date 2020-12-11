@@ -18,16 +18,13 @@
             android:orientation="vertical">
 
             <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_width="match_parent"
+                android:layout_height="250dp">
 
                 <ImageView
                     android:id="@+id/bgImageCrisis"
-                    android:layout_width="wrap_content"
-                    android:layout_height="250dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:foreground="@drawable/linear_gradient"
                     android:scaleType="centerCrop"
                     android:src="@drawable/bg_img" />
