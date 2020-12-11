@@ -37,7 +37,7 @@ public class DonationScreenActivity extends AppCompatActivity {
                     numpad6, numpad7, numpad8, numpad9, numpadtriplezeroes, numpad0;
 
     private ImageButton numpadBackspace;
-    private ImageView backButton, enterButton, bgImage;
+    private ImageView enterButton, bgImage;
 
     private TextView amount;
 
@@ -73,7 +73,6 @@ public class DonationScreenActivity extends AppCompatActivity {
         numpadtriplezeroes = findViewById(R.id.numpadtriplezeroes);
         numpadBackspace = findViewById(R.id.numpadBackspace);
 
-        backButton = findViewById(R.id.backButtonDonation);
         enterButton = findViewById(R.id.enterButtonDonation);
 
         amount = findViewById(R.id.amountLabel);

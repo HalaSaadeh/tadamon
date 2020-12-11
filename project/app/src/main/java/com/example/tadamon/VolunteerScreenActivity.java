@@ -33,7 +33,7 @@ import java.util.Map;
 
 public class VolunteerScreenActivity extends AppCompatActivity {
 
-    private ImageView crisisImage, backButton;
+    private ImageView crisisImage;
     private TextView crisisTitle, crisisDaysLeft, crisisDesc, crisisHowToVolunteer;
 
     private ImageView repPicture;
@@ -55,7 +55,6 @@ public class VolunteerScreenActivity extends AppCompatActivity {
 
 
         crisisImage = findViewById(R.id.bgImageDonation);
-        backButton = findViewById(R.id.backButtonDonation);
 
         crisisTitle = findViewById(R.id.crisisTitleVolunteeringActivity);
         crisisDaysLeft = findViewById(R.id.daysLeftVolunteeringActivity);

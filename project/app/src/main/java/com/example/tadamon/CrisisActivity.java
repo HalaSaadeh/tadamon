@@ -40,6 +40,7 @@ public class CrisisActivity extends AppCompatActivity {
     private ImageView coverPhoto;
     private TextView totalDonators, totalVolunteers;
     private ProgressBar progressBar;
+
     FirebaseFirestore db = FirebaseFirestore.getInstance(); // get Instance of the Cloud Firestore database
 
     @Override

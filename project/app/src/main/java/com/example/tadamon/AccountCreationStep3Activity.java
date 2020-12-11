@@ -14,7 +14,6 @@ import java.util.List;
 public class AccountCreationStep3Activity extends AppCompatActivity {
 
     private EditText location;
-    private ImageButton backButton;
     private Button nextButton;
     CustomAutoCompleteView autoCompleteCities;
     ArrayAdapter<String> myAdapter; /// adapter for auto-complete
@@ -29,12 +28,7 @@ public class AccountCreationStep3Activity extends AppCompatActivity {
         String name = getIntent().getStringExtra("name");
         int age = getIntent().getIntExtra("age", 0);
 
-
-        backButton = (ImageButton) findViewById(R.id.accountCreationBackButton3);
-        backButton.setOnClickListener(e ->
-                startActivity(new Intent(getApplicationContext(), AccountCreationStep2Activity.class)));
         nextButton = (Button) findViewById(R.id.question3NextButton);
-        location = (EditText) findViewById(R.id.autoCompleteCities);
 
         // For the auto-complete and SQLite DB
         databaseH = new DatabaseHandler(AccountCreationStep3Activity.this);

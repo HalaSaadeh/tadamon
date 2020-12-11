@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 public class AccountCreationStep2Activity extends AppCompatActivity {
 
-    private ImageButton backButton;
     private EditText ageField;
     private Button nextButton;
 
@@ -21,23 +20,16 @@ public class AccountCreationStep2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_creation_step2);
         String name = getIntent().getStringExtra("name");
-        Log.d("name", name);
-        backButton = (ImageButton) findViewById(R.id.accountCreationBackButton2);
 
-        backButton.setOnClickListener(e -> {
-            startActivity(new Intent(getApplicationContext(), AccountCreationStep1Activity.class));
-        });
-
-        ageField = (EditText) findViewById(R.id.ageField);
-        nextButton = (Button) findViewById(R.id.question2NextButton);
+        ageField = findViewById(R.id.ageField);
+        nextButton = findViewById(R.id.question2NextButton);
         nextButton.setOnClickListener(e -> {
-            if(validateAge()){
+            if (validateAge()) {
                 Intent intent = new Intent(getApplicationContext(), AccountCreationStep3Activity.class);
                 intent.putExtra("name", name);
                 intent.putExtra("age", Integer.parseInt(ageField.getText().toString().trim()));
                 startActivity(intent);
-            }
-            else
+            } else
                 ageField.setError("Age is too young.");
         });
     }
@@ -48,7 +40,7 @@ public class AccountCreationStep2Activity extends AppCompatActivity {
         try {
             age = Integer.parseInt(ageString);
         } catch (NumberFormatException t) {
-            ageField.setError("Please enter a number.");
+            ageField.setError("Only numbers allowed");
         }
         return age > 13 && age <= 120;
     }

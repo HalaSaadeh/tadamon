@@ -21,7 +21,6 @@ import java.util.Map;
 
 public class AccountCreationStep1Activity extends AppCompatActivity {
 
-    private ImageButton backBtn;
     private TextView namefield;
     private Button nextBtn;
 
@@ -37,21 +36,18 @@ public class AccountCreationStep1Activity extends AppCompatActivity {
         // Setting name from Google or Facebook in case signed in with them
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         boolean thirdParty = preferences.getBoolean("thirdParty", false);
-        if (thirdParty){
+        if (thirdParty) {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             namefield.setText(user.getDisplayName());
         }
-        nextBtn.setOnClickListener(e->{
-            if(validateName()){
-                Intent intent = new Intent(this,AccountCreationStep2Activity.class);
+        nextBtn.setOnClickListener(e -> {
+            if (validateName()) {
+                Intent intent = new Intent(this, AccountCreationStep2Activity.class);
                 intent.putExtra("name", namefield.getText().toString());
                 startActivity(intent);
-
-            }
-            else
+            } else
                 namefield.setError("Please enter a name.");
         });
-
 
     }
 
@@ -59,4 +55,4 @@ public class AccountCreationStep1Activity extends AppCompatActivity {
         String name = namefield.getText().toString();
         return name.length() > 0 && name.length() <= 30;
     }
-    }
+}

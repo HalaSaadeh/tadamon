@@ -47,7 +47,6 @@ public class AccountCreationStep4Activity extends AppCompatActivity implements P
 
     private Button skip, finish;
     private EditText bio;
-    private ImageButton backButton;
     private ImageView imageView;
     // For camera and gallery
     private ImageButton getPicture;
@@ -66,19 +65,19 @@ public class AccountCreationStep4Activity extends AppCompatActivity implements P
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_creation_step4);
 
-        skip = (Button) findViewById(R.id.skipButton);
+        skip = findViewById(R.id.skipButton);
         skip.setOnClickListener(e -> {
             addDoc();
             startActivity(new Intent(getApplicationContext(), HomeScreenActivity.class));
         });
 
-        finish = (Button) findViewById(R.id.finishButton);
+        finish = findViewById(R.id.finishButton);
         finish.setOnClickListener(e -> {
             addDoc();
             startActivity(new Intent(getApplicationContext(), HomeScreenActivity.class));
         });
 
-        bio = (EditText) findViewById(R.id.bioField);
+        bio = findViewById(R.id.bioField);
         imageView = findViewById(R.id.profilePicture);
 
         // Displaying image from Google or Facebook in case signed in with them

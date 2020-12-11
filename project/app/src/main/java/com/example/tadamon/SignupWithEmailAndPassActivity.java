@@ -24,7 +24,6 @@ import org.w3c.dom.Text;
 public class SignupWithEmailAndPassActivity extends AppCompatActivity {
 
     private Button signup;
-    private ImageButton backButton;
     private TextView emailTextView, passwordTextView, confirmPasswordTextView;
     private FirebaseAuth mAuth;
 
@@ -40,13 +39,6 @@ public class SignupWithEmailAndPassActivity extends AppCompatActivity {
         confirmPasswordTextView = (TextView) findViewById(R.id.confirmPasswordField);
         signup.setOnClickListener(e -> {
             signUpWithEmailAndPass();
-        });
-
-        backButton = findViewById(R.id.signUpWEAPBackButton);
-        backButton.setOnClickListener(e -> {
-            startActivity(new Intent(
-                    getApplicationContext(), SignInActivity.class
-            ));
         });
 
     }
@@ -118,11 +110,12 @@ public class SignupWithEmailAndPassActivity extends AppCompatActivity {
         emailTextView.setError(null);
         return true;
     }
-    private void updateSharedPreferences(String uID){
+
+    private void updateSharedPreferences(String uID) {
         // Once signed-in, update SharedPreferences to store the current user
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("ID",uID);
+        editor.putString("ID", uID);
         editor.putBoolean("thirdParty", false); // did not sign in with third party provider
         editor.apply();
     }

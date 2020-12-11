@@ -27,15 +27,6 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/bg_img" />
 
-                <ImageView
-                    android:id="@+id/backButtonDonation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left|top"
-                    android:layout_margin="20dp"
-                    android:src="@drawable/ic_back"
-                    android:tint="@color/white" />
-
             </FrameLayout>
 
             <LinearLayout
