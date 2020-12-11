@@ -87,6 +87,12 @@ public class SearchScreenActivity extends AppCompatActivity {
 
         populateTagGroup();
 
+        catHealth.setOnClickListener(e->{searchByCat("Health Crisis");});
+        catFinancial.setOnClickListener(e->{searchByCat("Financial Crisis");});
+        catNatural.setOnClickListener(e->{searchByCat("Natural Crisis");});
+        catHealth.setOnClickListener(e->{searchByCat("Health Crisis");});
+
+
     }
 
     @Override
@@ -128,6 +134,7 @@ public class SearchScreenActivity extends AppCompatActivity {
         chip.setOnClickListener(e -> {
             Intent intent = new Intent(this, SearchResultsActivity.class);
             intent.putExtra("criteria", msg);
+            intent.putExtra("keywords", true);
             startActivity(intent);
         });
 
@@ -156,5 +163,8 @@ public class SearchScreenActivity extends AppCompatActivity {
                             }
                         }
                     }}}});
+    }
+    private void searchByCat(String cat){
+
     }
 }
