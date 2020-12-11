@@ -45,7 +45,7 @@ public class ProfileScreenActivity extends AppCompatActivity {
     TextView userName, userBio, userDonations, userVolunteerings;
     ImageView userProfilePicture;
 
-    LinearLayout listOfVolunteerings;
+    LinearLayout listOfVolunteerings, listOfDonations;
     ImageView settingsButton;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance(); // get Instance of the Cloud Firestore database
@@ -64,6 +64,7 @@ public class ProfileScreenActivity extends AppCompatActivity {
         userProfilePicture = findViewById(R.id.userProfilePicture);
 
         listOfVolunteerings = findViewById(R.id.userVolunteeredInLinearLayout);
+        listOfDonations = findViewById(R.id.userDonatedInLinearLayout);
         settingsButton = findViewById(R.id.settingsButton);
 
         populateProfile(); // When the profile screen is opened, get the current user's data from the database.
@@ -85,6 +86,9 @@ public class ProfileScreenActivity extends AppCompatActivity {
             }
             return false;
         });
+
+        listOfDonations.addView(createEventCard(1, "Event", R.drawable.bg_img));
+        listOfVolunteerings.addView(createEventCard(1, "Event", R.drawable.bg_img));
 
     }
 

@@ -6,149 +6,179 @@
     android:layout_height="match_parent"
     tools:context=".ProfileScreenActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_marginBottom="70dp"
+        >
 
-        <FrameLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <ImageView
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_half_arc"
-                android:scaleType="centerCrop"/>
+                android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/settingsButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_settings"
-                android:tint="@color/white"
-                android:alpha="0.6"
-                android:layout_gravity="top|end"
-                android:layout_margin="@dimen/leftPadding"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_half_arc"
+                    android:scaleType="centerCrop"/>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_margin="@dimen/leftPadding">
-
-                <TextView
+                <ImageView
+                    android:id="@+id/settingsButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:fontFamily="@font/poppins_bold"
-                    android:text="@string/app_name"
-                    android:textColor="@color/white"
-                    android:layout_marginBottom="10dp"
-                    android:textSize="@dimen/veryLargeTextSize" />
+                    android:src="@drawable/ic_settings"
+                    android:tint="@color/white"
+                    android:alpha="0.6"
+                    android:layout_gravity="top|end"
+                    android:layout_margin="@dimen/leftPadding"/>
 
-                <View
-                    android:layout_width="80dp"
-                    android:layout_height="5dp"
-                    android:background="@color/yellowPrime" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_margin="@dimen/leftPadding">
 
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="@string/app_name"
+                        android:textColor="@color/white"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="@dimen/veryLargeTextSize" />
 
-        </FrameLayout>
+                    <View
+                        android:layout_width="80dp"
+                        android:layout_height="5dp"
+                        android:background="@color/yellowPrime" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/userProfilePicture"
-            android:layout_width="@dimen/imageRadius"
-            android:layout_height="@dimen/imageRadius"
-            android:src="@drawable/ic_placeholder"
-            app:civ_border_width="1dp"
-            app:civ_border_color="@color/greyPrime"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="-40dp"
-            android:layout_marginBottom="20dp"/>
+                </LinearLayout>
 
-        <TextView
-            android:id="@+id/userName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text=""
-            android:textSize="@dimen/veryLargeTextSizeVar"
-            android:fontFamily="@font/poppins"
-            android:textColor="@color/black"/>
+            </FrameLayout>
 
-        <TextView
-            android:id="@+id/userBio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="20dp"
-            android:text=""
-            android:textSize="@dimen/smallTextSize"
-            android:fontFamily="@font/poppins"
-            android:textColor="@color/darkGreyPrime"/>
-
-        <com.google.android.flexbox.FlexboxLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:flexDirection="row"
-            app:justifyContent="space_evenly"
-            app:alignItems="center"
-            android:layout_marginBottom="20dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/userProfilePicture"
+                android:layout_width="@dimen/imageRadius"
+                android:layout_height="@dimen/imageRadius"
+                android:src="@drawable/ic_placeholder"
+                app:civ_border_width="1dp"
+                app:civ_border_color="@color/greyPrime"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="-40dp"
+                android:layout_marginBottom="20dp"/>
 
             <TextView
-                android:id="@+id/userDonations"
+                android:id="@+id/userName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="Donations"
-                android:textSize="@dimen/mediumTextSizeVar"
+                android:text=""
+                android:textSize="@dimen/veryLargeTextSizeVar"
                 android:fontFamily="@font/poppins"
-                android:textColor="@color/redPrime"/>
+                android:textColor="@color/black"/>
 
             <TextView
-                android:id="@+id/userVolunteering"
+                android:id="@+id/userBio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="Volunteering Work"
-                android:textSize="@dimen/mediumTextSizeVar"
+                android:layout_marginBottom="20dp"
+                android:text=""
+                android:textSize="@dimen/smallTextSize"
                 android:fontFamily="@font/poppins"
-                android:textColor="@color/redPrime"/>
+                android:textColor="@color/darkGreyPrime"/>
 
-        </com.google.android.flexbox.FlexboxLayout>
+            <com.google.android.flexbox.FlexboxLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:flexDirection="row"
+                app:justifyContent="space_evenly"
+                app:alignItems="center"
+                android:layout_marginBottom="20dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/leftPadding"
-            android:layout_marginBottom="10dp"
-            android:backgroundTint="@color/black"
-            android:fontFamily="@font/poppins_light"
-            android:text="Volunteered In"
-            android:textColor="@color/black"
-            android:textSize="@dimen/largeTextSizeVar" />
+                <TextView
+                    android:id="@+id/userDonations"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Donations"
+                    android:textSize="@dimen/mediumTextSizeVar"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="@color/redPrime"/>
 
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/userVolunteering"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Volunteering Work"
+                    android:textSize="@dimen/mediumTextSizeVar"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="@color/redPrime"/>
 
-            <LinearLayout
-                android:id="@+id/userVolunteeredInLinearLayout"
+            </com.google.android.flexbox.FlexboxLayout>
+
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:paddingStart="@dimen/leftPadding">
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/leftPadding"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/black"
+                android:fontFamily="@font/poppins_light"
+                android:text="Donated In"
+                android:textColor="@color/black"
+                android:textSize="@dimen/largeTextSizeVar" />
 
-        </HorizontalScrollView>
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
 
+                <LinearLayout
+                    android:id="@+id/userDonatedInLinearLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/leftPadding">
+                </LinearLayout>
 
+            </HorizontalScrollView>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/leftPadding"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/black"
+                android:fontFamily="@font/poppins_light"
+                android:text="Volunteered In"
+                android:textColor="@color/black"
+                android:textSize="@dimen/largeTextSizeVar" />
 
-    </LinearLayout>
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <LinearLayout
+                    android:id="@+id/userVolunteeredInLinearLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/leftPadding">
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

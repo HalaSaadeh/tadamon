@@ -1,4 +1,4 @@
-# Cards Code Generation
+# Cards Generation Feature
 
 ## Crisis Cards
 
