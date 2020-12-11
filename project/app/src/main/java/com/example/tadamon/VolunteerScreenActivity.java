@@ -9,6 +9,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -17,6 +19,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
@@ -31,7 +39,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.Map;
 
-public class VolunteerScreenActivity extends AppCompatActivity {
+public class VolunteerScreenActivity extends AppCompatActivity  implements OnMapReadyCallback {
 
     private ImageView crisisImage;
     private TextView crisisTitle, crisisDaysLeft, crisisDesc, crisisHowToVolunteer;
@@ -72,6 +80,10 @@ public class VolunteerScreenActivity extends AppCompatActivity {
 
         // Check if volunteered
         checkIfVolunteered();
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
     }
     private void populateCrisis(String id){
         DocumentReference eventRef = db.collection("crisis_events").document(id);
@@ -160,5 +172,39 @@ public class VolunteerScreenActivity extends AppCompatActivity {
                     }}}});
     }
 
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        Geocoder geocoder = new Geocoder(this);
+        DocumentReference crisisRef = db.collection("crisis_events").document(id);
+        crisisRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Map<String, Object> data = document.getData();
+                        String address = (String) data.get("location");
+
+                        List<Address> addresses;
+                        try {
+                            addresses = geocoder.getFromLocationName(address, 1);
+                            if(addresses.size() > 0) {
+                                double latitude= addresses.get(0).getLatitude();
+                                double longitude= addresses.get(0).getLongitude();
+                                LatLng coords = new LatLng(latitude, longitude);
+                                googleMap.addMarker(new MarkerOptions()
+                                        .position(coords)
+                                        .title("Marker"));
+                                googleMap.moveCamera(CameraUpdateFactory.newLatLng(coords));
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                    }}}});
+
+
     }
+    }
+
 
