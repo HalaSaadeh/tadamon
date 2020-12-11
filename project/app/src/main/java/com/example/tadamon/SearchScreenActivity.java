@@ -41,7 +41,7 @@ public class SearchScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_screen);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
         catHealth = findViewById(R.id.cat_health);
         catFinancial = findViewById(R.id.cat_financial);
         catWildfires = findViewById(R.id.cat_wildfires);
@@ -55,8 +55,8 @@ public class SearchScreenActivity extends AppCompatActivity {
 
         tagsGroup = findViewById(R.id.tagsGroup);
 
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.search);
-
         bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
             switch (menuItem.getItemId()){
                 case R.id.search:
@@ -115,7 +115,9 @@ public class SearchScreenActivity extends AppCompatActivity {
         });
 
         chip.setOnClickListener(e -> {
-            Log.d("TAG", "This search has been opened");
+            Intent intent = new Intent(this, SearchResultsActivity.class);
+            intent.putExtra("criteria", msg);
+            startActivity(intent);
         });
 
         return chip;
