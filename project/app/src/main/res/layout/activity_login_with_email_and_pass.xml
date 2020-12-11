@@ -6,99 +6,71 @@
     android:layout_height="match_parent"
     tools:context=".LoginWithEmailAndPassActivity">
 
-    <Button
-        android:id="@+id/signInButton"
-        android:layout_width="@dimen/largeButtonWidth"
-        android:layout_height="@dimen/buttonHeight"
-        android:background="@drawable/app_button_bg"
-        android:fontFamily="@font/poppins"
-        android:text="Sign In"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.558"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.512" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingStart="30dp"
+        android:paddingTop="100dp">
 
-    <TextView
-        android:id="@+id/passwordLabel3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_light"
-        android:text="Password"
-        android:textColor="@color/black"
-        android:textColorHighlight="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/emailLabel2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.37" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Sign In"
+            android:textColor="@color/black"
+            android:textSize="32sp" />
 
-    <EditText
-        android:id="@+id/passwordSignInField"
-        style="@style/Widget.AppCompat.EditText"
-        android:layout_width="@dimen/largeButtonWidth"
-        android:layout_height="@dimen/buttonHeight"
-        android:background="@drawable/app_textfield_bg"
-        android:ems="10"
-        android:fontFamily="@font/poppins_light"
-        android:inputType="textPassword"
-        android:textColor="@color/black"
-        android:textColorHighlight="@color/black"
-        android:textSize="@dimen/mediumTextSize"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/passwordLabel3"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.419" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/poppins_light"
+            android:text="Email"
+            android:textColor="@color/black" />
 
-    <EditText
-        android:id="@+id/emailSignInField"
-        style="@style/Widget.AppCompat.EditText"
-        android:layout_width="@dimen/largeButtonWidth"
-        android:layout_height="@dimen/buttonHeight"
-        android:background="@drawable/app_textfield_bg"
-        android:ems="10"
-        android:fontFamily="@font/poppins_light"
-        android:inputType="textPersonName"
-        android:textColor="@color/black"
-        android:textColorHighlight="@color/black"
-        android:textSize="@dimen/mediumTextSize"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/emailLabel2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.303" />
+        <EditText
+            android:id="@+id/emailSignInField"
+            android:layout_width="@dimen/largeButtonWidth"
+            android:layout_height="@dimen/buttonHeight"
+            android:background="@drawable/app_textfield_bg"
+            android:fontFamily="@font/poppins_light"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/black"
+            android:textSize="@dimen/mediumTextSize"
+            android:layout_marginBottom="15dp"/>
 
-    <TextView
-        android:id="@+id/emailLabel2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_light"
-        android:text="Email"
-        android:textColor="@color/black"
-        android:textColorHighlight="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.106"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.257" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/poppins_light"
+            android:text="Password"
+            android:textColor="@color/black" />
 
-    <TextView
-        android:id="@+id/signUpLabel2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/black"
-        android:clickable="true"
-        android:focusable="true"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="Sign In"
-        android:textColor="@color/black"
-        android:textSize="32sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.144"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.135" />
+        <EditText
+            android:id="@+id/passwordSignInField"
+            android:layout_width="@dimen/largeButtonWidth"
+            android:layout_height="@dimen/buttonHeight"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/app_textfield_bg"
+            android:fontFamily="@font/poppins_light"
+            android:inputType="textPassword"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/black"
+            android:textSize="@dimen/mediumTextSize" />
+
+        <Button
+            android:id="@+id/signInButton"
+            android:layout_width="@dimen/largeButtonWidth"
+            android:layout_height="@dimen/buttonHeight"
+            android:background="@drawable/app_button_bg"
+            android:fontFamily="@font/poppins"
+            android:text="Sign In"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

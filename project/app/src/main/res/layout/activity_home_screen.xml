@@ -19,7 +19,6 @@
             android:paddingBottom="70dp">
 
             <TextView
-                android:id="@+id/logoLabel3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/leftPadding"
@@ -29,15 +28,14 @@
                 android:fontFamily="@font/poppins_bold"
                 android:text="@string/app_name"
                 android:layout_marginStart="@dimen/leftPadding"
+                android:layout_marginBottom="10dp"
                 android:textColor="@color/black"
                 android:textSize="@dimen/veryLargeTextSize" />
 
             <View
-                android:id="@+id/divider"
                 android:layout_width="80dp"
                 android:layout_height="5dp"
                 android:layout_marginStart="@dimen/leftPadding"
-                android:layout_marginTop="10dp"
                 android:layout_marginBottom="25dp"
                 android:background="@color/redPrime" />
 
@@ -46,19 +44,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
-                android:backgroundTint="@color/black"
                 android:fontFamily="@font/poppins_medium"
                 android:text="Hi John,"
                 android:textColor="@color/black"
                 android:layout_marginStart="@dimen/leftPadding"
-                android:textSize="@dimen/largeTextSize" />
+                android:textSize="@dimen/veryLargeTextSizeVar" />
 
             <TextView
-                android:id="@+id/stayUpToDateLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:backgroundTint="@color/black"
                 android:fontFamily="@font/poppins_light"
                 android:text="Stay up to date"
                 android:textColor="@color/black"
@@ -66,7 +61,6 @@
                 android:textSize="@dimen/largeTextSize" />
 
             <HorizontalScrollView
-                android:id="@+id/upToDateScollView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -80,14 +74,10 @@
             </HorizontalScrollView>
 
             <TextView
-                android:id="@+id/volunteersNeededLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/leftPadding"
                 android:layout_marginBottom="20dp"
-                android:backgroundTint="@color/black"
-                android:clickable="true"
-                android:focusable="true"
                 android:fontFamily="@font/poppins_light"
                 android:text="Volunteers needed!"
                 android:layout_marginStart="@dimen/leftPadding"
@@ -95,7 +85,6 @@
                 android:textSize="@dimen/largeTextSize" />
 
             <HorizontalScrollView
-                android:id="@+id/volunteerScrollView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingStart="15dp">

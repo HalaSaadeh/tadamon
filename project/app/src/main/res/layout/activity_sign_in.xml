@@ -6,135 +6,107 @@
     android:layout_height="match_parent"
     tools:context=".SignInActivity">
 
-    <com.facebook.login.widget.LoginButton
-        android:id="@+id/facebookButton"
-        android:layout_width="7dp"
-        android:layout_height="15dp"
-        android:text="Sign In With Facebook"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingStart="30dp"
+        android:paddingTop="20dp">
 
-    <Button
-        android:id="@+id/signInWithGoogleButton"
-        android:layout_width="@dimen/largeButtonWidth"
-        android:layout_height="@dimen/buttonHeight"
-        android:background="@drawable/google_signin_bg"
-        android:drawableLeft="@drawable/ic_google"
-        android:drawablePadding="@dimen/largeInnerPaddingGapHorizontal"
-        android:fontFamily="@font/poppins"
-        android:paddingStart="@dimen/mediumInnerPaddingGapHorizontal"
-        android:paddingEnd="@dimen/smallInnerPaddingGapHorizontal"
-        android:shadowColor="@color/black"
-        android:text="SIGN IN WITH GOOGLE"
-        android:textAlignment="viewStart"
-        android:textAllCaps="true"
-        android:textColor="@color/black"
-        android:textSize="@dimen/smallTextSize"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.521" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="32sp" />
 
-    <Button
-        android:id="@+id/signInWithEmailAndPassButton"
-        android:layout_width="@dimen/largeButtonWidth"
-        android:layout_height="@dimen/buttonHeight"
-        android:background="@drawable/email_signin_bg"
-        android:drawableLeft="@drawable/ic_gmail"
-        android:drawablePadding="@dimen/largeInnerPaddingGapHorizontal"
-        android:fontFamily="@font/poppins"
-        android:paddingStart="@dimen/mediumInnerPaddingGapHorizontal"
-        android:paddingEnd="@dimen/smallInnerPaddingGapHorizontal"
-        android:shadowColor="@color/black"
-        android:text="SIGN IN WITH EMAIL"
-        android:textAlignment="viewStart"
-        android:textColor="@color/black"
-        android:textSize="@dimen/smallTextSize"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.7" />
+        <View
+            android:layout_width="80dp"
+            android:layout_height="5dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/redPrime" />
 
-    <Button
-        android:id="@+id/signInWithFacebookButton"
-        android:layout_width="@dimen/largeButtonWidth"
-        android:layout_height="@dimen/buttonHeight"
-        android:background="@drawable/facebook_signin_bg"
-        android:drawableLeft="@drawable/ic_facebook"
-        android:drawablePadding="@dimen/largeInnerPaddingGapHorizontal"
-        android:fontFamily="@font/poppins"
-        android:paddingStart="@dimen/mediumInnerPaddingGapHorizontal"
-        android:paddingEnd="@dimen/smallInnerPaddingGapHorizontal"
-        android:shadowColor="@color/black"
-        android:text="SIGN IN WITH FACEBOOK"
-        android:textAlignment="viewStart"
-        android:textColor="@color/white"
-        android:textSize="@dimen/smallTextSize"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.61" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:fontFamily="@font/poppins_light"
+            android:text="Donate, become a volunteer and help\nothers."
+            android:textColor="@color/black"
+            android:textSize="15sp" />
 
-    <TextView
-        android:id="@+id/newUserTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_light"
-        android:text="Are you new? Click here to sign up!"
-        android:textColor="@color/black"
-        android:textSize="@dimen/smallTextSize"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.767" />
+        <Button
+            android:id="@+id/signInWithGoogleButton"
+            android:layout_width="@dimen/largeButtonWidth"
+            android:layout_height="@dimen/buttonHeight"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/google_signin_bg"
+            android:drawableLeft="@drawable/ic_google"
+            android:drawablePadding="@dimen/largeInnerPaddingGapHorizontal"
+            android:elevation="16dp"
+            android:fontFamily="@font/poppins"
+            android:paddingStart="@dimen/mediumInnerPaddingGapHorizontal"
+            android:paddingEnd="@dimen/smallInnerPaddingGapHorizontal"
+            android:text="SIGN IN WITH GOOGLE"
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
+            android:textSize="@dimen/smallTextSize" />
 
-    <TextView
-        android:id="@+id/logoLabel2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/black"
-        android:clickable="true"
-        android:focusable="true"
-        android:fontFamily="@font/poppins_bold"
-        android:text="@string/app_name"
-        android:textColor="@color/black"
-        android:textSize="32sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.144"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.252" />
+        <Button
+            android:id="@+id/signInWithFacebookButton"
+            android:layout_width="@dimen/largeButtonWidth"
+            android:layout_height="@dimen/buttonHeight"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/facebook_signin_bg"
+            android:drawableLeft="@drawable/ic_facebook"
+            android:drawablePadding="@dimen/largeInnerPaddingGapHorizontal"
+            android:elevation="16dp"
+            android:fontFamily="@font/poppins"
+            android:paddingStart="@dimen/mediumInnerPaddingGapHorizontal"
+            android:paddingEnd="@dimen/smallInnerPaddingGapHorizontal"
+            android:text="SIGN IN WITH FACEBOOK"
+            android:textAlignment="viewStart"
+            android:textColor="@color/white"
+            android:textSize="@dimen/smallTextSize" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_light"
-        android:text="Donate, become a volunteer and\nhelp others."
-        android:textColor="@color/black"
-        android:textColorLink="@color/maroonPrime"
-        android:textSize="@dimen/mediumTextSizeVar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.211"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.393" />
+        <Button
+            android:id="@+id/signInWithEmailAndPassButton"
+            android:layout_width="@dimen/largeButtonWidth"
+            android:layout_height="@dimen/buttonHeight"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/email_signin_bg"
+            android:drawableLeft="@drawable/ic_gmail"
+            android:drawablePadding="@dimen/largeInnerPaddingGapHorizontal"
+            android:elevation="16dp"
+            android:fontFamily="@font/poppins"
+            android:paddingStart="@dimen/mediumInnerPaddingGapHorizontal"
+            android:paddingEnd="@dimen/smallInnerPaddingGapHorizontal"
+            android:text="SIGN IN WITH EMAIL"
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
+            android:textSize="@dimen/smallTextSize" />
 
-    <View
-        android:id="@+id/divider3"
-        android:layout_width="80dp"
-        android:layout_height="5dp"
-        android:layout_marginTop="24dp"
-        android:background="@color/redPrime"
-        app:layout_constraintStart_toStartOf="@+id/logoLabel2"
-        app:layout_constraintTop_toBottomOf="@+id/logoLabel2" />
+        <TextView
+            android:id="@+id/newUserTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/poppins_light"
+            android:text="Are you new? Click here to sign up!"
+            android:textColor="@color/black"
+            android:textSize="@dimen/smallTextSize" />
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/facebookButton"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="Sign In With Facebook"
+            android:visibility="invisible" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
