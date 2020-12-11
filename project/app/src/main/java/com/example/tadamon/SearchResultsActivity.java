@@ -1,5 +1,6 @@
 package com.example.tadamon;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
@@ -22,8 +23,13 @@ import android.widget.TextView;
 import com.google.android.flexbox.AlignItems;
 import com.google.android.flexbox.FlexboxLayout;
 import com.google.android.flexbox.JustifyContent;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import org.w3c.dom.Text;
 
@@ -31,12 +37,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Map;
 
 public class SearchResultsActivity extends AppCompatActivity {
 
     private TextView criteriaLabel;
     private String searchCriteria;
     private LinearLayout searchResultList;
+    FirebaseFirestore db = FirebaseFirestore.getInstance(); // get Instance of the Cloud Firestore database
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,10 +77,9 @@ public class SearchResultsActivity extends AppCompatActivity {
 
         searchResultList = findViewById(R.id.searchResultList);
 
-        searchResultList.addView(createEventCard("nocnwie", "Event", "R.drawable.bg_img"));
-        searchResultList.addView(createEventCard("nocnwie", "Event", "R.drawable.bg_img"));
-        searchResultList.addView(createEventCard("nocnwie", "Event", "R.drawable.bg_img"));
-
+        boolean keywords = getIntent().getBooleanExtra("keywords", true);
+        if (!keywords)
+            getResultsByCategory(getIntent().getStringExtra("criteria"));
 
 
     }
@@ -183,5 +190,20 @@ public class SearchResultsActivity extends AppCompatActivity {
                 imageView.setImageDrawable(result);
             }
         }.execute();
+    }
+    private void getResultsByCategory(String cat){
+        db.collection("crisis_events").whereEqualTo("category", cat)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Map<String,Object> data =  document.getData();
+                                searchResultList.addView(createEventCard(document.getId(), (String )data.get("eventname"), (String) data.get("photo_url")));
+                            }
+                        }
+                    }
+                });
     }
 }
