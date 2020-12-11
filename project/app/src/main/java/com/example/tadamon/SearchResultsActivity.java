@@ -37,6 +37,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 public class SearchResultsActivity extends AppCompatActivity {
@@ -80,6 +83,8 @@ public class SearchResultsActivity extends AppCompatActivity {
         boolean keywords = getIntent().getBooleanExtra("keywords", true);
         if (!keywords)
             getResultsByCategory(getIntent().getStringExtra("criteria"));
+        else
+            getResultsByKeywords(getIntent().getStringExtra("criteria"));
 
     }
 
@@ -204,5 +209,26 @@ public class SearchResultsActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+    private void getResultsByKeywords(String keyword){
+        List<String> categories = Arrays.asList("Health Crisis", "Tech Crisis", "Social Crisis", "Wildfires", "Winter Crisis", "Financial Crisis", "Natural Crisis");
+
+        if (categories.contains(keyword)){
+            getResultsByCategory(keyword);}
+        else{
+            db.collection("crisis_events").orderBy("eventname").startAt(keyword).endAt(keyword + '~')
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Map<String,Object> data =  document.getData();
+                                    searchResultList.addView(createEventCard(document.getId(), (String )data.get("eventname"), (String) data.get("photo_url")));
+                                }
+                            }
+                        }
+                    });
+        }
     }
 }
