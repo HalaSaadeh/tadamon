@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ProfileScreenActivity">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="70dp"
-        >
+        android:layout_marginBottom="70dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,34 +24,34 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_half_arc"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_half_arc" />
 
                 <ImageView
                     android:id="@+id/settingsButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_settings"
-                    android:tint="@color/white"
-                    android:alpha="0.6"
                     android:layout_gravity="top|end"
-                    android:layout_margin="@dimen/leftPadding"/>
+                    android:layout_margin="@dimen/leftPadding"
+                    android:alpha="0.6"
+                    android:src="@drawable/ic_settings"
+                    android:tint="@color/white" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_margin="@dimen/leftPadding">
+                    android:layout_margin="@dimen/leftPadding"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
                         android:clickable="true"
                         android:focusable="true"
                         android:fontFamily="@font/poppins_bold"
                         android:text="@string/app_name"
                         android:textColor="@color/white"
-                        android:layout_marginBottom="10dp"
                         android:textSize="@dimen/veryLargeTextSize" />
 
                     <View
@@ -67,22 +67,22 @@
                 android:id="@+id/userProfilePicture"
                 android:layout_width="@dimen/imageRadius"
                 android:layout_height="@dimen/imageRadius"
-                android:src="@drawable/ic_placeholder"
-                app:civ_border_width="1dp"
-                app:civ_border_color="@color/greyPrime"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="-40dp"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/ic_placeholder"
+                app:civ_border_color="@color/greyPrime"
+                app:civ_border_width="1dp" />
 
             <TextView
                 android:id="@+id/userName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text=""
-                android:textSize="@dimen/veryLargeTextSizeVar"
                 android:fontFamily="@font/poppins"
-                android:textColor="@color/black"/>
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="@dimen/veryLargeTextSizeVar" />
 
             <TextView
                 android:id="@+id/userBio"
@@ -90,38 +90,38 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="20dp"
-                android:text=""
-                android:textSize="@dimen/smallTextSize"
                 android:fontFamily="@font/poppins"
-                android:textColor="@color/darkGreyPrime"/>
+                android:text=""
+                android:textColor="@color/darkGreyPrime"
+                android:textSize="@dimen/smallTextSize" />
 
             <com.google.android.flexbox.FlexboxLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:flexDirection="row"
-                app:justifyContent="space_evenly"
+                android:layout_marginBottom="20dp"
                 app:alignItems="center"
-                android:layout_marginBottom="20dp">
+                app:flexDirection="row"
+                app:justifyContent="space_evenly">
 
                 <TextView
                     android:id="@+id/userDonations"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="Donations"
-                    android:textSize="@dimen/mediumTextSizeVar"
                     android:fontFamily="@font/poppins"
-                    android:textColor="@color/redPrime"/>
+                    android:text="Donations"
+                    android:textColor="@color/redPrime"
+                    android:textSize="@dimen/mediumTextSizeVar" />
 
                 <TextView
                     android:id="@+id/userVolunteering"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="Volunteering Work"
-                    android:textSize="@dimen/mediumTextSizeVar"
                     android:fontFamily="@font/poppins"
-                    android:textColor="@color/redPrime"/>
+                    android:text="Volunteering Work"
+                    android:textColor="@color/redPrime"
+                    android:textSize="@dimen/mediumTextSizeVar" />
 
             </com.google.android.flexbox.FlexboxLayout>
 
@@ -146,8 +146,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:paddingStart="@dimen/leftPadding">
-                </LinearLayout>
+                    android:paddingStart="@dimen/leftPadding"></LinearLayout>
 
             </HorizontalScrollView>
 
@@ -171,8 +170,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:paddingStart="@dimen/leftPadding">
-                </LinearLayout>
+                    android:paddingStart="@dimen/leftPadding"></LinearLayout>
 
             </HorizontalScrollView>
 
@@ -188,10 +186,10 @@
         app:itemBackground="@color/white"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
+        app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:labelVisibilityMode="unlabeled"
         app:menu="@menu/menu_navigation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

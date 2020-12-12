@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".DonationScreenActivity">
 
     <LinearLayout
@@ -25,313 +26,312 @@
                 android:layout_height="match_parent"
                 android:foreground="@drawable/linear_gradient_dark"
                 android:scaleType="centerCrop"
-                android:src="@drawable/bg_img" />
+                android:src="@mipmap/bg_img_placeholder_foreground" />
 
             <ImageView
                 android:id="@+id/enterButtonDonation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="right|top"
                 android:layout_margin="20dp"
                 android:src="@drawable/ic_check"
-                android:layout_gravity="right|top"
                 android:tint="@color/black" />
         </FrameLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="@drawable/rounded_box"
-            android:padding="10dp"
             android:layout_marginTop="-20dp"
-            >
+            android:background="@drawable/rounded_box"
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="Enter Amount"
-                android:textSize="@dimen/mediumTextSize"
                 android:fontFamily="@font/poppins"
-                android:textColor="@color/black"/>
+                android:text="Enter Amount"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/mediumTextSize" />
+
             <com.google.android.flexbox.FlexboxLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:flexDirection="row"
-                app:alignItems="center"
-                app:justifyContent="center"
                 android:layout_marginTop="-10dp"
-                >
+                app:alignItems="center"
+                app:flexDirection="row"
+                app:justifyContent="center">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
-                    android:text="LBP"
                     android:layout_marginEnd="30dp"
-                    android:textSize="@dimen/largeTextSize"
                     android:fontFamily="@font/poppins"
-                    android:textColor="@color/black"/>
+                    android:text="LBP"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/largeTextSize" />
 
                 <TextView
+                    android:id="@+id/amountLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
-                    android:id="@+id/amountLabel"
-                    android:text="0"
-                    android:textSize="40dp"
                     android:fontFamily="@font/poppins_medium"
-                    android:textColor="@color/black"/>
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="40dp" />
             </com.google.android.flexbox.FlexboxLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_gravity="center_vertical"
-                android:background="@color/greyPrime"
-                android:layout_marginHorizontal="120dp"/>
+                android:layout_marginHorizontal="120dp"
+                android:background="@color/greyPrime" />
 
             <com.google.android.flexbox.FlexboxLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
+                app:alignItems="flex_start"
                 app:flexDirection="column"
-                app:justifyContent="space_between"
-                app:alignItems="flex_start">
+                app:justifyContent="space_between">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:text="Select Amount"
-                    android:textSize="@dimen/mediumTextSizeVar"
-                    android:fontFamily="@font/poppins"
                     android:layout_marginBottom="5dp"
-                    android:textColor="@color/black"/>
+                    android:fontFamily="@font/poppins"
+                    android:text="Select Amount"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/mediumTextSizeVar" />
 
                 <com.google.android.flexbox.FlexboxLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:alignItems="center"
                     app:flexDirection="row"
-                    app:justifyContent="space_between"
-                    app:alignItems="center">
+                    app:justifyContent="space_between">
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:layout_width="@dimen/smallButtonWidth"
-                        android:layout_height="40dp"
                         android:id="@+id/selectedOneButton"
+                        android:layout_width="@dimen/smallButtonWidth"
+                        android:layout_height="40dp"
+                        android:background="@drawable/number_button"
+                        android:fontFamily="@font/poppins"
+                        android:includeFontPadding="false"
                         android:text="5,000"
-                        android:textSize="@dimen/mediumTextSizeVar"
-                        android:fontFamily="@font/poppins"
-                        android:includeFontPadding="false"
-                        android:background="@drawable/number_button"
-                        />
+                        android:textSize="@dimen/mediumTextSizeVar" />
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:layout_width="@dimen/smallButtonWidth"
-                        android:layout_height="40dp"
                         android:id="@+id/selectedTwoButton"
+                        android:layout_width="@dimen/smallButtonWidth"
+                        android:layout_height="40dp"
+                        android:background="@drawable/number_button"
+                        android:fontFamily="@font/poppins"
+                        android:includeFontPadding="false"
                         android:text="10,000"
-                        android:textSize="@dimen/mediumTextSizeVar"
-                        android:fontFamily="@font/poppins"
-                        android:includeFontPadding="false"
-                        android:background="@drawable/number_button"
-                        />
+                        android:textSize="@dimen/mediumTextSizeVar" />
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:layout_width="@dimen/smallButtonWidth"
-                        android:layout_height="40dp"
                         android:id="@+id/selectedThreeButton"
-                        android:text="50,000"
-                        android:textSize="@dimen/mediumTextSizeVar"
-                        android:fontFamily="@font/poppins"
-                        android:includeFontPadding="false"
-                        android:background="@drawable/number_button"
-                        />
-
-                    <androidx.appcompat.widget.AppCompatButton
                         android:layout_width="@dimen/smallButtonWidth"
                         android:layout_height="40dp"
-                        android:id="@+id/selectedFourButton"
-                        android:text="100,000"
-                        android:textSize="@dimen/mediumTextSizeVar"
+                        android:background="@drawable/number_button"
                         android:fontFamily="@font/poppins"
                         android:includeFontPadding="false"
+                        android:text="50,000"
+                        android:textSize="@dimen/mediumTextSizeVar" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/selectedFourButton"
+                        android:layout_width="@dimen/smallButtonWidth"
+                        android:layout_height="40dp"
                         android:background="@drawable/number_button"
-                        />
+                        android:fontFamily="@font/poppins"
+                        android:includeFontPadding="false"
+                        android:text="100,000"
+                        android:textSize="@dimen/mediumTextSizeVar" />
 
                 </com.google.android.flexbox.FlexboxLayout>
 
             </com.google.android.flexbox.FlexboxLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_gravity="center_vertical"
-                android:background="@color/greyPrime"
-                android:layout_marginHorizontal="10dp"/>
+                android:layout_marginHorizontal="10dp"
+                android:background="@color/greyPrime" />
 
             <com.google.android.flexbox.FlexboxLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
+                app:alignItems="center"
                 app:flexDirection="column"
-                app:justifyContent="space_between"
-                app:alignItems="center">
+                app:justifyContent="space_between">
 
                 <com.google.android.flexbox.FlexboxLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:flexDirection="row"
-                    app:justifyContent="space_between"
+                    android:layout_marginVertical="@dimen/numpadVertical"
                     app:alignItems="center"
-                    android:layout_marginVertical="@dimen/numpadVertical">
+                    app:flexDirection="row"
+                    app:justifyContent="space_between">
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:layout_width="100dp"
-                        android:layout_height="60dp"
                         android:id="@+id/numpad7"
+                        android:layout_width="100dp"
+                        android:layout_height="60dp"
                         android:background="@drawable/number_button"
+                        android:fontFamily="@font/poppins"
                         android:text="7"
-                        android:textSize="@dimen/largeTextSize"
                         android:textColor="@color/black"
-                        android:fontFamily="@font/poppins"/>
+                        android:textSize="@dimen/largeTextSize" />
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:layout_width="100dp"
-                        android:layout_height="60dp"
                         android:id="@+id/numpad8"
+                        android:layout_width="100dp"
+                        android:layout_height="60dp"
                         android:background="@drawable/number_button"
+                        android:fontFamily="@font/poppins"
                         android:text="8"
-                        android:textSize="@dimen/largeTextSize"
                         android:textColor="@color/black"
-                        android:fontFamily="@font/poppins"/>
+                        android:textSize="@dimen/largeTextSize" />
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:layout_width="100dp"
-                        android:layout_height="60dp"
                         android:id="@+id/numpad9"
+                        android:layout_width="100dp"
+                        android:layout_height="60dp"
                         android:background="@drawable/number_button"
+                        android:fontFamily="@font/poppins"
                         android:text="9"
-                        android:textSize="@dimen/largeTextSize"
                         android:textColor="@color/black"
-                        android:fontFamily="@font/poppins"/>
+                        android:textSize="@dimen/largeTextSize" />
 
                 </com.google.android.flexbox.FlexboxLayout>
 
                 <com.google.android.flexbox.FlexboxLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:flexDirection="row"
-                    app:justifyContent="space_between"
+                    android:layout_marginVertical="@dimen/numpadVertical"
                     app:alignItems="center"
-                    android:layout_marginVertical="@dimen/numpadVertical">
+                    app:flexDirection="row"
+                    app:justifyContent="space_between">
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:layout_width="100dp"
-                        android:layout_height="60dp"
                         android:id="@+id/numpad4"
+                        android:layout_width="100dp"
+                        android:layout_height="60dp"
                         android:background="@drawable/number_button"
+                        android:fontFamily="@font/poppins"
                         android:text="4"
-                        android:textSize="@dimen/largeTextSize"
                         android:textColor="@color/black"
-                        android:fontFamily="@font/poppins"/>
+                        android:textSize="@dimen/largeTextSize" />
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:layout_width="100dp"
-                        android:layout_height="60dp"
                         android:id="@+id/numpad5"
+                        android:layout_width="100dp"
+                        android:layout_height="60dp"
                         android:background="@drawable/number_button"
+                        android:fontFamily="@font/poppins"
                         android:text="5"
-                        android:textSize="@dimen/largeTextSize"
                         android:textColor="@color/black"
-                        android:fontFamily="@font/poppins"/>
+                        android:textSize="@dimen/largeTextSize" />
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:layout_width="100dp"
-                        android:layout_height="60dp"
                         android:id="@+id/numpad6"
+                        android:layout_width="100dp"
+                        android:layout_height="60dp"
                         android:background="@drawable/number_button"
+                        android:fontFamily="@font/poppins"
                         android:text="6"
-                        android:textSize="@dimen/largeTextSize"
                         android:textColor="@color/black"
-                        android:fontFamily="@font/poppins"/>
+                        android:textSize="@dimen/largeTextSize" />
 
                 </com.google.android.flexbox.FlexboxLayout>
+
                 <com.google.android.flexbox.FlexboxLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:flexDirection="row"
-                    app:justifyContent="space_between"
+                    android:layout_marginVertical="@dimen/numpadVertical"
                     app:alignItems="center"
-                    android:layout_marginVertical="@dimen/numpadVertical">
+                    app:flexDirection="row"
+                    app:justifyContent="space_between">
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:layout_width="100dp"
-                        android:layout_height="60dp"
                         android:id="@+id/numpad1"
+                        android:layout_width="100dp"
+                        android:layout_height="60dp"
                         android:background="@drawable/number_button"
+                        android:fontFamily="@font/poppins"
                         android:text="1"
-                        android:textSize="@dimen/largeTextSize"
                         android:textColor="@color/black"
-                        android:fontFamily="@font/poppins"/>
+                        android:textSize="@dimen/largeTextSize" />
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:layout_width="100dp"
-                        android:layout_height="60dp"
                         android:id="@+id/numpad2"
-                        android:background="@drawable/number_button"
-                        android:text="2"
-                        android:textSize="@dimen/largeTextSize"
-                        android:textColor="@color/black"
-                        android:fontFamily="@font/poppins"/>
-
-                    <androidx.appcompat.widget.AppCompatButton
                         android:layout_width="100dp"
                         android:layout_height="60dp"
-                        android:id="@+id/numpad3"
                         android:background="@drawable/number_button"
-                        android:text="3"
-                        android:textSize="@dimen/largeTextSize"
+                        android:fontFamily="@font/poppins"
+                        android:text="2"
                         android:textColor="@color/black"
-                        android:fontFamily="@font/poppins"/>
+                        android:textSize="@dimen/largeTextSize" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/numpad3"
+                        android:layout_width="100dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/number_button"
+                        android:fontFamily="@font/poppins"
+                        android:text="3"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/largeTextSize" />
 
                 </com.google.android.flexbox.FlexboxLayout>
+
                 <com.google.android.flexbox.FlexboxLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:flexDirection="row"
-                    app:justifyContent="space_between"
+                    android:layout_marginVertical="@dimen/numpadVertical"
                     app:alignItems="center"
-                    android:layout_marginVertical="@dimen/numpadVertical">
+                    app:flexDirection="row"
+                    app:justifyContent="space_between">
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:layout_width="100dp"
-                        android:layout_height="60dp"
                         android:id="@+id/numpad0"
-                        android:background="@drawable/number_button"
-                        android:text="0"
-                        android:textSize="@dimen/largeTextSize"
-                        android:textColor="@color/black"
-                        android:fontFamily="@font/poppins"/>
-
-                    <androidx.appcompat.widget.AppCompatButton
                         android:layout_width="100dp"
                         android:layout_height="60dp"
-                        android:id="@+id/numpadtriplezeroes"
                         android:background="@drawable/number_button"
-                        android:text="000"
-                        android:textSize="@dimen/largeTextSize"
+                        android:fontFamily="@font/poppins"
+                        android:text="0"
                         android:textColor="@color/black"
-                        android:fontFamily="@font/poppins"/>
+                        android:textSize="@dimen/largeTextSize" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/numpadtriplezeroes"
+                        android:layout_width="100dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/number_button"
+                        android:fontFamily="@font/poppins"
+                        android:text="000"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/largeTextSize" />
 
                     <ImageButton
+                        android:id="@+id/numpadBackspace"
                         android:layout_width="100dp"
                         android:layout_height="60dp"
-                        android:id="@+id/numpadBackspace"
                         android:background="@drawable/app_button_bg"
+                        android:fontFamily="@font/poppins"
                         android:src="@drawable/ic_backspace"
-                        android:textSize="@dimen/largeTextSize"
                         android:textColor="@color/black"
-                        android:fontFamily="@font/poppins"/>
+                        android:textSize="@dimen/largeTextSize" />
 
                 </com.google.android.flexbox.FlexboxLayout>
 

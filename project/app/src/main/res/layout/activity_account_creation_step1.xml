@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".AccountCreationStep1Activity">
 
     <LinearLayout
@@ -84,26 +85,25 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:fontFamily="@font/poppins_light"
             android:text="By continuing, you agree to accept our\nPrivacy Policy and Terms of Service."
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="@dimen/verySmallTextSize"
-            android:layout_gravity="center_horizontal"/>
+            android:textSize="@dimen/verySmallTextSize" />
 
         <com.google.android.flexbox.FlexboxLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:justifyContent="center"
-            app:alignItems="flex_end">
+            app:alignItems="flex_end"
+            app:justifyContent="center">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_travel1"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="10dp"
-                />
+                app:srcCompat="@drawable/ic_travel1" />
 
         </com.google.android.flexbox.FlexboxLayout>
 

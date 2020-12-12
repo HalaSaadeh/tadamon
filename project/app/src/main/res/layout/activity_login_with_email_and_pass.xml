@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".LoginWithEmailAndPassActivity">
 
     <LinearLayout
@@ -34,13 +35,13 @@
             android:id="@+id/emailSignInField"
             android:layout_width="@dimen/largeButtonWidth"
             android:layout_height="@dimen/buttonHeight"
+            android:layout_marginBottom="15dp"
             android:background="@drawable/app_textfield_bg"
             android:fontFamily="@font/poppins_light"
             android:inputType="textEmailAddress"
             android:textColor="@color/black"
             android:textColorHighlight="@color/black"
-            android:textSize="@dimen/mediumTextSize"
-            android:layout_marginBottom="15dp"/>
+            android:textSize="@dimen/mediumTextSize" />
 
         <TextView
             android:layout_width="wrap_content"
