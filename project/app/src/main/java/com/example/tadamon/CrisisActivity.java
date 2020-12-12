@@ -106,6 +106,7 @@ public class CrisisActivity extends AppCompatActivity {
                         String cover_photo_url = (String) data.get("photo_url");
                         setPic(cover_photo_url, coverPhoto);
                         crisisDesc.setText((String) data.get("description"));
+                        crisisDaysLeft.setText( data.get("enddate") + " days left");
                         Double amountneeded = Double.valueOf(""+data.get("amountneeded"));
                         neededDonations.setText( amountneeded + "M LBP");
                         Double amountraised = Double.valueOf(""+data.get("amountraised"));
