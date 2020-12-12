@@ -35,7 +35,7 @@
                 android:layout_gravity="right|top"
                 android:layout_margin="20dp"
                 android:src="@drawable/ic_check"
-                android:tint="@color/black" />
+                android:tint="@color/white" />
         </FrameLayout>
 
         <LinearLayout
