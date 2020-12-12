@@ -49,10 +49,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class HomeScreenActivity extends AppCompatActivity implements PopUpMessage.LoggingOut {
+public class HomeScreenActivity extends AppCompatActivity {
 
-    private Button signout;
-    private FirebaseAuth mAuth;
     private TextView welcomeLabel;
     private LinearLayout listOfUserCards, listOfVolunteeringCards;
     FirebaseFirestore db = FirebaseFirestore.getInstance(); // get Instance of the Cloud Firestore database
@@ -83,12 +81,6 @@ public class HomeScreenActivity extends AppCompatActivity implements PopUpMessag
                     return true;
             }
             return false;
-        });
-
-        mAuth = FirebaseAuth.getInstance();
-        signout = findViewById(R.id.signout);
-        signout.setOnClickListener(e -> {
-            openDialog();
         });
 
         loadCrisisEvents();
@@ -161,24 +153,6 @@ public class HomeScreenActivity extends AppCompatActivity implements PopUpMessag
         });
 
         return card;
-    }
-
-    public void openDialog() {
-        PopUpMessage dialog = new PopUpMessage("Are you sure you want to logout? " +
-                "unless you are logging in on another device.", "I'm sure", "Cancel");
-        dialog.show(getSupportFragmentManager(), "Dialog");
-
-    }
-
-    @Override
-    public void onConfirm() {
-        mAuth.signOut();
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("ID", null);
-        editor.apply();
-        Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
-        startActivity(intent);
     }
 
     public static int dpToPx(int dp) {

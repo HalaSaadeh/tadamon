@@ -61,6 +61,7 @@ public class SearchResultsActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
             switch (menuItem.getItemId()){
                 case R.id.search:
+                    startActivity(new Intent(getApplicationContext(), SearchScreenActivity.class));
                     return true;
                 case R.id.discover:
                     startActivity(new Intent(getApplicationContext(), HomeScreenActivity.class));

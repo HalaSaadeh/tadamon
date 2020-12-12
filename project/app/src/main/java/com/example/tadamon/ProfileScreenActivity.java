@@ -28,6 +28,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -41,15 +42,16 @@ import java.net.URL;
 import java.util.List;
 import java.util.Map;
 
-public class ProfileScreenActivity extends AppCompatActivity {
+public class ProfileScreenActivity extends AppCompatActivity implements PopUpMessage.LoggingOut {
 
     TextView userName, userBio, userDonations, userVolunteerings;
     ImageView userProfilePicture;
 
     LinearLayout listOfVolunteerings, listOfDonations;
-    ImageView settingsButton;
+    ImageView logoutButton;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance(); // get Instance of the Cloud Firestore database
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +68,13 @@ public class ProfileScreenActivity extends AppCompatActivity {
 
         listOfVolunteerings = findViewById(R.id.userVolunteeredInLinearLayout);
         listOfDonations = findViewById(R.id.userDonatedInLinearLayout);
-        settingsButton = findViewById(R.id.settingsButton);
+
+        mAuth = FirebaseAuth.getInstance();
+
+        logoutButton = findViewById(R.id.settingsButton);
+        logoutButton.setOnClickListener(e -> {
+            openDialog();
+        });
 
         populateProfile(); // When the profile screen is opened, get the current user's data from the database.
 
@@ -88,6 +96,22 @@ public class ProfileScreenActivity extends AppCompatActivity {
             return false;
         });
 
+    }
+
+    public void openDialog() {
+        PopUpMessage dialog = new PopUpMessage("Are you sure you want to logout? " +
+                "unless you are logging in on another device.", "I'm sure", "Cancel");
+        dialog.show(getSupportFragmentManager(), "Dialog");
+    }
+
+    public void onConfirm() {
+        mAuth.signOut();
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("ID", null);
+        editor.apply();
+        Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
+        startActivity(intent);
     }
 
     private void populateProfile(){
@@ -205,6 +229,7 @@ public class ProfileScreenActivity extends AppCompatActivity {
             }
         }.execute();
     }
+
     public MaterialCardView createEventCard(String id, String title, String imgSrc) {
         int margin = dpToPx(8);
         int padding = dpToPx(16);
@@ -230,7 +255,7 @@ public class ProfileScreenActivity extends AppCompatActivity {
 
         ImageView imageView = new ImageView(this);
         imageView.setLayoutParams(new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.MATCH_PARENT,
                 dpToPx(200)
         ));
 
