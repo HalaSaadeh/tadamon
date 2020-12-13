@@ -135,11 +135,11 @@ public class ProfileScreenActivity extends AppCompatActivity implements PopUpMes
                         String bio = (String) data.get("bio");
                         userBio.setText(bio);
                         String donations, volunteers;
-                        if (data.get("donated_in") == null){
+                        if (data.get("donated_to") == null){
                             donations = "0" +" Donations";}
                         else{
-                            donations = ((List<String>) data.get("donated_in")).size() +" Donations";
-                            for (String donation : (List<String>) data.get("donated_in"))
+                            donations = ((List<String>) data.get("donated_to")).size() +" Donations";
+                            for (String donation : (List<String>) data.get("donated_to"))
                                 loadEventData(donation, listOfDonations);
                             }
                         userDonations.setText(donations);
