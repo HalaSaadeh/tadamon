@@ -69,16 +69,16 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/poppins_medium"
-                                    android:text="Event 1"
+                                    android:text=""
                                     android:textColor="@color/black"
                                     android:textSize="@dimen/largeTextSize" />
 
                                 <TextView
                                     android:id="@+id/daysLeftVolunteeringActivity"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="120dp"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/poppins_medium"
-                                    android:text="15 days left"
+                                    android:text=""
                                     android:textColor="@color/redPrime"
                                     android:textSize="@dimen/smallTextSize" />
                             </com.google.android.flexbox.FlexboxLayout>
@@ -89,7 +89,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:fontFamily="@font/poppins_light"
-                                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+                                android:text=""
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/verySmallTextSize" />
 
@@ -114,7 +114,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:fontFamily="@font/poppins_light"
-                                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+                                android:text=""
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/verySmallTextSize" />
 
@@ -163,7 +163,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/poppins_medium"
-                                        android:text="John Smith"
+                                        android:text=""
                                         android:textColor="@color/black"
                                         android:textSize="@dimen/mediumTextSize" />
 
@@ -172,7 +172,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/poppins_light"
-                                        android:text="Computer Engineer"
+                                        android:text=""
                                         android:textColor="@color/black"
                                         android:textSize="@dimen/smallTextSize" />
 
