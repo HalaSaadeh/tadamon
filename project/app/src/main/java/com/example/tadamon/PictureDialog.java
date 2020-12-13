@@ -3,64 +3,52 @@ package com.example.tadamon;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatDialogFragment;
-
-import com.example.tadamon.R;
+import androidx.fragment.app.DialogFragment;
 
 
-public class PictureDialog extends AppCompatDialogFragment {
+public class PictureDialog extends DialogFragment {
 
-    private boolean fromCamera, fromGallery;
+    //Booleans indicating which button was pressed
+    private boolean fromCamera =false, fromGallery=false;
+    //Listener that will send the values of the booleans back to the original activity
     private ExampleDialogListener listener;
 
-    @NonNull
-
-
     @Override
-    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        fromCamera = false;
-        fromGallery = false;
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
-        LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.picture_dialog, null);
-        builder.setView(view)
-                .setTitle("Choose how you want to add a new picture")
-                .setNegativeButton("cancel", (dialogInterface, i) -> {
+        builder.setMessage("Choose how you want to add a new picture")
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener()
+                {
+                    public void onClick(DialogInterface dialog, int id) {
+                    }
                 })
-                .setNeutralButton("From Camera", (dialog, which) -> {
-                    fromCamera = true;
-                    listener.applyBools(fromCamera, fromGallery);
-
-                })
-                .setPositiveButton("From Gallery", (dialogInterface, i) -> {
-                    fromGallery = true;
-                    listener.applyBools(fromCamera, fromGallery);
-                    Toast.makeText(getContext(), "Pic Dialog from cam: " + fromCamera + " fromgal: " + fromGallery, Toast.LENGTH_SHORT).show();
-                });
+                .setNeutralButton("From Camera", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        fromCamera = true;
+                        listener.applyBools(fromCamera, fromGallery);
+                    }})
+                .setPositiveButton("From Gallery", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        fromGallery = true;
+                        listener.applyBools(fromCamera, fromGallery);
+                    }});
         return builder.create();
-
     }
-
     @Override
-    public void onAttach(@NonNull Context context) {
+    public void onAttach(Context context) {
         super.onAttach(context);
-
         try {
             listener = (ExampleDialogListener) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() + "must implement example dialog listener");
         }
     }
-
     public interface ExampleDialogListener {
         void applyBools(boolean cam, boolean gal);
     }

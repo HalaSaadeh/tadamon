@@ -4,12 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -233,21 +233,30 @@ public class AccountCreationStep4Activity extends AppCompatActivity implements P
         }
     }
 
-    @SuppressLint("MissingSuperCall")
+
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // super.onActivityResult(requestCode, resultCode, data);
-        Toast.makeText(AccountCreationStep4Activity.this, "In on activity result", Toast.LENGTH_LONG).show();
-        if (resultCode == RESULT_OK) {
-            //PUT PICTURECODEHERE
-            //picture.setImageURI(image_uri);
-        }
+        super.onActivityResult(requestCode,resultCode,data);
+
         if (requestCode == PICK_IMAGE && resultCode == RESULT_OK)
+        {
             image_uri = data.getData();
-        try {
-            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), image_uri);
-            imageView.setImageBitmap(bitmap);
-        } catch (IOException e) {
-            e.printStackTrace();
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), image_uri);
+                imageView.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && null != data) {
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+            Cursor cursor = getContentResolver().query(selectedImage,
+                    filePathColumn, null, null, null);
+            cursor.moveToFirst();
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
+            imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
         }
 
     }
@@ -260,11 +269,10 @@ public class AccountCreationStep4Activity extends AppCompatActivity implements P
             takePicture();
         }
         if (fromGal) {
-            Intent gallery = new Intent();
-            gallery.setType("image/*");
-            gallery.setAction(Intent.ACTION_GET_CONTENT);
 
-            startActivityForResult(Intent.createChooser(gallery, "Select Picture"), PICK_IMAGE);
+            Intent gallery= new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            startActivityForResult(gallery, PICK_IMAGE);
+
         }
     }
 }

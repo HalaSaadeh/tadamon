@@ -82,7 +82,7 @@ public class ProfileScreenActivity extends AppCompatActivity implements PopUpMes
 
         List<String> spinnerArray =  new ArrayList<String>();
         spinnerArray.add("Log Out");
-        spinnerArray.add("Request Crisis Addition");
+        spinnerArray.add("Send Feedback");
         spinnerArray.add("About");
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
@@ -94,6 +94,7 @@ public class ProfileScreenActivity extends AppCompatActivity implements PopUpMes
         logoutButton.setAdapter(adapter);
         logoutButton.setSelection(2);
 
+        Intent webViewIntent = new Intent(this, ExternalWebView.class);
 
         Typeface typeface = ResourcesCompat.getFont(this, R.font.poppins_light);
 
@@ -109,7 +110,7 @@ public class ProfileScreenActivity extends AppCompatActivity implements PopUpMes
                         logoutButton.setSelection(2);
                         break;
                     case 1:
-                        Log.d("TAG", "Webview");
+                        startActivity(webViewIntent);
                         logoutButton.setSelection(2);
                         break;
                     case 2:
