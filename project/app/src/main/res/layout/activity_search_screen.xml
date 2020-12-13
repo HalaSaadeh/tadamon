@@ -286,10 +286,11 @@
                     android:background="@drawable/app_textfield_bg"
                     android:drawableStart="@drawable/ic_search_small"
                     android:drawablePadding="20dp"
-                    android:elevation="6dp"
                     android:fontFamily="@font/poppins_light"
                     android:hint="Search"
-                    android:paddingStart="20dp"
+                    android:paddingStart="10dp"
+                    android:textCursorDrawable="@null"
+                    android:elevation="6dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/darkGreyPrime"
                     android:textSize="@dimen/mediumTextSize" />
