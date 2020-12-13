@@ -9,7 +9,10 @@
         <item name="android:textSize">@dimen/mediumTextSizeVar</item>
         <item name="fontFamily">@font/poppins</item>
         <item name="color">@color/black</item>
+    </style>
 
+    <style name="DropDownMenuProfile" parent="android:Widget.Spinner">
+        <item name="android:background">@drawable/spinner_background</item>
     </style>
 
 </resources>

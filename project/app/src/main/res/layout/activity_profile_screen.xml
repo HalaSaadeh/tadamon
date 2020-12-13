@@ -27,15 +27,13 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_half_arc" />
 
-                <ImageView
+                <Spinner
                     android:id="@+id/settingsButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_gravity="top|end"
                     android:layout_margin="@dimen/leftPadding"
-                    android:alpha="0.6"
-                    android:src="@drawable/ic_settings"
-                    android:tint="@color/white" />
+                    style="@style/DropDownMenuProfile" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"

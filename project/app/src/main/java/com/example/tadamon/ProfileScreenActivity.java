@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -16,11 +17,17 @@ import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.util.TypedValue;
+import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +46,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -48,7 +56,7 @@ public class ProfileScreenActivity extends AppCompatActivity implements PopUpMes
     ImageView userProfilePicture;
 
     LinearLayout listOfVolunteerings, listOfDonations;
-    ImageView logoutButton;
+    Spinner logoutButton;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance(); // get Instance of the Cloud Firestore database
     private FirebaseAuth mAuth;
@@ -71,9 +79,48 @@ public class ProfileScreenActivity extends AppCompatActivity implements PopUpMes
 
         mAuth = FirebaseAuth.getInstance();
 
+
+        List<String> spinnerArray =  new ArrayList<String>();
+        spinnerArray.add("Log Out");
+        spinnerArray.add("Request Crisis Addition");
+        spinnerArray.add("About");
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, spinnerArray);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         logoutButton = findViewById(R.id.settingsButton);
-        logoutButton.setOnClickListener(e -> {
-            openDialog();
+        logoutButton.setAdapter(adapter);
+        logoutButton.setSelection(2);
+
+
+        Typeface typeface = ResourcesCompat.getFont(this, R.font.poppins_light);
+
+        logoutButton.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int itemPosition, long itemID) {
+                ((TextView) selectedItemView).setText(null);
+                ((TextView) selectedItemView).setTypeface(typeface);
+                switch (itemPosition){
+                    case 0:
+                        openDialog();
+                        logoutButton.setSelection(2);
+                        break;
+                    case 1:
+                        Log.d("TAG", "Webview");
+                        logoutButton.setSelection(2);
+                        break;
+                    case 2:
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+
         });
 
         populateProfile(); // When the profile screen is opened, get the current user's data from the database.
