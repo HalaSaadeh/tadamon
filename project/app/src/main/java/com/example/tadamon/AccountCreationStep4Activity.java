@@ -75,6 +75,8 @@ public class AccountCreationStep4Activity extends AppCompatActivity implements P
         finish.setOnClickListener(e -> {
             addDoc();
             startActivity(new Intent(getApplicationContext(), HomeScreenActivity.class));
+            overridePendingTransition(R.anim.slide_in_right,
+                    R.anim.slide_out_left);
         });
 
         bio = findViewById(R.id.bioField);

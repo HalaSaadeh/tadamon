@@ -65,7 +65,9 @@
                 android:fontFamily="@font/poppins_light"
                 android:hint="Location"
                 android:inputType="textPersonName"
-                android:paddingLeft="@dimen/inner_frame_layout_padding"
+                android:paddingStart="10dp"
+                android:textCursorDrawable="@null"
+                android:elevation="6dp"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/black"
                 android:textSize="@dimen/mediumTextSize" />

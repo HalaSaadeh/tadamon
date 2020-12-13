@@ -22,7 +22,9 @@
         <activity android:name=".AccountCreationStep2Activity" />
         <activity android:name=".AccountCreationStep1Activity" />
         <activity android:name=".ProfileScreenActivity" />
-        <activity android:name=".SearchScreenActivity" />
+        <activity
+            android:name=".SearchScreenActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".HomeScreenActivity" />
         <activity android:name=".SignInActivity" />
         <activity android:name=".LoginWithEmailAndPassActivity" />

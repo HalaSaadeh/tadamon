@@ -77,11 +77,13 @@ public class SearchScreenActivity extends AppCompatActivity {
                     return true;
                 case R.id.discover:
                     startActivity(new Intent(getApplicationContext(), HomeScreenActivity.class));
-//                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    overridePendingTransition(R.anim.slide_in_left,
+                            R.anim.slide_out_right);
                     return true;
                 case R.id.profile:
                     startActivity(new Intent(getApplicationContext(), ProfileScreenActivity.class));
-//                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    overridePendingTransition(R.anim.slide_in_right,
+                            R.anim.slide_out_left);
                     return true;
             }
             return false;

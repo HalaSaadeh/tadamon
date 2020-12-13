@@ -45,6 +45,8 @@ public class AccountCreationStep1Activity extends AppCompatActivity {
                 Intent intent = new Intent(this, AccountCreationStep2Activity.class);
                 intent.putExtra("name", namefield.getText().toString());
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right,
+                        R.anim.slide_out_left);
             } else
                 namefield.setError("Please enter a name.");
         });

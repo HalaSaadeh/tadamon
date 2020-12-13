@@ -73,11 +73,13 @@ public class HomeScreenActivity extends AppCompatActivity {
                     return true;
                 case R.id.search:
                     startActivity(new Intent(getApplicationContext(), SearchScreenActivity.class));
-//                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    overridePendingTransition(R.anim.slide_in_right,
+                            R.anim.slide_out_left);
                     return true;
                 case R.id.profile:
                     startActivity(new Intent(getApplicationContext(), ProfileScreenActivity.class));
-//                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    overridePendingTransition(R.anim.slide_in_right,
+                            R.anim.slide_out_left);
                     return true;
             }
             return false;
@@ -159,7 +161,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
     }
 
-    private void loadCrisisEvents(){
+    private void loadCrisisEvents() {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String userid = preferences.getString("ID", null);
         DocumentReference docRef = db.collection("volunteers").document(userid);
@@ -175,21 +177,23 @@ public class HomeScreenActivity extends AppCompatActivity {
                         String name = (String) data.get("name");
                         welcomeLabel.setText("Hi, " + name);
                         List<String> volunteered_in = (List<String>) data.get("volunteered_in");
-                        if (!(volunteered_in ==null)){
-                        for(String vol_key : volunteered_in){
-                            loadEventData(vol_key, listOfUserCards);
-                        }}
+                        if (!(volunteered_in == null)) {
+                            for (String vol_key : volunteered_in) {
+                                loadEventData(vol_key, listOfUserCards);
+                            }
+                        }
                         db.collection("crisis_events").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                 if (task.isSuccessful()) {
                                     for (QueryDocumentSnapshot document : task.getResult()) {
-                                        if(volunteered_in ==null)
+                                        if (volunteered_in == null)
                                             loadEventData(document.getId(), listOfVolunteeringCards);
-                                        else if(!volunteered_in.contains(document.getId()))
+                                        else if (!volunteered_in.contains(document.getId()))
                                             loadEventData(document.getId(), listOfVolunteeringCards);
                                     }
-                                } }
+                                }
+                            }
                         });
                     }
                 } else {
@@ -199,6 +203,7 @@ public class HomeScreenActivity extends AppCompatActivity {
             }
         });
     }
+
     private void loadEventData(String vol_key, LinearLayout listOfCards) {
         DocumentReference eventRef = db.collection("crisis_events").document(vol_key);
         eventRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -212,10 +217,13 @@ public class HomeScreenActivity extends AppCompatActivity {
                         String cover_photo_url = (String) data.get("photo_url");
                         listOfCards.addView(createEventCard(vol_key, eventname, cover_photo_url));
                     }
-                }}});
+                }
+            }
+        });
     }
-    private static void setPic(String urlImage, ImageView imageView){
-        new AsyncTask<String, Integer, Drawable>(){
+
+    private static void setPic(String urlImage, ImageView imageView) {
+        new AsyncTask<String, Integer, Drawable>() {
             @Override
             protected Drawable doInBackground(String... strings) {
                 Bitmap pic = null;
@@ -229,6 +237,7 @@ public class HomeScreenActivity extends AppCompatActivity {
                 }
                 return new BitmapDrawable(Resources.getSystem(), pic);
             }
+
             protected void onPostExecute(Drawable result) {
 
                 //Add image to ImageView

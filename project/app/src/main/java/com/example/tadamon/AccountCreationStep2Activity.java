@@ -29,6 +29,8 @@ public class AccountCreationStep2Activity extends AppCompatActivity {
                 intent.putExtra("name", name);
                 intent.putExtra("age", Integer.parseInt(ageField.getText().toString().trim()));
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right,
+                        R.anim.slide_out_left);
             } else
                 ageField.setError("Age is too young.");
         });

@@ -13,7 +13,6 @@ import java.util.List;
 
 public class AccountCreationStep3Activity extends AppCompatActivity {
 
-    private EditText location;
     private Button nextButton;
     CustomAutoCompleteView autoCompleteCities;
     ArrayAdapter<String> myAdapter; /// adapter for auto-complete
@@ -44,13 +43,15 @@ public class AccountCreationStep3Activity extends AppCompatActivity {
                 intent.putExtra("age", age);
                 intent.putExtra("loc", autoCompleteCities.getText().toString());
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right,
+                        R.anim.slide_out_left);
             }
         });
     }
 
     private boolean checkLocation() {
-        if (location.getText().toString().length() == 0) {
-            location.setError("Please enter a location");
+        if (autoCompleteCities.getText().toString().length() == 0) {
+            autoCompleteCities.setError("Please enter a location");
             return false;
         }
         return true;
