@@ -22,12 +22,12 @@ public class PictureDialog extends DialogFragment {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setMessage("Choose how you want to add a new picture")
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener()
+                .setNeutralButton("Cancel", new DialogInterface.OnClickListener()
                 {
                     public void onClick(DialogInterface dialog, int id) {
                     }
                 })
-                .setNeutralButton("From Camera", new DialogInterface.OnClickListener() {
+                .setNegativeButton("From Camera", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         fromCamera = true;
