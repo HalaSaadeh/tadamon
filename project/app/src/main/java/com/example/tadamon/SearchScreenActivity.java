@@ -79,11 +79,13 @@ public class SearchScreenActivity extends AppCompatActivity {
                     startActivity(new Intent(getApplicationContext(), HomeScreenActivity.class));
                     overridePendingTransition(R.anim.slide_in_left,
                             R.anim.slide_out_right);
+                    finishAffinity();
                     return true;
                 case R.id.profile:
                     startActivity(new Intent(getApplicationContext(), ProfileScreenActivity.class));
                     overridePendingTransition(R.anim.slide_in_right,
                             R.anim.slide_out_left);
+                    finishAffinity();
                     return true;
             }
             return false;

@@ -3,6 +3,7 @@ package com.example.tadamon;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -74,7 +75,14 @@ public class VolunteerScreenActivity extends AppCompatActivity  implements OnMap
         repBio = findViewById(R.id.repDescription);
 
         volunteerButton = findViewById(R.id.volunteerButtonVolunteeringActivity);
-        volunteerButton.setOnClickListener(e -> {volunteerForEvent();});
+        volunteerButton.setOnClickListener(e -> {
+            volunteerForEvent();
+            Intent thankYouIntent = new Intent(this, ThankYouActivity.class);
+            thankYouIntent.putExtra("TYPE", "VOLUNTEER");
+            thankYouIntent.putExtra("id", id);
+            startActivity(thankYouIntent);
+        });
+
         id = getIntent().getStringExtra("id");
         populateCrisis(id);
 

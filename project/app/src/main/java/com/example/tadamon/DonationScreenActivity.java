@@ -3,6 +3,7 @@ package com.example.tadamon;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -109,6 +110,12 @@ public class DonationScreenActivity extends AppCompatActivity {
             donated = Long.parseLong(amountStr);
             if (amount.getText().toString()!="")
                 donate(donated);
+
+            Intent thankYouIntent = new Intent(this, ThankYouActivity.class);
+            thankYouIntent.putExtra("TYPE", "DONATION");
+            thankYouIntent.putExtra("id", id);
+            startActivity(thankYouIntent);
+            finish();
         });
 
         DocumentReference eventRef = db.collection("crisis_events").document(id);

@@ -88,11 +88,13 @@ public class ProfileScreenActivity extends AppCompatActivity implements PopUpMes
                     startActivity(new Intent(getApplicationContext(), SearchScreenActivity.class));
                     overridePendingTransition(R.anim.slide_in_left,
                             R.anim.slide_out_right);
+                    finishAffinity();
                     return true;
                 case R.id.discover:
                     startActivity(new Intent(getApplicationContext(), HomeScreenActivity.class));
                     overridePendingTransition(R.anim.slide_in_left,
                             R.anim.slide_out_right);
+                    finishAffinity();
                     return true;
             }
             return false;

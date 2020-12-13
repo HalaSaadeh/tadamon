@@ -75,11 +75,13 @@ public class HomeScreenActivity extends AppCompatActivity {
                     startActivity(new Intent(getApplicationContext(), SearchScreenActivity.class));
                     overridePendingTransition(R.anim.slide_in_right,
                             R.anim.slide_out_left);
+                    finishAffinity();
                     return true;
                 case R.id.profile:
                     startActivity(new Intent(getApplicationContext(), ProfileScreenActivity.class));
                     overridePendingTransition(R.anim.slide_in_right,
                             R.anim.slide_out_left);
+                    finishAffinity();
                     return true;
             }
             return false;
