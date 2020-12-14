@@ -13,6 +13,6 @@ The process of generating a card uses a bottom-up approach:
 - Embed these inner layers inside outer layers
 - Add the outer layers to the main View (MaterialDesignCard)
 
-## User Cards
+## Recently Searched Chips
 
-User Cards, similar in terms of functionality to a Crisis Cards, are used to represent a User in our Application. Clicking on that card will open the user profile.
+Recently searched tags, or chips, are found in the Search Screen. They are tiny little tags that are clickable and removable. They are the result of the user searching for a criteria. Once the results show up, this little chip is added to the screen. Once a chip is clicked, the onClick listener is called, and the appropriate action is taken. Once the onClose listener is called (chip is being deleted), the chip is selected and removed from the parent view using ViewManager. The Chip is based on the MaterialDesign library, and the styling is done by us. The process of generating the chips is similar to the Crisis Cards, except that we are only passing a chip ID, and the title to be displayed.
